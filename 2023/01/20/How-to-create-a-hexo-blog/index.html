@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>my-first-blog | Hexo</title>
+  <title>How to create a hexo blog | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="my-first-blog">
-<meta property="og:url" content="http://example.com/2023/01/20/my-first-blog-0/index.html">
+  <meta name="description" content="This is my first blog, and i have thank to CodeSheep to help to create it. And here the video from youtube How to create yourself blogEnvironment Node.js npm  How to set hexo Use npm to download hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to create a hexo blog">
+<meta property="og:url" content="http://example.com/2023/01/20/How-to-create-a-hexo-blog/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="This is my first blog, and i have thank to CodeSheep to help to create it. And here the video from youtube How to create yourself blogEnvironment Node.js npm  How to set hexo Use npm to download hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-01-20T15:03:45.000Z">
-<meta property="article:modified_time" content="2023-01-20T15:03:45.837Z">
+<meta property="article:published_time" content="2023-01-20T15:23:19.000Z">
+<meta property="article:modified_time" content="2023-01-20T15:59:13.612Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -152,27 +154,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-my-first-blog-0" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-How-to-create-a-hexo-blog" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      my-first-blog
+      How to create a hexo blog
     </h1>
   
 
         
-        <a href="/2023/01/20/my-first-blog-0/" class="archive-article-date">
-  	<time datetime="2023-01-20T15:03:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
+        <a href="/2023/01/20/How-to-create-a-hexo-blog/" class="archive-article-date">
+  	<time datetime="2023-01-20T15:23:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog"><a href="#This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog" class="headerlink" title="This is my first blog, and i have thank to CodeSheep to help to create it. And here the video from youtube How to create yourself blog"></a>This is my first blog, and i have thank to <a target="_blank" rel="noopener" href="https://github.com/hansonwang99">CodeSheep</a> to help to create it. And here the video from youtube <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=erKYtw4Rfhk">How to create yourself blog</a></h1><h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
+<li>Node.js</li>
+<li>npm</li>
+</ul>
+<h2 id="How-to-set-hexo"><a href="#How-to-set-hexo" class="headerlink" title="How to set hexo"></a>How to set hexo</h2><ol>
+<li>Use npm to download hexo package with command line: (npm install -g hexo-cli)</li>
+<li>Command line: (hexo -v) to check if the hexo is installed successfully</li>
+<li>Create a directory (dir name what you want): blog</li>
+<li>Command line: (hexo init), it will create all the stuff you need for the blog in the dir</li>
+</ol>
+<h2 id="How-to-create-a-blog"><a href="#How-to-create-a-blog" class="headerlink" title="How to create a blog"></a>How to create a blog</h2><ol>
+<li>Use command line: (hexo n “blog title”) to create a new blog.mb</li>
+<li>You can use Visual Studio Code to write your blog</li>
+<li>Once you finished writing your blog at first use command line: (hexo clean) to clean -&gt; (hexo g) to generate -&gt; (hexo s) to start</li>
+</ol>
+<h2 id="How-to-deploy-to-github"><a href="#How-to-deploy-to-github" class="headerlink" title="How to deploy to github"></a>How to deploy to github</h2><ol>
+<li>Create a repository with your account name, for example: tianfanshan.github.io</li>
+<li>Back to command line use: (npm install –save hexo-deployer-git)</li>
+<li>Set _config.yml file, there is a deploy field:<br> deploy:<br>   type: git<br>   repo: your-repository-HTTPs<br>   branch: master</li>
+<li>Deploy your blog to github with command line: (hexo d)</li>
+<li>Maybe you have to log in you github account on terminal</li>
+<li>Then you can access your blog on line by searching the blog repository name on url, for example: tianfanshan.github.io</li>
+</ol>
+<h2 id="How-to-change-your-blog-themes"><a href="#How-to-change-your-blog-themes" class="headerlink" title="How to change your blog themes"></a>How to change your blog themes</h2><ol>
+<li>Found a hexo blog theme you like on github</li>
+<li>Use command line to clone it to your blog directory: git clone (repository of themes) themes&#x2F;(dirName)</li>
+<li>Set _config.yml file, there is a them field:<br> theme: dirName</li>
+<li>Use command line to see your blog locally: hexo clean -&gt; hexo g -&gt; hexo s</li>
+<li>Use command line to push your new blog to git hub.</li>
+</ol>
+
       
 
       
@@ -251,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/20/my-first-blog-0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/20/How-to-create-a-hexo-blog/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -265,18 +297,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/01/20/How-to-create-a-hexo-blog/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          How to create a hexo blog
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/01/20/My-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">My first blog</div>
+    <a href="/2023/01/20/my-first-blog-0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">my-first-blog</div>
       <i class="icon-circle-right"></i>
     </a>
   
