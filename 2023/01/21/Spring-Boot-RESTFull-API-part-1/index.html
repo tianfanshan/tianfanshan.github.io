@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Dependency lombok annotation @Data at Entity, so that it no longer needs to create getter setter and toString method manually. @AllArgsConstructor to create all arguments constructor for us. @NoArgsCo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/resourceNotFoundException.png">
 <meta property="article:published_time" content="2023-01-21T09:10:29.000Z">
-<meta property="article:modified_time" content="2023-01-21T10:46:49.735Z">
+<meta property="article:modified_time" content="2023-01-21T15:43:38.090Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/resourceNotFoundException.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -194,7 +196,8 @@
 <li>Inject service(the interface) to make it loose coupling(we have to avoid tightly coupling)</li>
 </ol>
 <h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a><strong>ResourceNotFoundException</strong></h2><ol>
-<li>@ResponseStatus(value &#x3D; ?): whenever your code from controller thrown this Exception will response a HTTP status with it.</li>
+<li>@ResponseStatus(value &#x3D; ?): whenever your code from serviceImpl thrown this Exception will response a HTTP status with it.</li>
+<li>This resourceNotFoundException class is extended by RuntimeExeption, for that we can use super() method in the constructor to send back to the client a customized message. For example:<br><img src="/../images/resourceNotFoundException.png" alt="ResourceNotFoundException"></li>
 </ol>
 <h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a><strong>DTO</strong></h2><ol>
 <li>We use DTO to send data to clients to hide implementation datails. Send JPA Entities can became a security issue.</li>
