@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Boot-RESTFull-API-part-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" class="archive-article-date">
+  	<time datetime="2023-01-21T09:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Dependency-lombok-annotation"><a href="#Dependency-lombok-annotation" class="headerlink" title="Dependency lombok annotation"></a><strong>Dependency lombok annotation</strong></h2><ol>
+<li>@Data at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
+<li>@AllArgsConstructor to create all arguments constructor for us.</li>
+<li>@NoArgsConstructor to create non argument constructor for us.</li>
+</ol>
+<h2 id="Dependency-jakarta-persistence-annotation"><a href="#Dependency-jakarta-persistence-annotation" class="headerlink" title="Dependency jakarta.persistence annotation"></a><strong>Dependency jakarta.persistence annotation</strong></h2><ol>
+<li>@Entity use is at entity class to create table in our database.</li>
+<li>@Table(name &#x3D; ?, uniqueConstraints &#x3D;?): set table name and set a table column to be unique.</li>
+<li>@Column(name &#x3D; ?, nullable &#x3D;false): set column name and set column to be not null.</li>
+</ol>
+<h2 id="Repository-the-interface"><a href="#Repository-the-interface" class="headerlink" title="Repository the interface"></a>Repository the interface</h2><ol>
+<li>Extends the interface to JpaRepository we no longer need to add @Repository annotation, because the simpleJpaRepository is taking care this staff for us.</li>
+<li>JpaRepository is generic, we have to give it a generic type: &lt;(entity class name),(entity class id type)&gt;.</li>
+<li>By extending JpaRepository we will get all basic CRUD methods for the entity to talk to the database.</li>
+</ol>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a><strong>Controller</strong></h2><ol>
+<li>@RestController annotation is internally using: @Controller and @ResponseBody.</li>
+<li>Inject service(the interface) to make it loose coupling(we have to avoid tightly coupling)</li>
+</ol>
+<h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a><strong>ResourceNotFoundException</strong></h2><ol>
+<li>@ResponseStatus(value &#x3D; ?): whenever your code from controller thrown this Exception will response a HTTP status with it.</li>
+</ol>
+<h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a><strong>DTO</strong></h2><ol>
+<li>We use DTO to send data to clients to hide implementation datails. Send JPA Entities can became a security issue.</li>
+<li>In DTO we only need all fields and his setter and getter methods.</li>
+<li>Controller(Dto obj from client) -&gt; service(interface) -&gt; serviceImpl(convert Dto to JPA entity) -&gt; repository(save JPA entity to database)<br> -&gt; repository(response a JPA entity) -&gt; serviceImpl(convert JPA entity to Dto obj) -&gt; service(interface) -&gt; controller(get a Dto obj from service to send to client)</li>
+</ol>
+<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><ol>
+<li>From spring 4.3 onwards, if a class is configured as a spring bean and it has only one constructor, then we can omit the @Autowired annotation.</li>
+</ol>
+<h2 id="PostMapping-GetMapping-DeleteMapping-and-PutMapping"><a href="#PostMapping-GetMapping-DeleteMapping-and-PutMapping" class="headerlink" title="@PostMapping, @GetMapping, @DeleteMapping and @PutMapping"></a>@PostMapping, @GetMapping, @DeleteMapping and @PutMapping</h2><ol>
+<li>They are basically a combination of @RequestMapping + (Post,Get,Put,Delete) method.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-How-to-create-a-hexo-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
