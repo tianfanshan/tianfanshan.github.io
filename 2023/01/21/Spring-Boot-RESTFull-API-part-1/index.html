@@ -8,19 +8,21 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Spring Boot RESTFull API part 1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Dependency lombok annotation @Data at Entity, so that it no longer needs to create getter setter and toString method manually. @AllArgsConstructor to create all arguments constructor for us. @NoArgsCo">
+  <meta name="description" content="Entity @Data of lombok Dependency at Entity, so that it no longer needs to create getter setter and toString method manually. @AllArgsConstructor of lombok Dependency to create all arguments construct">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot RESTFull API part 1">
 <meta property="og:url" content="http://example.com/2023/01/21/Spring-Boot-RESTFull-API-part-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Dependency lombok annotation @Data at Entity, so that it no longer needs to create getter setter and toString method manually. @AllArgsConstructor to create all arguments constructor for us. @NoArgsCo">
+<meta property="og:description" content="Entity @Data of lombok Dependency at Entity, so that it no longer needs to create getter setter and toString method manually. @AllArgsConstructor of lombok Dependency to create all arguments construct">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/entityResource.png">
+<meta property="og:image" content="http://example.com/images/whereTheCodeThrownNotFoundException.png">
 <meta property="og:image" content="http://example.com/images/resourceNotFoundException.png">
 <meta property="article:published_time" content="2023-01-21T09:10:29.000Z">
-<meta property="article:modified_time" content="2023-01-21T15:43:38.090Z">
+<meta property="article:modified_time" content="2023-01-21T20:29:14.287Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/resourceNotFoundException.png">
+<meta name="twitter:image" content="http://example.com/images/entityResource.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -176,30 +178,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Dependency-lombok-annotation"><a href="#Dependency-lombok-annotation" class="headerlink" title="Dependency lombok annotation"></a><strong>Dependency lombok annotation</strong></h2><ol>
-<li>@Data at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
-<li>@AllArgsConstructor to create all arguments constructor for us.</li>
-<li>@NoArgsConstructor to create non argument constructor for us.</li>
-</ol>
-<h2 id="Dependency-jakarta-persistence-annotation"><a href="#Dependency-jakarta-persistence-annotation" class="headerlink" title="Dependency jakarta.persistence annotation"></a><strong>Dependency jakarta.persistence annotation</strong></h2><ol>
+        <h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><ol>
+<li>@Data of <strong>lombok Dependency</strong> at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
+<li>@AllArgsConstructor of <strong>lombok Dependency</strong> to create all arguments constructor for us.</li>
+<li>@NoArgsConstructor of <strong>lombok Dependency</strong> to create non argument constructor for us.</li>
 <li>@Entity use is at entity class to create table in our database.</li>
 <li>@Table(name &#x3D; ?, uniqueConstraints &#x3D;?): set table name and set a table column to be unique.</li>
-<li>@Column(name &#x3D; ?, nullable &#x3D;false): set column name and set column to be not null.</li>
+<li>@Column(name &#x3D; ?, nullable &#x3D;false): set column name and set column to be not null.<br><img src="/../images/entityResource.png" alt="entityResource"></li>
 </ol>
 <h2 id="Repository-the-interface"><a href="#Repository-the-interface" class="headerlink" title="Repository the interface"></a>Repository the interface</h2><ol>
 <li>Extends the interface to JpaRepository we no longer need to add @Repository annotation, because the simpleJpaRepository is taking care this staff for us.</li>
 <li>JpaRepository is generic, we have to give it a generic type: &lt;(entity class name),(entity class id type)&gt;.</li>
 <li>By extending JpaRepository we will get all basic CRUD methods for the entity to talk to the database.</li>
 </ol>
-<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a><strong>Controller</strong></h2><ol>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
 <li>@RestController annotation is internally using: @Controller and @ResponseBody.</li>
 <li>Inject service(the interface) to make it loose coupling(we have to avoid tightly coupling)</li>
 </ol>
-<h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a><strong>ResourceNotFoundException</strong></h2><ol>
-<li>@ResponseStatus(value &#x3D; ?): whenever your code from serviceImpl thrown this Exception will response a HTTP status with it.</li>
+<h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a>ResourceNotFoundException</h2><ol>
+<li>@ResponseStatus(value &#x3D; ?): whenever your code from serviceImpl thrown this Exception will response a HTTP status with it:<br><img src="/../images/whereTheCodeThrownNotFoundException.png" alt="whereTheCodeThrownNotFoundException"></li>
 <li>This resourceNotFoundException class is extended by RuntimeExeption, for that we can use super() method in the constructor to send back to the client a customized message. For example:<br><img src="/../images/resourceNotFoundException.png" alt="ResourceNotFoundException"></li>
 </ol>
-<h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a><strong>DTO</strong></h2><ol>
+<h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a>DTO</h2><ol>
 <li>We use DTO to send data to clients to hide implementation datails. Send JPA Entities can became a security issue.</li>
 <li>In DTO we only need all fields and his setter and getter methods.</li>
 <li>Controller(Dto obj from client) -&gt; service(interface) -&gt; serviceImpl(convert Dto to JPA entity) -&gt; repository(save JPA entity to database)<br> -&gt; repository(response a JPA entity) -&gt; serviceImpl(convert JPA entity to Dto obj) -&gt; service(interface) -&gt; controller(get a Dto obj from service to send to client)</li>
