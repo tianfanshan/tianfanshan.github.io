@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png">
 <meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png">
 <meta property="article:published_time" content="2023-01-23T09:38:41.000Z">
-<meta property="article:modified_time" content="2023-01-23T10:42:21.375Z">
+<meta property="article:modified_time" content="2023-01-23T10:57:29.108Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png">
@@ -186,10 +186,10 @@
 <h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"></p>
 <ol>
 <li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
-<li>In <strong>Body</strong> we are response to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
+<li>In <strong>Body</strong> we are responsing to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
 </ol>
 <h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><ol>
-<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>, this is a class we created to store all the informations for client he needs to use:<br> <img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"></p>
+<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>(class we created to store all the informations) to client:<br> <img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"></p>
 </li>
 <li><p>If there are no comming parameters, it will be default <strong>Constants</strong> we created in another class:<br> <img src="/../images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png" alt="defaultConstantsForPaginationAndSorting"></p>
 </li>
@@ -198,11 +198,11 @@
 <li><p>Now we came to <strong>PostServiceImpl</strong>:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png" alt="postServiceImplPaginationAndSorting"></p>
 <ul>
 <li>Line 42: generate a <strong>Sort</strong> by checking the <strong>sortDirt</strong> is asc or desc.</li>
-<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It is returns a list of post but with <strong>Page</strong> format.</li>
-<li>Line 50: get the content from postsPageable, it returns a normally list of posts.</li>
+<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It returns a list of post but with <strong>Page</strong> format.</li>
+<li>Line 50: get the content from postsPageable, it returns a normal list of posts.</li>
 <li>Line 52: we convert the list of posts -&gt; list of postsDto, here the name is concent.</li>
-<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, here are the fields:<br><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"><br>then set all field: content(created in line 52), the rest values we are getting it from postsPageable list.</li>
-<li>Line 62: return the <strong>PostResponse class object</strong> back, that we created in the previous step.</li>
+<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, then set all field: content(created in line 52), the rest values we are getting them from postsPageable, here are the fields:<br><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"></li>
+<li>Line 62: return the <strong>PostResponse class object</strong> we created in the previous step to the client.</li>
 </ul>
 </li>
 </ol>
