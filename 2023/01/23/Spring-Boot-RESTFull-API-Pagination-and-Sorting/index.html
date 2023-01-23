@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>Spring Boot RESTFull API Pagination and Sorting | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+  <meta name="description" content="About pagination and sorting, at first i want to show you a preview with a screenshot : Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot RESTFull API Pagination and Sorting">
+<meta property="og:url" content="http://example.com/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="About pagination and sorting, at first i want to show you a preview with a screenshot : Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/postServicePaginationAndSorting.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png">
+<meta property="article:published_time" content="2023-01-23T09:38:41.000Z">
+<meta property="article:modified_time" content="2023-01-23T10:42:21.375Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,103 +162,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Spring-Boot-RESTFull-API-Pagination-and-Sorting" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Spring Boot RESTFull API Pagination and Sorting
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
+
+        
+        <a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
   	<time datetime="2023-01-23T09:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">Spring Boot RESTFull API Pagination and Sorting</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
+<h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"></p>
+<ol>
+<li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
+<li>In <strong>Body</strong> we are response to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
+</ol>
+<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><ol>
+<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>, this is a class we created to store all the informations for client he needs to use:<br> <img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"></p>
+</li>
+<li><p>If there are no comming parameters, it will be default <strong>Constants</strong> we created in another class:<br> <img src="/../images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png" alt="defaultConstantsForPaginationAndSorting"></p>
+</li>
+<li><p>Go to <strong>Service</strong> with 4 parametes:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServicePaginationAndSorting.png" alt="postServicePaginationAndSorting"></p>
+</li>
+<li><p>Now we came to <strong>PostServiceImpl</strong>:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png" alt="postServiceImplPaginationAndSorting"></p>
+<ul>
+<li>Line 42: generate a <strong>Sort</strong> by checking the <strong>sortDirt</strong> is asc or desc.</li>
+<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It is returns a list of post but with <strong>Page</strong> format.</li>
+<li>Line 50: get the content from postsPageable, it returns a normally list of posts.</li>
+<li>Line 52: we convert the list of posts -&gt; list of postsDto, here the name is concent.</li>
+<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, here are the fields:<br><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"><br>then set all field: content(created in line 52), the rest values we are getting it from postsPageable list.</li>
+<li>Line 62: return the <strong>PostResponse class object</strong> back, that we created in the previous step.</li>
+</ul>
+</li>
+</ol>
+<h3 id="It’s-not-difficul-but-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day"><a href="#It’s-not-difficul-but-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day" class="headerlink" title="It’s not difficul but a bit complex, hope you can find what you want to know here, have a nice day!"></a>It’s not difficul but a bit complex, hope you can find what you want to know here, have a nice day!</h3>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" class="archive-article-date">
-  	<time datetime="2023-01-21T09:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot RESTFull API part 1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/20/How-to-create-a-hexo-blog/" class="archive-article-date">
-  	<time datetime="2023-01-20T15:23:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/20/How-to-create-a-hexo-blog/">How to create a hexo blog</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -269,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
