@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://example.com/images/blogRestApi/commentsRelationthipWithPost/checkPostAndCommentThenDoStuff.png">
 <meta property="og:image" content="http://example.com/images/blogRestApi/commentsRelationthipWithPost/checkPostAndGetCommentsByPostIdPagination.png">
 <meta property="article:published_time" content="2023-01-24T14:48:46.000Z">
-<meta property="article:modified_time" content="2023-01-24T15:58:54.501Z">
+<meta property="article:modified_time" content="2023-01-24T16:50:49.618Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/blogRestApi/commentsRelationthipWithPost/commentEntity.png">
@@ -187,7 +187,7 @@
 <li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"></li>
 </ol>
 <h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
-<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid dublicate the comments of the post.</li>
+<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid duplicate the comments of the post.</li>
 <li>Give it a @OneToMany annotation because post is the mantainer of the relationship, hence it also has to be <strong>mappedBy &#x3D; “post”</strong>.</li>
 <li><strong>cascade &#x3D; CascadeType.ALL</strong>, so that he can perform cascading operations.</li>
 <li><strong>orphanRemoval &#x3D; true</strong>, post is the father and comments are childs, when the childs disconnected with father it will be removed from database automatically.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/postEntityUpdated.png" alt="updatedPostEntity"></li>
