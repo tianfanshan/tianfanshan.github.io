@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/1 | Hexo</title>
+  <title>ModelMapper and Refact Dto code | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/01/index.html">
+  <meta name="description" content="Dependency: ModelMapper At first we know at real time projects there are not only 2 entities in application. In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ModelMapper and Refact Dto code">
+<meta property="og:url" content="http://example.com/2023/01/25/ModelMapper-and-Refact-Dto-code/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Dependency: ModelMapper At first we know at real time projects there are not only 2 entities in application. In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject,">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/injectModelMapperIntoPostServiceImpl.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/convertEntityAndDtoOldVersion.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/convertorOfEntityAndDtoWithModelMapper.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/modelMapper/addCommentsSetInPostDto.png">
+<meta property="article:published_time" content="2023-01-25T13:50:45.000Z">
+<meta property="article:modified_time" content="2023-01-25T14:20:54.551Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,157 +161,172 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-ModelMapper-and-Refact-Dto-code" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      ModelMapper and Refact Dto code
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/25/ModelMapper-and-Refact-Dto-code/" class="archive-article-date">
+
+        
+        <a href="/2023/01/25/ModelMapper-and-Refact-Dto-code/" class="archive-article-date">
   	<time datetime="2023-01-25T13:50:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">ModelMapper and Refact Dto code</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
+<li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
+<li>Add ModelMapper library dependency at our application:<br> <img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"></li>
+<li>Define the ModelMapper bean in our Spring configuration:<br> <img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"></li>
+<li>Inject ModelMapper into ServiceImpl:<br> <img src="/../images/blogRestApi/modelMapper/injectModelMapperIntoPostServiceImpl.png" alt="injectModelMapperIntoServiceImpl"> </li>
+<li>Before we use the modelMapper:<br> <img src="/../images/blogRestApi/modelMapper/convertEntityAndDtoOldVersion.png" alt="convertorBeforeUseTheModelMapper"></li>
+<li><strong>After refact convertor with modelMapper we make it 8 lines less than before, image that we have more than 10 entities</strong>:<br> <img src="/../images/blogRestApi/modelMapper/convertorOfEntityAndDtoWithModelMapper.png" alt="convertorOfEntityAndDtoWithModelMapper"></li>
+</ol>
+</li>
+</ul>
+<h2 id="Refact-getPostById-And-getAllPosts"><a href="#Refact-getPostById-And-getAllPosts" class="headerlink" title="Refact getPostById And getAllPosts"></a>Refact getPostById And getAllPosts</h2><ul>
+<li>When we want to get a post we also want the comments come along with it, let’s start coding:<ol>
+<li>At first we only have to change code in DTO, add a new field to store the set of comments:<br> <img src="/../images/blogRestApi/modelMapper/addCommentsSetInPostDto.png" alt="postDto"></li>
+<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:</li>
+</ol>
+</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/25/ModelMapper-and-Refact-Dto-code/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" class="archive-article-date">
-  	<time datetime="2023-01-24T14:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot RESTFull API Comment OneToMany Relationship</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">Spring Boot RESTFull API Comment OneToMany Relationship</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
-  	<time datetime="2023-01-23T09:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">Spring Boot RESTFull API Pagination and Sorting</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" class="archive-article-date">
-  	<time datetime="2023-01-21T09:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/20/How-to-create-a-hexo-blog/" class="archive-article-date">
-  	<time datetime="2023-01-20T15:23:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/20/How-to-create-a-hexo-blog/">How to create a hexo blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -323,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
