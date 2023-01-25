@@ -185,7 +185,7 @@
 <h2 id="Refact-getPostById-And-getAllPosts"><a href="#Refact-getPostById-And-getAllPosts" class="headerlink" title="Refact getPostById And getAllPosts"></a>Refact getPostById And getAllPosts</h2><ul>
 <li>When we want to get a post we also want the comments come along with it, let’s start coding:<ol>
 <li>At first we only have to change code in DTO, add a new field to store the set of comments:<br> <img src="/../images/blogRestApi/modelMapper/addCommentsSetInPostDto.png" alt="postDto"></li>
-<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:</li>
+<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:<br> <img src="/../images/blogRestApi/modelMapper/removeDataFromEntityAndAddGetterAndSetter.png" alt="postEntity"></li>
 </ol>
 </li>
 </ul>
