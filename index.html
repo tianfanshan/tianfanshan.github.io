@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Global-Exceptions-handler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/26/Global-Exceptions-handler/">Global Exceptions handler</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/26/Global-Exceptions-handler/" class="archive-article-date">
+  	<time datetime="2023-01-26T09:40:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
+<li>We was sending to much information of exception to the client, in reality they don’t need all that<ol>
+<li>Create a new class in payload package of errors to send to the client, there are 3 fields: Data, errorMassage and details.<br> <img src="/../images/blogRestApi/globalExceptionHandler/detailClass.png" alt="errordetail"></li>
+<li>Create <strong>GlobalExceptionHandler</strong> in exception package, we have to annotate <strong>@ControllerAdvice</strong>. It works like AOP, we often use it with <strong>@ExceptionHandler</strong>, <strong>@@InitBinder</strong> and <strong>@ModelAttribute</strong>.<br> In every handler we create a <strong>errorDetail</strong> object to send back to the client, there is a constructor it requires 3 parameters(can be more), at here we give a data, exceptionMessage and the request url only(webRequest.getDescription(false)).<br> <img src="/../images/blogRestApi/globalExceptionHandler/exceptionHandlerClass.png" alt="globalExceptionHandler"></li>
+<li>As well we are sending back a <strong>ResponseEntity with HttpStatus</strong>, then we no longer need the <strong>@ResponseStatus</strong> on specific exception.<br> <img src="/../images/blogRestApi/globalExceptionHandler/refactExceptionClass.png" alt="refactSpecificExpection"></li>
+</ol>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/26/Global-Exceptions-handler/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ModelMapper-and-Refact-Dto-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
