@@ -152,6 +152,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Boot-Validation-and-customize-exception-for-it" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">Spring Boot Validation and customize Exception for it</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" class="archive-article-date">
+  	<time datetime="2023-01-27T16:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"></p>
+<h2 id="Add-requirements-for-every-DTO-we-need"><a href="#Add-requirements-for-every-DTO-we-need" class="headerlink" title="Add requirements for every DTO we need"></a>Add requirements for every DTO we need</h2><ul>
+<li>PostDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToPostDto.png" alt="addRequirementPostDto"></li>
+<li>CommentDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToCommentDto.png" alt="addRequirementCommentDto"></li>
+</ul>
+<h2 id="Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post"><a href="#Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post" class="headerlink" title="Add @Valid to controller where the method we need to use validation for DTO, same in comments as post:"></a>Add <strong>@Valid</strong> to controller where the method we need to use validation for DTO, same in comments as post:</h2><p> <img src="/../images/blogRestApi/validation/add@ValidInController.png" alt="add@ValidToMethodInController"></p>
+<h2 id="After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it"><a href="#After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it" class="headerlink" title="After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:"></a>After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:</h2><ul>
+<li>At first go to the <strong>GlobalExceptionHandler</strong> and extend it the <strong>ResponseEntityExceptionHandler</strong> then override <strong>handleMethodArgumentNotValid</strong> method.</li>
+<li>Line 27 - 33: Create a <strong>HashMap</strong> to store key(error field) and value(error message), at last we send this hashMap back to the client with a <strong>HttpStatus.BAD_REQUEST</strong>.</li>
+<li>We also can use another way to achive the same effect: <strong>line 36 - 46</strong>, with this method we no longer need to <strong>extends ResponseEntityExceptionHandler</strong>, because we are using <strong>MethodArgumentNotValidException.class</strong> in it.<br> <img src="/../images/blogRestApi/validation/globalExceptionHandlerNotValidException.png" alt="globalExceptionHnadlerNotValidException"></li>
+</ul>
+<h2 id="After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages"><a href="#After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages" class="headerlink" title="After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:"></a>After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:</h2><ul>
+<li>Test comment:<br> <img src="/../images/blogRestApi/validation/testCommentOnPostman.png" alt="testCommentOnPostman"></li>
+<li>Test post:<br> <img src="/../images/blogRestApi/validation/testOnPostman.png" alt="testPostOnPostman"></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Global-Exceptions-handler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
