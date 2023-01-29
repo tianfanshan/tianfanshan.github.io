@@ -6,27 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Spring Boot Validation and customize Exception for it | Hexo</title>
+  <title>Security Basic Authentication | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Add spring-boot-starter-validation dependency to pom.xml: Add requirements for every DTO we need PostDto:  CommentDto:   Add @Valid to controller where the method we need to use validation for DTO, sa">
+  <meta name="description" content="Introduction When we release a RESTFull API we don’t want every one can access it, for that Authentication system is necessary. In Spring we have Spring Security Framework, it provides a basic authent">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot Validation and customize Exception for it">
-<meta property="og:url" content="http://example.com/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/index.html">
+<meta property="og:title" content="Security Basic Authentication">
+<meta property="og:url" content="http://example.com/2023/01/29/Security-Basic-Authentication/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Add spring-boot-starter-validation dependency to pom.xml: Add requirements for every DTO we need PostDto:  CommentDto:   Add @Valid to controller where the method we need to use validation for DTO, sa">
+<meta property="og:description" content="Introduction When we release a RESTFull API we don’t want every one can access it, for that Authentication system is necessary. In Spring we have Spring Security Framework, it provides a basic authent">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/addingValidationDependencyToPom.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/addingRequirementToPostDto.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/addingRequirementToCommentDto.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/add@ValidInController.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/globalExceptionHandlerNotValidException.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/testCommentOnPostman.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/validation/testOnPostman.png">
-<meta property="article:published_time" content="2023-01-27T16:11:36.000Z">
-<meta property="article:modified_time" content="2023-01-27T16:34:21.092Z">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/securityDependency.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/base64Format.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/base64Decode.png">
+<meta property="article:published_time" content="2023-01-29T07:58:33.000Z">
+<meta property="article:modified_time" content="2023-01-29T09:07:21.606Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/blogRestApi/validation/addingValidationDependencyToPom.png">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/securityDependency.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,41 +162,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring-Boot-Validation-and-customize-exception-for-it" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Security-Basic-Authentication" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring Boot Validation and customize Exception for it
+      Security Basic Authentication
     </h1>
   
 
         
-        <a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" class="archive-article-date">
-  	<time datetime="2023-01-27T16:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
+        <a href="/2023/01/29/Security-Basic-Authentication/" class="archive-article-date">
+  	<time datetime="2023-01-29T07:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"></p>
-<h2 id="Add-requirements-for-every-DTO-we-need"><a href="#Add-requirements-for-every-DTO-we-need" class="headerlink" title="Add requirements for every DTO we need"></a>Add requirements for every DTO we need</h2><ul>
-<li>PostDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToPostDto.png" alt="addRequirementPostDto"></li>
-<li>CommentDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToCommentDto.png" alt="addRequirementCommentDto"></li>
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.</li>
+<li>In Spring we have <strong>Spring Security Framework</strong>, it provides a basic authentication for us.</li>
 </ul>
-<h2 id="Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post"><a href="#Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post" class="headerlink" title="Add @Valid to controller where the method we need to use validation for DTO, same in comments as post:"></a>Add <strong>@Valid</strong> to controller where the method we need to use validation for DTO, same in comments as post:</h2><p> <img src="/../images/blogRestApi/validation/add@ValidInController.png" alt="add@ValidToMethodInController"></p>
-<h2 id="After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it"><a href="#After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it" class="headerlink" title="After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:"></a>After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:</h2><ul>
-<li>At first go to the <strong>GlobalExceptionHandler</strong> and extend it the <strong>ResponseEntityExceptionHandler</strong> then override <strong>handleMethodArgumentNotValid</strong> method.</li>
-<li>Line 27 - 33: Create a <strong>HashMap</strong> to store key(error field) and value(error message), at last we send this hashMap back to the client with a <strong>HttpStatus.BAD_REQUEST</strong>.</li>
-<li>We also can use another way to achive the same effect: <strong>line 36 - 46</strong>, with this method we no longer need to <strong>extends ResponseEntityExceptionHandler</strong>, because we are using <strong>MethodArgumentNotValidException.class</strong> in it.<br> <img src="/../images/blogRestApi/validation/globalExceptionHandlerNotValidException.png" alt="globalExceptionHnadlerNotValidException"></li>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
+<li>Add <strong>spring-boot-starter-security dependency</strong> in pom.xml, it includes spring-aop, spring-security-config and spring-security-web in it, that is necessary for our authentication. Once have <strong>spring-boot-starter-security dependency</strong> added in, when we start the application it privides us username(by default is “user”) and a random password, it appears in the console.<br> <img src="/../images/blogRestApi/security/basicAuthentication/securityDependency.png" alt="addSpringBootStarterSecurityDependency"></li>
+<li>Customize <strong>username</strong>, <strong>password</strong> and roles in application.yml for user who can access our application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png" alt="customizeApplication_yml"></li>
+<li>Implementing basic authenthication, create package <strong>config</strong> and <strong>SecurityConfig</strong> in there, then craete the Bean <strong>SecurityFilterChain</strong> to filter clients. Use annotation <strong>@Configuration</strong> at the class. In the main class we already have the <strong>@SpringBootApplication</strong>, it includes <strong>@Configuration</strong> and will scan any package and will create bean, but it’s a good practice to create multiple configuration classes and keep the related configuration and it’s not a good idea to keep all the configurations in a single class.<br> <img src="/../images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png" alt="basicAuthenticationClass"></li>
 </ul>
-<h2 id="After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages"><a href="#After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages" class="headerlink" title="After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:"></a>After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:</h2><ul>
-<li>Test comment:<br> <img src="/../images/blogRestApi/validation/testCommentOnPostman.png" alt="testCommentOnPostman"></li>
-<li>Test post:<br> <img src="/../images/blogRestApi/validation/testOnPostman.png" alt="testPostOnPostman"></li>
+<h2 id="Test-Basic-Authentication-on-postman"><a href="#Test-Basic-Authentication-on-postman" class="headerlink" title="Test Basic Authentication on postman"></a>Test Basic Authentication on postman</h2><ul>
+<li>When we try to use API without authorized, it will send back a <strong>401 unauthorized</strong> status.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png" alt="testGetPostsUnauthorized"></li>
+<li>We can use our username and password what we configured in our application.yml to access the application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png" alt="testGetPostsAuthorized"></li>
+<li>Another thing intresting is postman is using <strong>base64 format</strong> to convert our username and password to send to header, also <strong>Spring Boot</strong> will decode it to check them, we can copy the base64 format code from header where the key <strong>Authorization</strong> to decode online.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Format.png" alt="base64format"></li>
+<li>Go to <a target="_blank" rel="noopener" href="https://www.base64decode.org/">Base64 Decode and Encode</a> paste the be formated code and decode, we can see username:password below.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Decode.png" alt="base64decode"></li>
 </ul>
+<h2 id="How-does-the-Basic-Authentication-system-works"><a href="#How-does-the-Basic-Authentication-system-works" class="headerlink" title="How does the Basic Authentication system works"></a>How does the Basic Authentication system works</h2><p> 1- <strong>Client</strong> pass username and password to <strong>–&gt;</strong><br> 2- <strong>SecurityFilterChain</strong> extract password and username to <strong>–&gt;</strong><br> 3- <strong>UsernamePasswordAuthenticationToken</strong> class will create the object of this class to <strong>–&gt;</strong><br> 4- <strong>AuthenticationManager</strong> is responsible to authenticate the request <strong>–success to–&gt; 5</strong>, <strong>–failure to–&gt; 6</strong><br> 5. Store authentication object to <strong>SecurityContextHolder</strong> -&gt; enable <strong>RemenberMeService</strong> -&gt; continue Application<br> 6- Clear <strong>SecurityContextHolder</strong> object -&gt; disable <strong>RemenberMeService</strong> -&gt; <strong>AuthenticationEntryPoint</strong> return 401 unauthorized</p>
 
       
 
@@ -276,7 +277,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/29/Security-Basic-Authentication/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +291,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/01/29/Security-Basic-Authentication/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Security Basic Authentication
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/01/26/Global-Exceptions-handler/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Global Exceptions handler</div>
+    <a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot Validation and customize Exception for it</div>
       <i class="icon-circle-right"></i>
     </a>
   

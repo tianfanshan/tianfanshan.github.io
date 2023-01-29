@@ -152,6 +152,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Security-Basic-Authentication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/29/Security-Basic-Authentication/">Security Basic Authentication</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/29/Security-Basic-Authentication/" class="archive-article-date">
+  	<time datetime="2023-01-29T07:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.</li>
+<li>In Spring we have <strong>Spring Security Framework</strong>, it provides a basic authentication for us.</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
+<li>Add <strong>spring-boot-starter-security dependency</strong> in pom.xml, it includes spring-aop, spring-security-config and spring-security-web in it, that is necessary for our authentication. Once have <strong>spring-boot-starter-security dependency</strong> added in, when we start the application it privides us username(by default is “user”) and a random password, it appears in the console.<br> <img src="/../images/blogRestApi/security/basicAuthentication/securityDependency.png" alt="addSpringBootStarterSecurityDependency"></li>
+<li>Customize <strong>username</strong>, <strong>password</strong> and roles in application.yml for user who can access our application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png" alt="customizeApplication_yml"></li>
+<li>Implementing basic authenthication, create package <strong>config</strong> and <strong>SecurityConfig</strong> in there, then craete the Bean <strong>SecurityFilterChain</strong> to filter clients. Use annotation <strong>@Configuration</strong> at the class. In the main class we already have the <strong>@SpringBootApplication</strong>, it includes <strong>@Configuration</strong> and will scan any package and will create bean, but it’s a good practice to create multiple configuration classes and keep the related configuration and it’s not a good idea to keep all the configurations in a single class.<br> <img src="/../images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png" alt="basicAuthenticationClass"></li>
+</ul>
+<h2 id="Test-Basic-Authentication-on-postman"><a href="#Test-Basic-Authentication-on-postman" class="headerlink" title="Test Basic Authentication on postman"></a>Test Basic Authentication on postman</h2><ul>
+<li>When we try to use API without authorized, it will send back a <strong>401 unauthorized</strong> status.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png" alt="testGetPostsUnauthorized"></li>
+<li>We can use our username and password what we configured in our application.yml to access the application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png" alt="testGetPostsAuthorized"></li>
+<li>Another thing intresting is postman is using <strong>base64 format</strong> to convert our username and password to send to header, also <strong>Spring Boot</strong> will decode it to check them, we can copy the base64 format code from header where the key <strong>Authorization</strong> to decode online.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Format.png" alt="base64format"></li>
+<li>Go to <a target="_blank" rel="noopener" href="https://www.base64decode.org/">Base64 Decode and Encode</a> paste the be formated code and decode, we can see username:password below.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Decode.png" alt="base64decode"></li>
+</ul>
+<h2 id="How-does-the-Basic-Authentication-system-works"><a href="#How-does-the-Basic-Authentication-system-works" class="headerlink" title="How does the Basic Authentication system works"></a>How does the Basic Authentication system works</h2><p> 1- <strong>Client</strong> pass username and password to <strong>–&gt;</strong><br> 2- <strong>SecurityFilterChain</strong> extract password and username to <strong>–&gt;</strong><br> 3- <strong>UsernamePasswordAuthenticationToken</strong> class will create the object of this class to <strong>–&gt;</strong><br> 4- <strong>AuthenticationManager</strong> is responsible to authenticate the request <strong>–success to–&gt; 5</strong>, <strong>–failure to–&gt; 6</strong><br> 5. Store authentication object to <strong>SecurityContextHolder</strong> -&gt; enable <strong>RemenberMeService</strong> -&gt; continue Application<br> 6- Clear <strong>SecurityContextHolder</strong> object -&gt; disable <strong>RemenberMeService</strong> -&gt; <strong>AuthenticationEntryPoint</strong> return 401 unauthorized</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/29/Security-Basic-Authentication/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring-Boot-Validation-and-customize-exception-for-it" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
