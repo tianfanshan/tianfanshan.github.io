@@ -6,27 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Security Basic Authentication | Hexo</title>
+  <title>In-Memory Authentication | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Introduction When we release a RESTFull API we don’t want every one can access it, for that Authentication system is necessary. In Spring we have Spring Security Framework, it provides a basic authent">
+  <meta name="description" content="We don’t create a RESTFull API for only one user. When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Security Basic Authentication">
-<meta property="og:url" content="http://example.com/2023/01/29/Security-Basic-Authentication/index.html">
+<meta property="og:title" content="In-Memory Authentication">
+<meta property="og:url" content="http://example.com/2023/01/30/In-Memory-Authentication/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Introduction When we release a RESTFull API we don’t want every one can access it, for that Authentication system is necessary. In Spring we have Spring Security Framework, it provides a basic authent">
+<meta property="og:description" content="We don’t create a RESTFull API for only one user. When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from a">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/securityDependency.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/base64Format.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/base64Decode.png">
-<meta property="article:published_time" content="2023-01-29T07:58:33.000Z">
-<meta property="article:modified_time" content="2023-01-29T09:07:21.606Z">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/editSecurityConfigClass.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/addPreAuthorizeInController.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionConsole.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionHandler.png">
+<meta property="article:published_time" content="2023-01-30T20:02:15.000Z">
+<meta property="article:modified_time" content="2023-01-30T20:56:24.402Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/blogRestApi/security/basicAuthentication/securityDependency.png">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,42 +160,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Security-Basic-Authentication" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-In-Memory-Authentication" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Security Basic Authentication
+      In-Memory Authentication
     </h1>
   
 
         
-        <a href="/2023/01/29/Security-Basic-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-29T07:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
+        <a href="/2023/01/30/In-Memory-Authentication/" class="archive-article-date">
+  	<time datetime="2023-01-30T20:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
-<li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.</li>
-<li>In Spring we have <strong>Spring Security Framework</strong>, it provides a basic authentication for us.</li>
+        <h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"></p>
+<ul>
+<li><p>Create new <strong>@Bean in SecurityConfig(Line 40 - 56)</strong>, there is the function of creating users. <strong>UserDetailsService</strong> and <strong>UserDetails</strong> belong the package org.springframework.security.core.userdetails. </p>
+</li>
+<li><p>We can use them to create new users as object, there we are using a new <strong>@Bean(Line 22)</strong> to bycrypt our user’s password, it returns a PasswordEncoder object providing <strong>encode(Line 45,51) method</strong> to bycrypt the password.</p>
+</li>
+<li><p>Then return a UserDetailsService object by <strong>new InMemoryUserDetailsManager()</strong> passing the users we created before.</p>
+</li>
+<li><p>To restraint users to access <strong>delete, update and create</strong> endpoint we have to update our <strong>SecurityFilterChain(Line 26 - 38)</strong>, in there we only permit GET method for any user with any role or even they are not logged(Line 33), to access another type of method it’s necessary to be authenticated(Line34).</p>
+</li>
+<li><p>At last of updating our class need to add <strong>@EnableMethodSecurity</strong>, there is a few annotations in it: <strong>@PreAuthorize, @PostAuthorize, @Prefilter and @PostFilter</strong>, at here we need to use this <strong>@PreAuthorize</strong> in our controller to provice the role based access to the RESTFull API.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/editSecurityConfigClass.png" alt="editSecurityConfigClass"></p>
+</li>
+<li><p>Now we go to controller to simply add this <strong>@PreAuthorize</strong> annotation above the endpoint we want.</p>
+</li>
+<li><p>As you can see at Line 32 we permit the user with role ADMIN to use it.</p>
+</li>
+<li><p>Also it can permit multiple role: Line 24.</p>
+</li>
+<li><p>This annotation accept a String, so we can concatenate 2 roles with <strong>||</strong> symbol.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/addPreAuthorizeInController.png" alt="addPreAuthorizeInController"></p>
+</li>
+<li><p>Last thing i want to show up is, when we use a endpoint <strong>unauthorized</strong> it’s throwing a wrong status: the 500, obviously we don’t expecte it.</p>
+</li>
+<li><p>Before we update <strong>GlobalExceptionHandler</strong> let’s see the console, the throwing exception is <strong>AccessDeniedException</strong>, this is the exception we have to handle in it.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionConsole.png" alt="accessDeniedExceptionConsole"></p>
+</li>
+<li><p>At <strong>GlobalExceptionHandler</strong> simply handle the <strong>AccessDeniedException</strong> at Line 78, that when it’s throwing we can modify it.</p>
+</li>
+<li><p>The only thing we have to change is the paramete(pass the AccessDeniedException in it) and returning <strong>HttpStatus.UNAUTHORIZED</strong>, that’s all so far.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionHandler.png" alt="accessDeniedExceptionHandler"></p>
+</li>
 </ul>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
-<li>Add <strong>spring-boot-starter-security dependency</strong> in pom.xml, it includes spring-aop, spring-security-config and spring-security-web in it, that is necessary for our authentication. Once have <strong>spring-boot-starter-security dependency</strong> added in, when we start the application it privides us username(by default is “user”) and a random password, it appears in the console.<br> <img src="/../images/blogRestApi/security/basicAuthentication/securityDependency.png" alt="addSpringBootStarterSecurityDependency"></li>
-<li>Customize <strong>username</strong>, <strong>password</strong> and roles in application.yml for user who can access our application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png" alt="customizeApplication_yml"></li>
-<li>Implementing basic authenthication, create package <strong>config</strong> and <strong>SecurityConfig</strong> in there, then craete the Bean <strong>SecurityFilterChain</strong> to filter clients. Use annotation <strong>@Configuration</strong> at the class. In the main class we already have the <strong>@SpringBootApplication</strong>, it includes <strong>@Configuration</strong> and will scan any package and will create bean, but it’s a good practice to create multiple configuration classes and keep the related configuration and it’s not a good idea to keep all the configurations in a single class.<br> <img src="/../images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png" alt="basicAuthenticationClass"></li>
-</ul>
-<h2 id="Test-Basic-Authentication-on-postman"><a href="#Test-Basic-Authentication-on-postman" class="headerlink" title="Test Basic Authentication on postman"></a>Test Basic Authentication on postman</h2><ul>
-<li>When we try to use API without authorized, it will send back a <strong>401 unauthorized</strong> status.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png" alt="testGetPostsUnauthorized"></li>
-<li>We can use our username and password what we configured in our application.yml to access the application.<br> <img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png" alt="testGetPostsAuthorized"></li>
-<li>Another thing intresting is postman is using <strong>base64 format</strong> to convert our username and password to send to header, also <strong>Spring Boot</strong> will decode it to check them, we can copy the base64 format code from header where the key <strong>Authorization</strong> to decode online.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Format.png" alt="base64format"></li>
-<li>Go to <a target="_blank" rel="noopener" href="https://www.base64decode.org/">Base64 Decode and Encode</a> paste the be formated code and decode, we can see username:password below.<br> <img src="/../images/blogRestApi/security/basicAuthentication/base64Decode.png" alt="base64decode"></li>
-</ul>
-<h2 id="How-does-the-Basic-Authentication-system-works"><a href="#How-does-the-Basic-Authentication-system-works" class="headerlink" title="How does the Basic Authentication system works"></a>How does the Basic Authentication system works</h2><p> 1- <strong>Client</strong> pass username and password to <strong>–&gt;</strong><br> 2- <strong>SecurityFilterChain</strong> extract password and username to <strong>–&gt;</strong><br> 3- <strong>UsernamePasswordAuthenticationToken</strong> class will create the object of this class to <strong>–&gt;</strong><br> 4- <strong>AuthenticationManager</strong> is responsible to authenticate the request <strong>–success to–&gt; 5</strong>, <strong>–failure to–&gt; 6</strong><br> 5. Store authentication object to <strong>SecurityContextHolder</strong> -&gt; enable <strong>RemenberMeService</strong> -&gt; continue Application<br> 6- Clear <strong>SecurityContextHolder</strong> object -&gt; disable <strong>RemenberMeService</strong> -&gt; <strong>AuthenticationEntryPoint</strong> return 401 unauthorized</p>
 
       
 
@@ -277,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/29/Security-Basic-Authentication/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/30/In-Memory-Authentication/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +302,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/01/30/In-Memory-Authentication/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          In-Memory Authentication
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Spring Boot Validation and customize Exception for it</div>
+    <a href="/2023/01/29/Security-Basic-Authentication/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Security Basic Authentication</div>
       <i class="icon-circle-right"></i>
     </a>
   
