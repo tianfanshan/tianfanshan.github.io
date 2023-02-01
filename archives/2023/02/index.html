@@ -6,30 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Database Authentication | Hexo</title>
+  <title>Archives: 2023/2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="At this scene instead of using in-memory authentication we rae going to extract users from our database. Create User and Role entity to generate tables in database, their’s association is @ManyToMany.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Database Authentication">
-<meta property="og:url" content="http://example.com/2023/01/31/Database-Authentication/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2023/02/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="At this scene instead of using in-memory authentication we rae going to extract users from our database. Create User and Role entity to generate tables in database, their’s association is @ManyToMany.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/userEntity.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/roleEntity.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/userRepository.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/roleRepository.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/customUserDetailsService.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/securityConfig.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/encodePasswordManually.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/manuallyCreateUsersWithManuallyEncodedPassword.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/manuallyInsertUsers_rolesTable.png">
-<meta property="og:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/manuallyInsertRolesTable.png">
-<meta property="article:published_time" content="2023-01-31T20:56:48.000Z">
-<meta property="article:modified_time" content="2023-02-01T15:12:05.771Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/blogRestApi/security/databaseAuthentication/userEntity.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -165,178 +150,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Database-Authentication" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Database Authentication
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/02/01/Login-and-Register/" class="archive-article-date">
+  	<time datetime="2023-02-01T16:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/02/01/Login-and-Register/">Login and Register</a>
     </h1>
   
 
-        
-        <a href="/2023/01/31/Database-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-31T20:56:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2><ul>
-<li><p>Create User and Role entity to generate tables in database, their’s association is <strong>@ManyToMany</strong>. But we only add this annotation in User, because it is a <strong>unidirectional association</strong>. In other words, the users care about roles but roles don’t care about users.<br> User entity:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/userEntity.png" alt="userEntity"><br> Role entity:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/roleEntity.png" alt="roleEntity"></p>
-</li>
-<li><p>Currently we need to create <strong>UserRepository</strong> for extract the user from database(also the RoleRepository), at here we customize some methods, someone is returning <strong>User in format Optional to avoid NullPointerException</strong> and Optional also provides methods that we will use late.<br> User repository:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/userRepository.png" alt="userRepository"><br> Role repository:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/roleRepository.png" alt="roleRepository"></p>
-</li>
-<li><p>Create a new class to implements the <strong>UserDetailsService interface</strong>, then override the <strong>loadUserByUsername</strong> method, lately we will use this method in our <strong>SecurityConfig</strong> class. In this method at first extract the user from database(Line 27 - 30) with the parameter <strong>usernameOrEmail</strong>, it returns an Optional user, so we can use <strong>orElseThrow() to throw a new UsernameNotFoundException</strong> here. Line 32 - 36 create a <strong>Set of GrantedAuthority</strong>, we can get user’s role set from the above object, then convert the set of roles to type <strong>GrantedAuthority</strong>, this is the authority of user, essentially is a set of Strings. At last generate a <strong>new org.springframework.security.core.userdetails.User();</strong> back, this constructor expect (String username, String password, Collection of GrantedAuthority).<br> CustomUserDetailsService:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/customUserDetailsService.png" alt="customUserDetailsService"></p>
-</li>
-<li><p>Before all let’s comment the <strong>userDetailsService bean</strong>, we no longer need them because we are using users from database not <strong>in-memory</strong>. At first inject the <strong>UserDetailsService</strong> to this class by creating the constructor, instead of injecting the class object directly, we can use the interface to achive the loose coupling. Line 29 - 32 Then configure <strong>AuthenticationManager</strong>, by <strong>AuthenticationConfiguration’s object.getAuthenticationManager()</strong> method, it automatically uses the <strong>UserDetailsService</strong>, and as you know we already overrided the method to get the user from database and returns a <strong>UserDetails</strong>, and it also uses password encoder to encode and decode the password.<br> SecurityConfig:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/securityConfig.png" alt="securityConfig"></p>
-</li>
-<li><p>To test this functionality it is necessary to insert some data to our database, at first we can manually bycrypt the password to insert to database for the users, just print it on our console.<br> PasswordGeneratorEncoder:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/encodePasswordManually.png" alt="encodePasswordManually"></p>
-</li>
-<li><p>Insert datas to our database manually, there is something to remind, it by default will add this <strong>“ROLE_”</strong> prefix at the role what we are searching on <strong>@PreAuthorize</strong>, to prevent mismatch at the roles table we have to add <strong>“ROLE_”</strong> to the role of database.<br> User table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyCreateUsersWithManuallyEncodedPassword.png" alt="manuallyCreateUserWithManuallyEncodedPassword"><br> users_roles table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertUsers_rolesTable.png" alt="manuallyInsertUsers_rolesTable"><br> Roles table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertRolesTable.png" alt="manuallyInsertRolesTable"></p>
-</li>
-</ul>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/31/Database-Authentication/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2023/02/01/Login-and-Register/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Login and Register
-        
-      </div>
-    </a>
   
   
-    <a href="/2023/01/30/In-Memory-Authentication/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">In-Memory Authentication</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -359,8 +215,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

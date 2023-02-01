@@ -152,6 +152,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Login-and-Register" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/01/Login-and-Register/">Login and Register</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/01/Login-and-Register/" class="archive-article-date">
+  	<time datetime="2023-02-01T16:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2><ul>
+<li><p><strong>LoginDto and RegisterDto</strong> to transfer the data between client and server, we only have to provide 2 fields, the user can login with username or email.<br> LoginDto:<br> <img src="/../images/blogRestApi/security/loginAndRegister/loginDto.png" alt="loginDto"><br> RegisterDto:<br> <img src="/../images/blogRestApi/security/loginAndRegister/registerDto.png" alt="registerDto"></p>
+</li>
+<li><p><strong>AuthService</strong> interface that we gonna to implement the methods of login, and also register.<br> <img src="/../images/blogRestApi/security/loginAndRegister/authServiceInterface.png" alt="authServiceInterface"></p>
+</li>
+<li><p><strong>AuthServiceImpl</strong>, at first inject <strong>UserRepository, RoleRepository, AuthenticationManager and initialize BCryptPasswordEncoder</strong>.</p>
+<ol>
+<li><strong>Part Login</strong>, create authentication by using <strong>authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail(), loginDto.getPassword));</strong> and passing user’s datas to verify, if it passed then store it into the <strong>spring security context holder</strong>.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementLoginInAuthServiceImpl.png" alt="implementLoginInAuthServiceImpl"><br> Create <strong>AuthController</strong> to use the login method from service.<br> <img src="/../images/blogRestApi/security/loginAndRegister/authController.png" alt="authController"><br> Remove <strong>.httpBasic(Customizer.withDefaults())</strong> from securityconfig, instead of using it we are implementing our own login API, provice login API by adding <strong>.requestMatchers(“&#x2F;api&#x2F;auth&#x2F;**”).permitAll behind authorize</strong> to provide permission for all the users to access this rest API, it measns all the RESTAPIs that we define in our controller will be accessible by all the users.<br> <img src="/../images/blogRestApi/security/loginAndRegister/modifySecurityFilterChain.png" alt="modifySecurityFilterChain"></li>
+<li><strong>Part Register</strong>, implemente register in <strong>AuthServiceImpl</strong>. In the method at first have to check if <strong>the username of registerDto</strong> is already exists in our database, same as <strong>the email of this registerDto</strong>, if it is already exist in our database then throw a <strong>BlogAPIException with BAD_REQUEST and the message</strong>.<br> At line 63 - 76 we created a new user object to store the data of registerDto, and also we have to encode the password before we store it, then give this new user a default role, it has to be “ROLE_USER”, at last save this user to our database and return the message back to client.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png" alt="implementRegisterInAuthServiceImpl"></li>
+</ol>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/01/Login-and-Register/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Database-Authentication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -907,102 +981,10 @@
 
 
   
-    <article id="post-How-to-create-a-hexo-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/20/How-to-create-a-hexo-blog/">How to create a hexo blog</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/20/How-to-create-a-hexo-blog/" class="archive-article-date">
-  	<time datetime="2023-01-20T15:23:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog"><a href="#This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog" class="headerlink" title="This is my first blog, and i have thank to CodeSheep to help to create it. And here the video from youtube How to create yourself blog"></a>This is my first blog, and i have thank to <a target="_blank" rel="noopener" href="https://github.com/hansonwang99">CodeSheep</a> to help to create it. And here the video from youtube <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=erKYtw4Rfhk">How to create yourself blog</a></h2><h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
-<li>Node.js</li>
-<li>npm</li>
-</ul>
-<h2 id="How-to-set-hexo"><a href="#How-to-set-hexo" class="headerlink" title="How to set hexo"></a>How to set hexo</h2><ol>
-<li>Use npm to download hexo package with command line: (npm install -g hexo-cli)</li>
-<li>Command line: (hexo -v) to check if the hexo is installed successfully</li>
-<li>Create a directory (dir name what you want): blog</li>
-<li>Command line: (hexo init), it will create all the stuff you need for the blog in the dir</li>
-</ol>
-<h2 id="How-to-create-a-blog"><a href="#How-to-create-a-blog" class="headerlink" title="How to create a blog"></a>How to create a blog</h2><ol>
-<li>Use command line: (hexo n “blog title”) to create a new blog.mb</li>
-<li>You can use Visual Studio Code to write your blog</li>
-<li>Once you finished writing your blog at first use command line: (hexo clean) to clean -&gt; (hexo g) to generate -&gt; (hexo s) to start</li>
-</ol>
-<h2 id="How-to-deploy-to-github"><a href="#How-to-deploy-to-github" class="headerlink" title="How to deploy to github"></a>How to deploy to github</h2><ol>
-<li>Create a repository with your account name, for example: tianfanshan.github.io</li>
-<li>Back to command line use: (npm install –save hexo-deployer-git)</li>
-<li>Set _config.yml file, there is a deploy field:<br> deploy:<br>   type: git<br>   repo: your-repository-HTTPs<br>   branch: master</li>
-<li>Deploy your blog to github with command line: (hexo d)</li>
-<li>Maybe you have to log in you github account on terminal</li>
-<li>Then you can access your blog on line by searching the blog repository name on url, for example: tianfanshan.github.io</li>
-</ol>
-<h2 id="How-to-change-your-blog-themes"><a href="#How-to-change-your-blog-themes" class="headerlink" title="How to change your blog themes"></a>How to change your blog themes</h2><ol>
-<li>Find a hexo blog theme you like on github</li>
-<li>Use command line to clone it to your blog directory: git clone (repository of themes) themes&#x2F;(dirName)</li>
-<li>Set _config.yml file, there is a them field:<br> theme: dirName</li>
-<li>Use command line to see your blog locally: hexo clean -&gt; hexo g -&gt; hexo s</li>
-<li>Use command line to push your new blog to git hub</li>
-</ol>
-<h2 id="Remove-post"><a href="#Remove-post" class="headerlink" title="Remove post"></a>Remove post</h2><ol>
-<li>Go to blog&#x2F;source&#x2F;_posts, and delete the post you want</li>
-<li>Command line: hexo clean -&gt; hexo g -&gt; hexo d</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/20/How-to-create-a-hexo-blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
