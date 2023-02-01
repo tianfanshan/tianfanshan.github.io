@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://example.com/images/blogRestApi/security/loginAndRegister/modifySecurityFilterChain.png">
 <meta property="og:image" content="http://example.com/images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png">
 <meta property="article:published_time" content="2023-02-01T16:44:43.000Z">
-<meta property="article:modified_time" content="2023-02-01T21:28:10.096Z">
+<meta property="article:modified_time" content="2023-02-01T22:35:55.482Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/blogRestApi/security/loginAndRegister/loginDto.png">
@@ -192,6 +192,8 @@
 <li><strong>Part Login</strong>, create authentication by using <strong>authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail(), loginDto.getPassword));</strong> and passing user’s datas to verify, if it passed then store it into the <strong>spring security context holder</strong>.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementLoginInAuthServiceImpl.png" alt="implementLoginInAuthServiceImpl"><br> Create <strong>AuthController</strong> to use the login method from service.<br> <img src="/../images/blogRestApi/security/loginAndRegister/authController.png" alt="authController"><br> Remove <strong>.httpBasic(Customizer.withDefaults())</strong> from securityconfig, instead of using it we are implementing our own login API, provice login API by adding <strong>.requestMatchers(“&#x2F;api&#x2F;auth&#x2F;**”).permitAll behind authorize</strong> to provide permission for all the users to access this rest API, it measns all the RESTAPIs that we define in our controller will be accessible by all the users.<br> <img src="/../images/blogRestApi/security/loginAndRegister/modifySecurityFilterChain.png" alt="modifySecurityFilterChain"></li>
 <li><strong>Part Register</strong>, implemente register in <strong>AuthServiceImpl</strong>. In the method at first have to check if <strong>the username of registerDto</strong> is already exists in our database, same as <strong>the email of this registerDto</strong>, if it is already exist in our database then throw a <strong>BlogAPIException with BAD_REQUEST and the message</strong>.<br> At line 63 - 76 we created a new user object to store the data of registerDto, and also we have to encode the password before we store it, then give this new user a default role, it has to be “ROLE_USER”, at last save this user to our database and return the message back to client.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png" alt="implementRegisterInAuthServiceImpl"></li>
 </ol>
+</li>
+<li><p>But when we try to use endponts with roles, it will return a 403 forbidden status.</p>
 </li>
 </ul>
 

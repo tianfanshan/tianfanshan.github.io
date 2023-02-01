@@ -183,6 +183,8 @@
 <li><strong>Part Register</strong>, implemente register in <strong>AuthServiceImpl</strong>. In the method at first have to check if <strong>the username of registerDto</strong> is already exists in our database, same as <strong>the email of this registerDto</strong>, if it is already exist in our database then throw a <strong>BlogAPIException with BAD_REQUEST and the message</strong>.<br> At line 63 - 76 we created a new user object to store the data of registerDto, and also we have to encode the password before we store it, then give this new user a default role, it has to be “ROLE_USER”, at last save this user to our database and return the message back to client.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png" alt="implementRegisterInAuthServiceImpl"></li>
 </ol>
 </li>
+<li><p>But when we try to use endponts with roles, it will return a 403 forbidden status.</p>
+</li>
 </ul>
 
       
