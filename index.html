@@ -172,7 +172,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
+<li><p>At first it is necessary to add <strong>3 JWT related Macen dependencies: jjwt-imp, jjwt-ap and jjwt-jackson</strong> to our pom.xml<br> <img src="/../images/blogRestApi/security/implementJWT/3Dependencies.png" alt="3JwtDependencies"></p>
+</li>
+<li><p>Create JwtAuthenticationEntryPoint to throw 401 to the client, this is invoked when user tires to access a secured REST resource without supplying any credentials, we should just send a 401 Unauthorized response because there is no “login page” to redirect. This class is implementing AuthenticationEntryPoint, so it allows us to override the <strong>commence(HttpServletRequest request,HttpServletResponse response,AuthenticationException authException)</strong> method to response customized status and message.<br> <img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationEntryPoint.png" alt="jwtAuthenticationEntryPoint"></p>
+</li>
+<li><p>Add the jwt.secret and jwt.expireTime to our application.yml, we encoded the secret by use <a target="_blank" rel="noopener" href="https://emn178.github.io/online-tools/sha256.html">SHA256</a> before pass it into there, and set a expire time for the JWT token.<br> <img src="/../images/blogRestApi/security/implementJWT/addPropertiesToApplication_yml.png" alt="application_yml"></p>
+</li>
+</ul>
+
       
 
       
