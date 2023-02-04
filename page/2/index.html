@@ -152,6 +152,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Boot-RESTFull-API-Pagination-and-Sorting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">Spring Boot RESTFull API Pagination and Sorting</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
+  	<time datetime="2023-01-23T09:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
+<h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"></p>
+<ol>
+<li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
+<li>In <strong>Body</strong> we are responsing to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
+</ol>
+<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><ol>
+<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>(class we created to store all the informations) to client:<br> <img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"></p>
+</li>
+<li><p>If there are no comming parameters, it will be default <strong>Constants</strong> we created in another class:<br> <img src="/../images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png" alt="defaultConstantsForPaginationAndSorting"></p>
+</li>
+<li><p>Go to <strong>Service</strong> with 4 parametes:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServicePaginationAndSorting.png" alt="postServicePaginationAndSorting"></p>
+</li>
+<li><p>Now we came to <strong>PostServiceImpl</strong>:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png" alt="postServiceImplPaginationAndSorting"></p>
+<ul>
+<li>Line 42: generate a <strong>Sort</strong> by checking the <strong>sortDirt</strong> is asc or desc.</li>
+<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It returns a list of post but with <strong>Page</strong> format.</li>
+<li>Line 50: get the content from postsPageable, it returns a normal list of posts.</li>
+<li>Line 52: we convert the list of posts -&gt; list of postsDto, here the name is concent.</li>
+<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, then set all field: content(created in line 52), the rest values we are getting them from postsPageable, here are the fields:<br><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"></li>
+<li>Line 62: return the <strong>PostResponse class object</strong> we created in the previous step to the client.</li>
+</ul>
+</li>
+</ol>
+<h3 id="It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day"><a href="#It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day" class="headerlink" title="It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!"></a>It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring-Boot-RESTFull-API-part-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
