@@ -177,7 +177,13 @@
 </li>
 <li><p>Create JwtAuthenticationEntryPoint to throw 401 to the client, this is invoked when user tires to access a secured REST resource without supplying any credentials, we should just send a 401 Unauthorized response because there is no “login page” to redirect. This class is implementing AuthenticationEntryPoint, so it allows us to override the <strong>commence(HttpServletRequest request,HttpServletResponse response,AuthenticationException authException)</strong> method to response customized status and message.<br> <img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationEntryPoint.png" alt="jwtAuthenticationEntryPoint"></p>
 </li>
-<li><p>Add the jwt.secret and jwt.expireTime to our application.yml, we encoded the secret by use <a target="_blank" rel="noopener" href="https://emn178.github.io/online-tools/sha256.html">SHA256</a> before pass it into there, and set a expire time for the JWT token.<br> <img src="/../images/blogRestApi/security/implementJWT/addPropertiesToApplication_yml.png" alt="application_yml"></p>
+<li><p>Add the jwt.secret and jwt.expireTime to our application.yml, it is necessary because we have to use them to create our JWT token, we encoded the secret key by use <a target="_blank" rel="noopener" href="https://emn178.github.io/online-tools/sha256.html">SHA256</a> before pass it into there, and set a expire time for the JWT token.<br> <img src="/../images/blogRestApi/security/implementJWT/addPropertiesToApplication_yml.png" alt="application_yml"></p>
+</li>
+<li><p>Create a <strong>JwtTokenProvider</strong> to provide the token, there are 3 public method and 1 private method in it: <strong>generateJwtToken(Authentication authentication), getUsernameOrEmailFromJwtToken(String token), validateJwtToken(String token) and decodeJwtSecret()</strong>. Before all it is necessary to fetch the values we defined in <strong>applivation.yml by using the @Value(${field}) annotation</strong>.</p>
+<ul>
+<li><strong>generateJwtToken(Authentication authentication)</strong>, it expect an authentication parameter that the user passed in the <strong>log-in</strong> method. Then we can get the usernameOrEmail from it, and also have to create the currente date and the expiration date to generate the JWT token, at last return it by using Jwts.builder() to setSubject(usernameOrEmail), setIssueAt(new Date()), setExpiration(expireDate), before to use the compact() method we have to sign it with the creat key by using the <strong>decodeJwtSecret() method</strong> to decode our encoded secret key from application.yml.</li>
+<li><strong>getUsernameOrEmailFromJwtToken(String token)</strong> pass the token as parameter into it. At first convert this token to <strong>Claims class object</strong></li>
+</ul>
 </li>
 </ul>
 
