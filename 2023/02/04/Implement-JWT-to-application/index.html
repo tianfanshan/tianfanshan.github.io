@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/images/blogRestApi/security/implementJWT/createPostWithToken.png">
 <meta property="og:image" content="http://example.com/images/blogRestApi/security/implementJWT/return401backIfItIsNotAuthorized.png">
 <meta property="article:published_time" content="2023-02-04T14:21:11.000Z">
-<meta property="article:modified_time" content="2023-02-06T09:37:11.288Z">
+<meta property="article:modified_time" content="2023-02-06T17:02:47.205Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/blogRestApi/security/implementJWT/3Dependencies.png">
@@ -228,6 +228,11 @@
 </li>
 <li><p>When we log-in with a user, can get a JwtAuthResponseDto including the token type and the token, then we can use this token in <strong>Authorization -&gt; Beare token</strong>,. In the endpoint we want to use if the user doesn’t have access then return 401 status back.<br> AuthController:<br> <img src="/../images/blogRestApi/security/implementJWT/authController.png" alt="authController"><br> Get Token by log-in:<br> <img src="/../images/blogRestApi/security/implementJWT/showTokenOnPostman.png" alt="getTokenOnPostman"><br> Passing the token in <strong>Authorization -&gt; Bearer Token</strong>:<br> <img src="/../images/blogRestApi/security/implementJWT/passingTheTokenInAuthorization.png" alt="passingTheTokenInAuthorization"><br> Create post with token:<br> <img src="/../images/blogRestApi/security/implementJWT/createPostWithToken.png" alt="createPostWithToken"><br> Try to create post without token:<br> <img src="/../images/blogRestApi/security/implementJWT/return401backIfItIsNotAuthorized.png" alt="tryToCreatePostWithOutToken"></p>
 </li>
+</ul>
+<h2 id="Hot-does-it-work"><a href="#Hot-does-it-work" class="headerlink" title="Hot does it work."></a>Hot does it work.</h2><ul>
+<li><strong>Client</strong> logged -&gt; <strong>AuthService</strong> -&gt; <strong>AuthServiceImpl</strong> -&gt; create authentication, set authentication to SecurityContextHolder -&gt; <strong>JwtTokenProvider</strong> -&gt; create JWT token by passing the authentication -&gt; return token to login method of <strong>AuthServiceImpl</strong> -&gt; return token to <strong>AuthService</strong> interface -&gt; <strong>AuthController</strong> -&gt; create the <em>JwtAuthResponseDto</em> class object and set the token -&gt; return this <em>JwtAuthResponseDto</em> class object to the <strong>client</strong></li>
+<li><strong>Client</strong> no logged and try to access the endpoint -&gt; <strong>SecurityConfig</strong> -&gt; he can only use endpoint with GET method -&gt; if try to access endpoints with another methods -&gt; <strong>JwtAuthenticationEntryPoint</strong> -&gt; return a HttpServletResponse.SC_UNAUTHORIZED with a message back to the client as response.</li>
+<li><strong>Client</strong> logged and try to access the endpoint with token -&gt; <strong>SecurityConfig</strong> -&gt; before other filter will do <strong>JwtAuthenticationFilter</strong> first -&gt; get token from <strong>FilterChain object</strong>, validate the token, fetch <em>usernameOrEmail</em> from token -&gt; <strong>UserDetailsService interface</strong> with parameter <em>usernameOrEmail</em> -&gt; <strong>CustomUserDetailsService</strong> with parameter <em>usernameOrEmail</em> -&gt; return an UserDetails class object by inserting <em>usernameOrPassword</em>, password and users authorities -&gt; <strong>UserDetailsService interface</strong> with UserDetails class object -&gt; <strong>JwtAuthenticationFilter</strong> -&gt; generate <em>UsernamePasswordAuthenticationToken</em> class object by using UserDetails class objec and users authorities -&gt; add request to this <em>UsernamePasswordAuthenticationToken class object</em> -&gt; set this <em>UsernamePasswordAuthenticationToken class object</em> to the security context holder(header) -&gt; <em>FilterChain class object</em> do the filter -&gt; his power depends on whether his identity corresponds to the identity in each controller</li>
 </ul>
 
       
