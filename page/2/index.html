@@ -152,6 +152,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">Spring Boot RESTFull API Comment OneToMany Relationship</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" class="archive-article-date">
+  	<time datetime="2023-01-24T14:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
+<li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"></li>
+</ol>
+<h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
+<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid duplicate the comments of the post.</li>
+<li>Give it a @OneToMany annotation because post is the mantainer of the relationship, hence it also has to be <strong>mappedBy &#x3D; “post”</strong>.</li>
+<li><strong>cascade &#x3D; CascadeType.ALL</strong>, so that he can perform cascading operations.</li>
+<li><strong>orphanRemoval &#x3D; true</strong>, post is the father and comments are childs, when the childs disconnected with father it will be removed from database automatically.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/postEntityUpdated.png" alt="updatedPostEntity"></li>
+</ol>
+<h2 id="Comment-Repository"><a href="#Comment-Repository" class="headerlink" title="Comment Repository"></a>Comment Repository</h2><ol>
+<li>Nothing new, there is a findByPostId to get a list of comments.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentRepository.png" alt="commentRepository"></li>
+</ol>
+<h2 id="Comment-Service-Interface"><a href="#Comment-Service-Interface" class="headerlink" title="Comment Service Interface"></a>Comment Service Interface</h2><ol>
+<li>Interface created to provide methods to controller<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentServiceInterface.png" alt="commentService"></li>
+</ol>
+<h2 id="Method-to-check-post-and-comment-in-CommentServiceImpl"><a href="#Method-to-check-post-and-comment-in-CommentServiceImpl" class="headerlink" title="Method to check post and comment in CommentServiceImpl"></a>Method to check post and comment in CommentServiceImpl</h2><ol>
+<li>Create a private method to check if the post and comment exists with the ids we passed to parameter, if not will throw an <strong>ResourceNotFoundException</strong>. It will also check if the comment belongs to the post, if not will throw a <strong>BlogAPIException</strong>, because that was a bad request.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkCommentAndPost.png" alt="checkPostAndComment"></li>
+</ol>
+<h2 id="Create-comment-in-CommentServiceImpl"><a href="#Create-comment-in-CommentServiceImpl" class="headerlink" title="Create comment in CommentServiceImpl"></a>Create comment in CommentServiceImpl</h2><ol>
+<li>This method requies 2 parameters: postId and commentDto.</li>
+<li>Line 35: Check if this post exists, if not throw a <strong>ResourceNotFoundException</strong>, and retrive the post entity.</li>
+<li>Line 37: Convert the commentDto to entity.</li>
+<li>Line 39: Set the post to the comment.</li>
+<li>Line 41: Create comment, it will return a entity(not DTO).</li>
+<li>Line 43: Convert entity to DTO then return to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCreateComment.png" alt="createComment"></li>
+</ol>
+<h2 id="Check-post-and-comment-then-do-stuff"><a href="#Check-post-and-comment-then-do-stuff" class="headerlink" title="Check post and comment then do stuff"></a>Check post and comment then do stuff</h2><ol>
+<li>All of those 3 method we created do the same stuff, they check the post and commant with the checking method we created in class.</li>
+<li>Line 78 - 84: Get comment by id.</li>
+<li>Line 86 - 98: Update the comment.</li>
+<li>Line 100 - 106: Delete the comment.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCommentThenDoStuff.png" alt="checkPostAndCommentThenDoStuff"></li>
+</ol>
+<h2 id="Get-comments-by-post-id-and-pagination"><a href="#Get-comments-by-post-id-and-pagination" class="headerlink" title="Get comments by post id and pagination"></a>Get comments by post id and pagination</h2><ol>
+<li>Line 49: Check if the post with postId exists, if not throw <strong>ResourceNotFoundException</strong></li>
+<li>Line 51: Find comments by post id, it returns a List of comments.</li>
+<li>Line 53 - 55: Make sure if all pages can contain all comments, if the client try to get a unexists page, it will throw a <strong>ResourceBadRequestException</strong>.</li>
+<li>Line 57: Get a sublist of the list of comments we retrived on line 51, it will return a list of comments for the page.</li>
+<li>Line 59: Generate a pageable, it requires 2 parameters: pageNumber and pageSize.</li>
+<li>Line 61: Create <strong>new PageImpl</strong>, it requires 3 parameters: subCommentsList(Line 57), commentPageable(Line 59) and comments.size().</li>
+<li>Line 63,65: Get the comment list for page out, then convert it to commentDto list.</li>
+<li>Line 67 - 75: Create a new CommentResponse object and store all the things we need to send back to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndGetCommentsByPostIdPagination.png" alt="getAllCommentsByPostIdPagination"></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring-Boot-RESTFull-API-Pagination-and-Sorting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

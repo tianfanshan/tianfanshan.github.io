@@ -152,6 +152,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Categorize-posts-Category-Management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/07/Categorize-posts-Category-Management/">Categorize posts(Category Management)</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/07/Categorize-posts-Category-Management/" class="archive-article-date">
+  	<time datetime="2023-02-07T16:12:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2><ul>
+<li><p>At first create <strong>Category, CategoryRepository, CategoryService, CategoryServiceImpl, CategoryDto, CategoryResponse and CategoryController</strong>, very simple.<br> <img src="/../images/blogRestApi/categorizePost/addCategoryToOurApplicationToManagerPosts.png" alt="addCategoryToOurApplicationToManagerPosts"></p>
+</li>
+<li><p>The only different thing we have to change it is to make <em>Category and Post</em> one to many relationship with adding <em>@OneToMany int Category at postsList</em>, <em>and @ManyToOne in Post at category</em>.</p>
+<p> Add posts list to <strong>Category</strong> to relation them:<br> <img src="/../images/blogRestApi/categorizePost/addPostsListToCategory.png" alt="addPostsListToCategory"></p>
+<p> Add category to <strong>Post</strong> to relation them:<br> <img src="/../images/blogRestApi/categorizePost/addCategoryFiledInPostEntity.png" alt="addCategoryFiledInPost"></p>
+</li>
+</ul>
+<h2 id="New-let’s-start-change-a-big-of-code-to-our-post"><a href="#New-let’s-start-change-a-big-of-code-to-our-post" class="headerlink" title="New let’s start change a big of code to our post."></a>New let’s start change a big of code to our post.</h2><ul>
+<li><p>Add categoryId filed in <strong>PostDto</strong> to use it to find the matched category.<br> <img src="/../images/blogRestApi/categorizePost/addCategoryIdFiledInPostDto.png" alt="addCategoryIdFiledInPostDto"></p>
+</li>
+<li><p>Customize the method to find posts by category id in <strong>PostRepository</strong>, it returns a List of posts with the categoryId.<br> <img src="/../images/blogRestApi/categorizePost/customizeNewMethodInPostRepository.png" alt="customizeNewMethodInPostRepository"></p>
+</li>
+<li><p><strong>PostService</strong>.<br> <img src="/../images/blogRestApi/categorizePost/addNewMethodInPostServiceInterface.png" alt="postService"></p>
+</li>
+<li><p>Modify 3 method in <strong>PostServiceImpl</strong>. <em>Create</em> a post with a category, <em>update</em> a post to make it possible to update the category and <em>get</em> the posts by the passing category’s id.<br> <img src="/../images/blogRestApi/categorizePost/postServiceImpl.png" alt="postServiceImpl"></p>
+</li>
+</ul>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
+<li>Very simple change to our codes, but it can make the application more organizable.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/07/Categorize-posts-Category-Management/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Implement-JWT-to-application" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -213,9 +296,12 @@
 </li>
 </ul>
 <h2 id="Hot-does-it-work"><a href="#Hot-does-it-work" class="headerlink" title="Hot does it work."></a>Hot does it work.</h2><ul>
-<li><strong>Client</strong> logged -&gt; <strong>AuthService</strong> -&gt; <strong>AuthServiceImpl</strong> -&gt; create authentication, set authentication to SecurityContextHolder -&gt; <strong>JwtTokenProvider</strong> -&gt; create JWT token by passing the authentication -&gt; return token to login method of <strong>AuthServiceImpl</strong> -&gt; return token to <strong>AuthService</strong> interface -&gt; <strong>AuthController</strong> -&gt; create the <em>JwtAuthResponseDto</em> class object and set the token -&gt; return this <em>JwtAuthResponseDto</em> class object to the <strong>client</strong></li>
-<li><strong>Client</strong> no logged and try to access the endpoint -&gt; <strong>SecurityConfig</strong> -&gt; he can only use endpoint with GET method -&gt; if try to access endpoints with another methods -&gt; <strong>JwtAuthenticationEntryPoint</strong> -&gt; return a HttpServletResponse.SC_UNAUTHORIZED with a message back to the client as response.</li>
-<li><strong>Client</strong> logged and try to access the endpoint with token -&gt; <strong>SecurityConfig</strong> -&gt; before other filter will do <strong>JwtAuthenticationFilter</strong> first -&gt; get token from <strong>FilterChain object</strong>, validate the token, fetch <em>usernameOrEmail</em> from token -&gt; <strong>UserDetailsService interface</strong> with parameter <em>usernameOrEmail</em> -&gt; <strong>CustomUserDetailsService</strong> with parameter <em>usernameOrEmail</em> -&gt; return an UserDetails class object by inserting <em>usernameOrPassword</em>, password and users authorities -&gt; <strong>UserDetailsService interface</strong> with UserDetails class object -&gt; <strong>JwtAuthenticationFilter</strong> -&gt; generate <em>UsernamePasswordAuthenticationToken</em> class object by using UserDetails class objec and users authorities -&gt; add request to this <em>UsernamePasswordAuthenticationToken class object</em> -&gt; set this <em>UsernamePasswordAuthenticationToken class object</em> to the security context holder(header) -&gt; <em>FilterChain class object</em> do the filter -&gt; his power depends on whether his identity corresponds to the identity in each controller</li>
+<li><p><strong>Client</strong> logged -&gt; <strong>AuthService</strong> -&gt; <strong>AuthServiceImpl</strong> -&gt; create authentication, set authentication to SecurityContextHolder -&gt; <strong>JwtTokenProvider</strong> -&gt; create JWT token by passing the authentication -&gt; return token to login method of <strong>AuthServiceImpl</strong> -&gt; return token to <strong>AuthService</strong> interface -&gt; <strong>AuthController</strong> -&gt; create the <em>JwtAuthResponseDto</em> class object and set the token -&gt; return this <em>JwtAuthResponseDto</em> class object to the <strong>client</strong></p>
+</li>
+<li><p><strong>Client</strong> no logged and try to access the endpoint -&gt; <strong>SecurityConfig</strong> -&gt; he can only use endpoint with GET method -&gt; if try to access endpoints with another methods -&gt; <strong>JwtAuthenticationEntryPoint</strong> -&gt; return a HttpServletResponse.SC_UNAUTHORIZED with a message back to the client as response.</p>
+</li>
+<li><p><strong>Client</strong> logged and try to access the endpoint with token -&gt; <strong>SecurityConfig</strong> -&gt; before other filter will do <strong>JwtAuthenticationFilter</strong> first -&gt; get token from <strong>FilterChain object</strong>, validate the token, fetch <em>usernameOrEmail</em> from token -&gt; <strong>UserDetailsService interface</strong> with parameter <em>usernameOrEmail</em> -&gt; <strong>CustomUserDetailsService</strong> with parameter <em>usernameOrEmail</em> -&gt; return an UserDetails class object by inserting <em>usernameOrPassword</em>, password and users authorities -&gt; <strong>UserDetailsService interface</strong> with UserDetails class object -&gt; <strong>JwtAuthenticationFilter</strong> -&gt; generate <em>UsernamePasswordAuthenticationToken</em> class object by using UserDetails class objec and users authorities -&gt; add request to this <em>UsernamePasswordAuthenticationToken class object</em> -&gt; set this <em>UsernamePasswordAuthenticationToken class object</em> to the security context holder(header) -&gt; <em>FilterChain class object</em> do the filter -&gt; his power depends on whether his identity corresponds to the identity in each controller.</p>
+</li>
 </ul>
 
       
@@ -857,110 +943,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">Spring Boot RESTFull API Comment OneToMany Relationship</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" class="archive-article-date">
-  	<time datetime="2023-01-24T14:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
-<li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"></li>
-</ol>
-<h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
-<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid duplicate the comments of the post.</li>
-<li>Give it a @OneToMany annotation because post is the mantainer of the relationship, hence it also has to be <strong>mappedBy &#x3D; “post”</strong>.</li>
-<li><strong>cascade &#x3D; CascadeType.ALL</strong>, so that he can perform cascading operations.</li>
-<li><strong>orphanRemoval &#x3D; true</strong>, post is the father and comments are childs, when the childs disconnected with father it will be removed from database automatically.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/postEntityUpdated.png" alt="updatedPostEntity"></li>
-</ol>
-<h2 id="Comment-Repository"><a href="#Comment-Repository" class="headerlink" title="Comment Repository"></a>Comment Repository</h2><ol>
-<li>Nothing new, there is a findByPostId to get a list of comments.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentRepository.png" alt="commentRepository"></li>
-</ol>
-<h2 id="Comment-Service-Interface"><a href="#Comment-Service-Interface" class="headerlink" title="Comment Service Interface"></a>Comment Service Interface</h2><ol>
-<li>Interface created to provide methods to controller<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentServiceInterface.png" alt="commentService"></li>
-</ol>
-<h2 id="Method-to-check-post-and-comment-in-CommentServiceImpl"><a href="#Method-to-check-post-and-comment-in-CommentServiceImpl" class="headerlink" title="Method to check post and comment in CommentServiceImpl"></a>Method to check post and comment in CommentServiceImpl</h2><ol>
-<li>Create a private method to check if the post and comment exists with the ids we passed to parameter, if not will throw an <strong>ResourceNotFoundException</strong>. It will also check if the comment belongs to the post, if not will throw a <strong>BlogAPIException</strong>, because that was a bad request.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkCommentAndPost.png" alt="checkPostAndComment"></li>
-</ol>
-<h2 id="Create-comment-in-CommentServiceImpl"><a href="#Create-comment-in-CommentServiceImpl" class="headerlink" title="Create comment in CommentServiceImpl"></a>Create comment in CommentServiceImpl</h2><ol>
-<li>This method requies 2 parameters: postId and commentDto.</li>
-<li>Line 35: Check if this post exists, if not throw a <strong>ResourceNotFoundException</strong>, and retrive the post entity.</li>
-<li>Line 37: Convert the commentDto to entity.</li>
-<li>Line 39: Set the post to the comment.</li>
-<li>Line 41: Create comment, it will return a entity(not DTO).</li>
-<li>Line 43: Convert entity to DTO then return to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCreateComment.png" alt="createComment"></li>
-</ol>
-<h2 id="Check-post-and-comment-then-do-stuff"><a href="#Check-post-and-comment-then-do-stuff" class="headerlink" title="Check post and comment then do stuff"></a>Check post and comment then do stuff</h2><ol>
-<li>All of those 3 method we created do the same stuff, they check the post and commant with the checking method we created in class.</li>
-<li>Line 78 - 84: Get comment by id.</li>
-<li>Line 86 - 98: Update the comment.</li>
-<li>Line 100 - 106: Delete the comment.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCommentThenDoStuff.png" alt="checkPostAndCommentThenDoStuff"></li>
-</ol>
-<h2 id="Get-comments-by-post-id-and-pagination"><a href="#Get-comments-by-post-id-and-pagination" class="headerlink" title="Get comments by post id and pagination"></a>Get comments by post id and pagination</h2><ol>
-<li>Line 49: Check if the post with postId exists, if not throw <strong>ResourceNotFoundException</strong></li>
-<li>Line 51: Find comments by post id, it returns a List of comments.</li>
-<li>Line 53 - 55: Make sure if all pages can contain all comments, if the client try to get a unexists page, it will throw a <strong>ResourceBadRequestException</strong>.</li>
-<li>Line 57: Get a sublist of the list of comments we retrived on line 51, it will return a list of comments for the page.</li>
-<li>Line 59: Generate a pageable, it requires 2 parameters: pageNumber and pageSize.</li>
-<li>Line 61: Create <strong>new PageImpl</strong>, it requires 3 parameters: subCommentsList(Line 57), commentPageable(Line 59) and comments.size().</li>
-<li>Line 63,65: Get the comment list for page out, then convert it to commentDto list.</li>
-<li>Line 67 - 75: Create a new CommentResponse object and store all the things we need to send back to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndGetCommentsByPostIdPagination.png" alt="getAllCommentsByPostIdPagination"></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">展开全文 >></a>
         </p>
       
 
