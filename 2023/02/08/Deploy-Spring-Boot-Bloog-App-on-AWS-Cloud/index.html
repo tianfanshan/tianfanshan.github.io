@@ -16,7 +16,7 @@
 <meta property="og:description" content="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud.As a Java">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-08T14:04:25.000Z">
-<meta property="article:modified_time" content="2023-02-08T15:19:27.672Z">
+<meta property="article:modified_time" content="2023-02-08T20:17:50.623Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -191,6 +191,12 @@
 </li>
 <li><p><strong>AWS Route 53</strong><br> It’s highly available and scalable <em>Domain Name System (DNS)</em> web service. Route 53 connects users requests to internet applications running on AWS or on-premises.</p>
 </li>
+</ul>
+<h3 id="How-do-these-5-services-work"><a href="#How-do-these-5-services-work" class="headerlink" title="How do these 5 services work:"></a>How do these 5 services work:</h3><ul>
+<li><strong>Elastic Beanstalk</strong> will create <strong>EC2</strong> service for us. <strong>EC2</strong> provides a virtual server instance, install Java, tomcat… on top of it, and also the application will run on it.</li>
+<li><strong>Elastic Beanstalk</strong> will create <strong>S3 Bucket</strong> to upload JAR file or WAR file on AWS cloud, and store all the uploaded code in <strong>S3 Bucket</strong>.</li>
+<li><strong>Elastic Beanstalk</strong> will connect <strong>RDS</strong> to set up MySQL database on cloud.</li>
+<li>Use <strong>Route 53</strong> to configure a domain for our application, when client access the web(e.g. <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a>) will look for data in <strong>S3 Bucket</strong>.</li>
 </ul>
 
       

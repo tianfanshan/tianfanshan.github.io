@@ -190,6 +190,12 @@
 <li><p><strong>AWS Route 53</strong><br> It’s highly available and scalable <em>Domain Name System (DNS)</em> web service. Route 53 connects users requests to internet applications running on AWS or on-premises.</p>
 </li>
 </ul>
+<h3 id="How-do-these-5-services-work"><a href="#How-do-these-5-services-work" class="headerlink" title="How do these 5 services work:"></a>How do these 5 services work:</h3><ul>
+<li><strong>Elastic Beanstalk</strong> will create <strong>EC2</strong> service for us. <strong>EC2</strong> provides a virtual server instance, install Java, tomcat… on top of it, and also the application will run on it.</li>
+<li><strong>Elastic Beanstalk</strong> will create <strong>S3 Bucket</strong> to upload JAR file or WAR file on AWS cloud, and store all the uploaded code in <strong>S3 Bucket</strong>.</li>
+<li><strong>Elastic Beanstalk</strong> will connect <strong>RDS</strong> to set up MySQL database on cloud.</li>
+<li>Use <strong>Route 53</strong> to configure a domain for our application, when client access the web(e.g. <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a>) will look for data in <strong>S3 Bucket</strong>.</li>
+</ul>
 
       
 
