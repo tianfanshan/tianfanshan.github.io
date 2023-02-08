@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Versioning-REST-APIs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/08/Versioning-REST-APIs/">Versioning REST APIs</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/08/Versioning-REST-APIs/" class="archive-article-date">
+  	<time datetime="2023-02-08T09:57:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Why-do-we-need-to-versioning-REST-APIs"><a href="#Why-do-we-need-to-versioning-REST-APIs" class="headerlink" title="Why do we need to versioning REST APIs"></a>Why do we need to versioning REST APIs</h2><ul>
+<li><p>Consider we have deployed our API application on cloud or some server, and there are different clients who are consuming it, for example: Android application, web application etc. So there are different clients who are consuming the same API. If we made some changes in future API, they may have issues with the version, to avoid this kind of issues we usually will create multiple varsion for them.</p>
+</li>
+<li><p>There are 4 ways of versioning a REST APIs:</p>
+<ul>
+<li><strong>URI path</strong></li>
+<li><strong>Query parameters</strong></li>
+<li><strong>Custom headers</strong></li>
+<li><strong>Content negotiation</strong></li>
+</ul>
+</li>
+<li><p>APIs only need to be up-versioned when a breaking change is made:</p>
+<ul>
+<li>Changing the request&#x2F;response format(e.g. from XML to JSON)</li>
+<li>Changeing a property name(e.g. from name to productName) or data type on a property(e.g. from an interger to a float)</li>
+<li>Adding a required field on the request(e.g. new required header or property in a request body)</li>
+<li>Removing a property on the response(e.g. removing description from a product)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ul>
+<li><p>Create a example Dto to simulate changes<br> <img src="/../images/blogRestApi/versioningRESTAPIs/postDtoV2.png" alt="postDtoV2"></p>
+</li>
+<li><p>Versioning with <strong>URI path</strong>, Real-world examples: Twitter, Pay pal, Google etc…<br> <img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithURIPath.png" alt="versioningWithURIPath"></p>
+</li>
+<li><p>Versioning with <strong>Parameters</strong><br> <img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithParameters.png" alt="versioningWithParameters"></p>
+</li>
+<li><p>Versioning with <strong>Custom headers</strong><br> <img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithCustomHeaders.png" alt="versioningWithCustomHeaders"></p>
+</li>
+<li><p>Versioning with <strong>Content Negotiation</strong><br> <img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithContentNegotiation.png" alt="versioningWithContentNegotiation"></p>
+</li>
+</ul>
+<h2 id="We-also-have-to-add-version-to-our-security-config-to-prevent-other-versions-from-running"><a href="#We-also-have-to-add-version-to-our-security-config-to-prevent-other-versions-from-running" class="headerlink" title="We also have to add version to our security config, to prevent other versions from running"></a>We also have to add version to our security config, to prevent other versions from running</h2><p> <img src="/../images/blogRestApi/versioningRESTAPIs/addingVersionInSecurityConfig.png" alt="addingVersionInSecurityConfig"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/08/Versioning-REST-APIs/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Categorize-posts-Category-Management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -864,85 +959,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/26/Global-Exceptions-handler/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ModelMapper-and-Refact-Dto-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">ModelMapper and Refact Dto code</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/25/ModelMapper-and-Refact-Dto-code/" class="archive-article-date">
-  	<time datetime="2023-01-25T13:50:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
-<li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
-<li>Add ModelMapper library dependency at our application:<br> <img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"></li>
-<li>Define the ModelMapper bean in our Spring configuration:<br> <img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"></li>
-<li>Inject ModelMapper into ServiceImpl:<br> <img src="/../images/blogRestApi/modelMapper/injectModelMapperIntoPostServiceImpl.png" alt="injectModelMapperIntoServiceImpl"> </li>
-<li>Before we use the modelMapper:<br> <img src="/../images/blogRestApi/modelMapper/convertEntityAndDtoOldVersion.png" alt="convertorBeforeUseTheModelMapper"></li>
-<li><strong>After refact convertor with modelMapper we make it 8 lines less than before, image that we have more than 10 entities</strong>:<br> <img src="/../images/blogRestApi/modelMapper/convertorOfEntityAndDtoWithModelMapper.png" alt="convertorOfEntityAndDtoWithModelMapper"></li>
-</ol>
-</li>
-</ul>
-<h2 id="Refact-getPostById-And-getAllPosts"><a href="#Refact-getPostById-And-getAllPosts" class="headerlink" title="Refact getPostById And getAllPosts"></a>Refact getPostById And getAllPosts</h2><ul>
-<li>When we want to get a post we also want the comments come along with it, let’s start coding:<ol>
-<li>At first we only have to change code in DTO, add a new field to store the set of comments:<br> <img src="/../images/blogRestApi/modelMapper/addCommentsSetInPostDto.png" alt="postDto"></li>
-<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:<br> <img src="/../images/blogRestApi/modelMapper/removeDataFromEntityAndAddGetterAndSetter.png" alt="postEntity"></li>
-</ol>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">展开全文 >></a>
         </p>
       
 
