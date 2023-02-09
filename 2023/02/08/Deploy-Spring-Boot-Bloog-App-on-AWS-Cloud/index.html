@@ -15,10 +15,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud.As a Java">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/blogRestApi/deployToAWS/endpoint.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/deployToAWS/useMySQLWorkbenchToConnectAWSRDS.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/deployToAWS/insertRoles.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/deployToAWS/application-prod.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/deployToAWS/createJARFile.png">
 <meta property="article:published_time" content="2023-02-08T14:04:25.000Z">
-<meta property="article:modified_time" content="2023-02-08T20:17:50.623Z">
+<meta property="article:modified_time" content="2023-02-09T20:48:27.363Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/deployToAWS/endpoint.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -198,6 +204,13 @@
 <li><strong>Elastic Beanstalk</strong> will connect <strong>RDS</strong> to set up MySQL database on cloud.</li>
 <li>Use <strong>Route 53</strong> to configure a domain for our application, when client access the web(e.g. <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a>) will look for data in <strong>S3 Bucket</strong>.</li>
 </ul>
+<h3 id="Deploy-MySQL-database-to-AWS-RDS"><a href="#Deploy-MySQL-database-to-AWS-RDS" class="headerlink" title="Deploy MySQL database to AWS RDS"></a>Deploy MySQL database to <strong>AWS RDS</strong></h3><p>   -&gt; Select RDS of AWS<br>   -&gt; Create database<br>   -&gt; Standard create<br>   -&gt; Engine options: MySQL<br>   -&gt; Templates: Free tier<br>   -&gt; Settings: DB cluster identifier, Master username and password<br>   -&gt; Public access: Yes<br>   -&gt; Create database<br>   -&gt; DB Identifier<br>   -&gt; Security: default<br>   -&gt; Security group ID<br>   -&gt; Edit inbound rules<br>   -&gt; Type: MySQL&#x2F;Aurora<br>   -&gt; Source: Anywhere-IPv4<br>   -&gt; Save rules</p>
+<h3 id="Use-MySQL-Workbench-to-connect-AWS-MySQL-Database"><a href="#Use-MySQL-Workbench-to-connect-AWS-MySQL-Database" class="headerlink" title="Use MySQL Workbench to connect AWS MySQL Database"></a>Use MySQL Workbench to connect AWS MySQL Database</h3><p>   -&gt; Passing the Endpoint from RDS<br>   <img src="/../images/blogRestApi/deployToAWS/endpoint.png" alt="endpoint"><br>   -&gt; To MySQL Workbench, to connect woth AWS RDS<br>   <img src="/../images/blogRestApi/deployToAWS/useMySQLWorkbenchToConnectAWSRDS.png" alt="useMySQLWorkbenchToConnectAWSRDS"><br>   -&gt; Insert manualy the <strong>ROLE_ADMIN</strong> and <strong>ROLE_USER</strong> to deployed database<br>   <img src="/../images/blogRestApi/deployToAWS/insertRoles.png" alt="insertRoles"></p>
+<h3 id="Application-yml"><a href="#Application-yml" class="headerlink" title="Application.yml"></a>Application.yml</h3><ul>
+<li>In production we need several environment for production, debelopment, QA etc… For that we have to create multiple application.yml configuration for our app by extends -prod, - dev, -qa.</li>
+<li>Use spring.profiles.active&#x3D;prod to use application-prod.yml configuration, at there we have to configurate url <strong>the endpoint</strong> instead of localhost.<br>   <img src="/../images/blogRestApi/deployToAWS/application-prod.png" alt="application-prod"></li>
+</ul>
+<h3 id="Deploy-Springboot-blog-application-to-AWS-using-Elastic-Beanstalk"><a href="#Deploy-Springboot-blog-application-to-AWS-using-Elastic-Beanstalk" class="headerlink" title="Deploy Springboot blog application to AWS using Elastic Beanstalk"></a>Deploy Springboot blog application to AWS using Elastic Beanstalk</h3><p>   -&gt; Create <strong>JAR</strong> file by using Maven, select <em>clean</em> and <em>install</em> of Lifecycle, then click <em>Run Maven Build</em><br>      <img src="/../images/blogRestApi/deployToAWS/createJARFile.png" alt="createJARFile"><br>   -&gt; Generate <strong>JAR</strong> file in target dir<br>   -&gt; Elastic Beanstalk<br>   -&gt; Create application<br>   -&gt; Fill application name<br>   -&gt; Platform: Java<br>   -&gt; Application code: Upload your code<br>   -&gt; Choose file: created <strong>JAR</strong> file<br>      Behind the scenes <strong>Elastic Beanstalk</strong> will create <strong>S3 Bucket</strong> to upload the file<br>   -&gt; Configure more option: private MySQL Database username and password<br>   -&gt; Database: edit<br>      Fetching <strong>RDS</strong> configuration options<br>   -&gt; Provide username and password<br>   -&gt; Save<br>   -&gt; Create app<br>      <strong>Elastic Beanstalk</strong> will create environment for us to deploy our application, we have to wait a few minutes.<br>      Once finished the processo, <strong>AWS Elastic Beanstalk</strong> will provide us a domain to access application instead of using localhost</p>
 
       
 
