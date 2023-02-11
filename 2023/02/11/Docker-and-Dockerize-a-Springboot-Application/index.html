@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>Docker and Dockerize a Springboot Application | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="What is Docker Docker is an open source platform that enables developers to build, deploy, run, update and manage containers-standardized, executable components that combine application source code wi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker and Dockerize a Springboot Application">
+<meta property="og:url" content="http://example.com/2023/02/11/Docker-and-Dockerize-a-Springboot-Application/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="What is Docker Docker is an open source platform that enables developers to build, deploy, run, update and manage containers-standardized, executable components that combine application source code wi">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/blogRestApi/dockerizeSpringbootApplication/dockerfile.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/dockerizeSpringbootApplication/mavenBuildJarFile.png">
+<meta property="og:image" content="http://example.com/images/blogRestApi/dockerizeSpringbootApplication/defineDockerfile.png">
+<meta property="article:published_time" content="2023-02-11T07:36:02.000Z">
+<meta property="article:modified_time" content="2023-02-11T08:52:20.385Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/blogRestApi/dockerizeSpringbootApplication/dockerfile.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,46 +158,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Spring-Boot-Validation-and-customize-exception-for-it" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Docker-and-Dockerize-a-Springboot-Application" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">Spring Boot Validation and customize Exception for it</a>
+    <h1 class="article-title" itemprop="name">
+      Docker and Dockerize a Springboot Application
     </h1>
   
 
         
-        <a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" class="archive-article-date">
-  	<time datetime="2023-01-27T16:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
+        <a href="/2023/02/11/Docker-and-Dockerize-a-Springboot-Application/" class="archive-article-date">
+  	<time datetime="2023-02-11T07:36:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"></p>
-<h2 id="Add-requirements-for-every-DTO-we-need"><a href="#Add-requirements-for-every-DTO-we-need" class="headerlink" title="Add requirements for every DTO we need"></a>Add requirements for every DTO we need</h2><ul>
-<li>PostDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToPostDto.png" alt="addRequirementPostDto"></li>
-<li>CommentDto:<br> <img src="/../images/blogRestApi/validation/addingRequirementToCommentDto.png" alt="addRequirementCommentDto"></li>
+        <h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h2><ul>
+<li>Docker is an open source platform that enables developers to build, deploy, run, update and manage containers-standardized, executable components that combine application source code with the operating system libraries and dependencies required to run that code in any environment.</li>
 </ul>
-<h2 id="Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post"><a href="#Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post" class="headerlink" title="Add @Valid to controller where the method we need to use validation for DTO, same in comments as post:"></a>Add <strong>@Valid</strong> to controller where the method we need to use validation for DTO, same in comments as post:</h2><p> <img src="/../images/blogRestApi/validation/add@ValidInController.png" alt="add@ValidToMethodInController"></p>
-<h2 id="After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it"><a href="#After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it" class="headerlink" title="After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:"></a>After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:</h2><ul>
-<li>At first go to the <strong>GlobalExceptionHandler</strong> and extend it the <strong>ResponseEntityExceptionHandler</strong> then override <strong>handleMethodArgumentNotValid</strong> method.</li>
-<li>Line 27 - 33: Create a <strong>HashMap</strong> to store key(error field) and value(error message), at last we send this hashMap back to the client with a <strong>HttpStatus.BAD_REQUEST</strong>.</li>
-<li>We also can use another way to achive the same effect: <strong>line 36 - 46</strong>, with this method we no longer need to <strong>extends ResponseEntityExceptionHandler</strong>, because we are using <strong>MethodArgumentNotValidException.class</strong> in it.<br> <img src="/../images/blogRestApi/validation/globalExceptionHandlerNotValidException.png" alt="globalExceptionHnadlerNotValidException"></li>
+<h2 id="Most-commonly-used-Docker-command"><a href="#Most-commonly-used-Docker-command" class="headerlink" title="Most commonly used Docker command"></a>Most commonly used Docker command</h2><ul>
+<li><em>-t</em>: tag</li>
+<li><em>.</em>: the Dockerfile is present within a current directory</li>
+<li><em>-p</em>: port</li>
+<li><em>-p 8081:8080</em>: 8081 is the port on local machine, 8080 is the port on Docker container. We use 8081 to run Application and it will run on the port 8080 of Docker container</li>
+<li><em>-d</em> Detached mode</li>
+<li>On Detached mode means that a Docker container runs in the background of your terminal</li>
+<li><em>-f</em> filter<br> -&gt; To build Docker image: <em>docker build -t [ApplicationName] .</em><br> -&gt; Check Docker images: <em>docker images</em><br> -&gt; Customize tag name: <em>docker build -t [ApplicationName]:[tagName]</em><br> -&gt; Run Docker image on container: <em>docker run -p 8081:8080 [ApplicationName]</em><br> -&gt; <strong>CTRL + C</strong> to stop the Docker container<br> -&gt; To check running containers: <em>docker ps</em><br> -&gt; Run Docker image on Detached mode: <em>docker run -p 8081:8080 -d [ApplicationName]</em><br> -&gt; To show logs of running Docker container: <em>docker logs -f [DockerId]</em><br> -&gt; Use Docker command to stop the container what is running on detached mode: <em>docker stop [DockerId]</em><br> -&gt; Login Docker account on terminal: <em>docker login</em><br> -&gt; Create Docker repository on DockerHub: <em>docker tag [LocalDockerContainerRepositoryName] [DockerHubUserId/DockerHubRepositrotyName]:[TagName]</em><br> -&gt; Push Docker image to DockerHub: <em>docker push [LocalDockerContainerRepositoryName]:[LocalTagName]</em><br> -&gt; Pull docker image from DockerHub: <em>docker pull [DockerHubUserId/DockerHubRepositoryName]:[DockerHubImageTag]</em></li>
 </ul>
-<h2 id="After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages"><a href="#After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages" class="headerlink" title="After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:"></a>After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:</h2><ul>
-<li>Test comment:<br> <img src="/../images/blogRestApi/validation/testCommentOnPostman.png" alt="testCommentOnPostman"></li>
-<li>Test post:<br> <img src="/../images/blogRestApi/validation/testOnPostman.png" alt="testPostOnPostman"></li>
+<h3 id="Dockerize-a-Springboot-Application"><a href="#Dockerize-a-Springboot-Application" class="headerlink" title="Dockerize a Springboot Application"></a>Dockerize a Springboot Application</h3><ul>
+<li><p>Create and define <strong>Dockerfile</strong>:<br> -&gt; Create <strong>Dockerfile</strong> in the application<br> <img src="/../images/blogRestApi/dockerizeSpringbootApplication/dockerfile.png" alt="dockerfile"><br> -&gt; Use Maven to build <strong>JAR</strong> file<br> <img src="/../images/blogRestApi/dockerizeSpringbootApplication/mavenBuildJarFile.png" alt="mavenBuildJar"><br> -&gt; Define <strong>Dockerfile</strong>:<br> - <em>FROM</em>: define base image<br> - <em>LABEL</em>: define mantainer<br> - <em>WORKDIR</em>: define working directory, whenever deploy a Docker image, this directory will be created in a Docker container<br> - <em>COPY</em>: to copy our jar file into the directory in a container<br> - <em>ENTRYPOINT</em>: to start the jar file in a Docker container<br> <img src="/../images/blogRestApi/dockerizeSpringbootApplication/defineDockerfile.png" alt="defineDockerfile"></p>
+</li>
+<li><p>Use that <strong>Dockerfile</strong> to build Docker image:<br> -&gt; Open a terminal at level of the application<br> -&gt; To build Docker image by using command: <em>docker build -t [ApplicationName] .</em><br> -&gt; Customize tag name: <em>docker build -t [ApplicationName]:[tagName]</em><br> -&gt; Open <strong>Docker Desktop</strong> to allow the Docker image can run on it<br> -&gt; To run the Docker image on Docker container by using the command: <em>docker run -p 8081:8080 [ApplicationName]</em></p>
+</li>
+<li><p>Run Docker container on <strong>Detached mode</strong><br> -&gt; Run docker image on Detached mode: <em>docker run -p 8081:8080 -d [ApplicationName]</em><br> -&gt; To show logs of running Docker container: <em>docker logs -f [DockerId]</em><br> -&gt; Can’s stop the container by using <strong>CTRL + C</strong>, because it is running on the back ground<br> -&gt; Use Docker command to stop the container: <em>docker stop [DockerId]</em></p>
+</li>
+</ul>
+<h3 id="Push-Docker-Image-to-DockerHub"><a href="#Push-Docker-Image-to-DockerHub" class="headerlink" title="Push Docker Image to DockerHub"></a>Push Docker Image to DockerHub</h3><ul>
+<li>DockerHub is a plece where we can store Docker images as a cloud repository<br> -&gt; Create DockerHub account<br> -&gt; Login Docker account on terminal by using command: <em>docker login</em><br> -&gt; Pass your DockerHub id and password<br> -&gt; Create Docker repository on DockerHub: <em>docker tag [LocalDockerContainerRepositoryName] [DockerHubUserId/DockerHubRepositrotyName]:[TagName]</em><br> -&gt; Push Docker image to DockerHub: <em>docker push [LocalDockerContainerRepositoryName]:[LocalTagName]</em></li>
+</ul>
+<h3 id="Pull-Docker-image-from-DockerHub"><a href="#Pull-Docker-image-from-DockerHub" class="headerlink" title="Pull Docker image from DockerHub"></a>Pull Docker image from DockerHub</h3><ul>
+<li>We can pull any docker image from DockerHub even if it’s not ours<br> -&gt; Pull docker image from DockerHub: <em>docker pull [DockerHubUserId/DockerHubRepositoryName]:[DockerHubImageTag]</em></li>
 </ul>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,16 +236,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/11/Docker-and-Dockerize-a-Springboot-Application/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/02/08/Deploy-Spring-Boot-Bloog-App-on-AWS-Cloud/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Deploy Spring Boot Bloog App on AWS Cloud</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -227,541 +324,14 @@
 
 
 
-
-  
-    <article id="post-Global-Exceptions-handler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/26/Global-Exceptions-handler/">Global Exceptions handler</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/26/Global-Exceptions-handler/" class="archive-article-date">
-  	<time datetime="2023-01-26T09:40:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
-<li>We was sending to much information of exception to the client, in reality they don’t need all that<ol>
-<li>Create a new class in payload package of errors to send to the client, there are 3 fields: Data, errorMassage and details.<br> <img src="/../images/blogRestApi/globalExceptionHandler/detailClass.png" alt="errordetail"></li>
-<li>Create <strong>GlobalExceptionHandler</strong> in exception package, we have to annotate <strong>@ControllerAdvice</strong>. It works like AOP, we often use it with <strong>@ExceptionHandler</strong>, <strong>@@InitBinder</strong> and <strong>@ModelAttribute</strong>.<br> In every handler we create a <strong>errorDetail</strong> object to send back to the client, there is a constructor it requires 3 parameters(can be more), at here we give a data, exceptionMessage and the request url only(webRequest.getDescription(false)).<br> <img src="/../images/blogRestApi/globalExceptionHandler/exceptionHandlerClass.png" alt="globalExceptionHandler"></li>
-<li>As well we are sending back a <strong>ResponseEntity with HttpStatus</strong>, then we no longer need the <strong>@ResponseStatus</strong> on specific exception.<br> <img src="/../images/blogRestApi/globalExceptionHandler/refactExceptionClass.png" alt="refactSpecificExpection"></li>
-</ol>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/26/Global-Exceptions-handler/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ModelMapper-and-Refact-Dto-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">ModelMapper and Refact Dto code</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/25/ModelMapper-and-Refact-Dto-code/" class="archive-article-date">
-  	<time datetime="2023-01-25T13:50:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
-<li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
-<li>Add ModelMapper library dependency at our application:<br> <img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"></li>
-<li>Define the ModelMapper bean in our Spring configuration:<br> <img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"></li>
-<li>Inject ModelMapper into ServiceImpl:<br> <img src="/../images/blogRestApi/modelMapper/injectModelMapperIntoPostServiceImpl.png" alt="injectModelMapperIntoServiceImpl"> </li>
-<li>Before we use the modelMapper:<br> <img src="/../images/blogRestApi/modelMapper/convertEntityAndDtoOldVersion.png" alt="convertorBeforeUseTheModelMapper"></li>
-<li><strong>After refact convertor with modelMapper we make it 8 lines less than before, image that we have more than 10 entities</strong>:<br> <img src="/../images/blogRestApi/modelMapper/convertorOfEntityAndDtoWithModelMapper.png" alt="convertorOfEntityAndDtoWithModelMapper"></li>
-</ol>
-</li>
-</ul>
-<h2 id="Refact-getPostById-And-getAllPosts"><a href="#Refact-getPostById-And-getAllPosts" class="headerlink" title="Refact getPostById And getAllPosts"></a>Refact getPostById And getAllPosts</h2><ul>
-<li>When we want to get a post we also want the comments come along with it, let’s start coding:<ol>
-<li>At first we only have to change code in DTO, add a new field to store the set of comments:<br> <img src="/../images/blogRestApi/modelMapper/addCommentsSetInPostDto.png" alt="postDto"></li>
-<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:<br> <img src="/../images/blogRestApi/modelMapper/removeDataFromEntityAndAddGetterAndSetter.png" alt="postEntity"></li>
-</ol>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">Spring Boot RESTFull API Comment OneToMany Relationship</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" class="archive-article-date">
-  	<time datetime="2023-01-24T14:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
-<li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"></li>
-</ol>
-<h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
-<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid duplicate the comments of the post.</li>
-<li>Give it a @OneToMany annotation because post is the mantainer of the relationship, hence it also has to be <strong>mappedBy &#x3D; “post”</strong>.</li>
-<li><strong>cascade &#x3D; CascadeType.ALL</strong>, so that he can perform cascading operations.</li>
-<li><strong>orphanRemoval &#x3D; true</strong>, post is the father and comments are childs, when the childs disconnected with father it will be removed from database automatically.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/postEntityUpdated.png" alt="updatedPostEntity"></li>
-</ol>
-<h2 id="Comment-Repository"><a href="#Comment-Repository" class="headerlink" title="Comment Repository"></a>Comment Repository</h2><ol>
-<li>Nothing new, there is a findByPostId to get a list of comments.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentRepository.png" alt="commentRepository"></li>
-</ol>
-<h2 id="Comment-Service-Interface"><a href="#Comment-Service-Interface" class="headerlink" title="Comment Service Interface"></a>Comment Service Interface</h2><ol>
-<li>Interface created to provide methods to controller<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentServiceInterface.png" alt="commentService"></li>
-</ol>
-<h2 id="Method-to-check-post-and-comment-in-CommentServiceImpl"><a href="#Method-to-check-post-and-comment-in-CommentServiceImpl" class="headerlink" title="Method to check post and comment in CommentServiceImpl"></a>Method to check post and comment in CommentServiceImpl</h2><ol>
-<li>Create a private method to check if the post and comment exists with the ids we passed to parameter, if not will throw an <strong>ResourceNotFoundException</strong>. It will also check if the comment belongs to the post, if not will throw a <strong>BlogAPIException</strong>, because that was a bad request.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkCommentAndPost.png" alt="checkPostAndComment"></li>
-</ol>
-<h2 id="Create-comment-in-CommentServiceImpl"><a href="#Create-comment-in-CommentServiceImpl" class="headerlink" title="Create comment in CommentServiceImpl"></a>Create comment in CommentServiceImpl</h2><ol>
-<li>This method requies 2 parameters: postId and commentDto.</li>
-<li>Line 35: Check if this post exists, if not throw a <strong>ResourceNotFoundException</strong>, and retrive the post entity.</li>
-<li>Line 37: Convert the commentDto to entity.</li>
-<li>Line 39: Set the post to the comment.</li>
-<li>Line 41: Create comment, it will return a entity(not DTO).</li>
-<li>Line 43: Convert entity to DTO then return to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCreateComment.png" alt="createComment"></li>
-</ol>
-<h2 id="Check-post-and-comment-then-do-stuff"><a href="#Check-post-and-comment-then-do-stuff" class="headerlink" title="Check post and comment then do stuff"></a>Check post and comment then do stuff</h2><ol>
-<li>All of those 3 method we created do the same stuff, they check the post and commant with the checking method we created in class.</li>
-<li>Line 78 - 84: Get comment by id.</li>
-<li>Line 86 - 98: Update the comment.</li>
-<li>Line 100 - 106: Delete the comment.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCommentThenDoStuff.png" alt="checkPostAndCommentThenDoStuff"></li>
-</ol>
-<h2 id="Get-comments-by-post-id-and-pagination"><a href="#Get-comments-by-post-id-and-pagination" class="headerlink" title="Get comments by post id and pagination"></a>Get comments by post id and pagination</h2><ol>
-<li>Line 49: Check if the post with postId exists, if not throw <strong>ResourceNotFoundException</strong></li>
-<li>Line 51: Find comments by post id, it returns a List of comments.</li>
-<li>Line 53 - 55: Make sure if all pages can contain all comments, if the client try to get a unexists page, it will throw a <strong>ResourceBadRequestException</strong>.</li>
-<li>Line 57: Get a sublist of the list of comments we retrived on line 51, it will return a list of comments for the page.</li>
-<li>Line 59: Generate a pageable, it requires 2 parameters: pageNumber and pageSize.</li>
-<li>Line 61: Create <strong>new PageImpl</strong>, it requires 3 parameters: subCommentsList(Line 57), commentPageable(Line 59) and comments.size().</li>
-<li>Line 63,65: Get the comment list for page out, then convert it to commentDto list.</li>
-<li>Line 67 - 75: Create a new CommentResponse object and store all the things we need to send back to the client.<br><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndGetCommentsByPostIdPagination.png" alt="getAllCommentsByPostIdPagination"></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot-RESTFull-API-Pagination-and-Sorting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">Spring Boot RESTFull API Pagination and Sorting</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
-  	<time datetime="2023-01-23T09:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
-<h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"></p>
-<ol>
-<li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
-<li>In <strong>Body</strong> we are responsing to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
-</ol>
-<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><ol>
-<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>(class we created to store all the informations) to client:<br> <img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"></p>
-</li>
-<li><p>If there are no comming parameters, it will be default <strong>Constants</strong> we created in another class:<br> <img src="/../images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png" alt="defaultConstantsForPaginationAndSorting"></p>
-</li>
-<li><p>Go to <strong>Service</strong> with 4 parametes:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServicePaginationAndSorting.png" alt="postServicePaginationAndSorting"></p>
-</li>
-<li><p>Now we came to <strong>PostServiceImpl</strong>:<br> <img src="/../images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png" alt="postServiceImplPaginationAndSorting"></p>
-<ul>
-<li>Line 42: generate a <strong>Sort</strong> by checking the <strong>sortDirt</strong> is asc or desc.</li>
-<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It returns a list of post but with <strong>Page</strong> format.</li>
-<li>Line 50: get the content from postsPageable, it returns a normal list of posts.</li>
-<li>Line 52: we convert the list of posts -&gt; list of postsDto, here the name is concent.</li>
-<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, then set all field: content(created in line 52), the rest values we are getting them from postsPageable, here are the fields:<br><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"></li>
-<li>Line 62: return the <strong>PostResponse class object</strong> we created in the previous step to the client.</li>
-</ul>
-</li>
-</ol>
-<h3 id="It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day"><a href="#It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day" class="headerlink" title="It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!"></a>It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot-RESTFull-API-part-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" class="archive-article-date">
-  	<time datetime="2023-01-21T09:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><ol>
-<li>@Data of <strong>lombok Dependency</strong> at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
-<li>@AllArgsConstructor of <strong>lombok Dependency</strong> to create all arguments constructor for us.</li>
-<li>@NoArgsConstructor of <strong>lombok Dependency</strong> to create non argument constructor for us.</li>
-<li>@Entity use is at entity class to create table in our database.</li>
-<li>@Table(name &#x3D; ?, uniqueConstraints &#x3D;?): set table name and set a table column to be unique.</li>
-<li>@Column(name &#x3D; ?, nullable &#x3D;false): set column name and set column to be not null.<br><img src="/../images/blogRestApi/entityResource.png" alt="entityResource"></li>
-</ol>
-<h2 id="Repository-the-interface"><a href="#Repository-the-interface" class="headerlink" title="Repository the interface"></a>Repository the interface</h2><ol>
-<li>Extends the interface to JpaRepository we no longer need to add @Repository annotation, because the simpleJpaRepository is taking care this staff for us.</li>
-<li>JpaRepository is generic, we have to give it a generic type: &lt;(entity class name),(entity class id type)&gt;.</li>
-<li>By extending JpaRepository we will get all basic CRUD methods for the entity to talk to the database.</li>
-</ol>
-<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
-<li>@RestController annotation is internally using: @Controller and @ResponseBody.</li>
-<li>Inject service(the interface) to make it loose coupling(we have to avoid tightly coupling)</li>
-</ol>
-<h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a>ResourceNotFoundException</h2><ol>
-<li>@ResponseStatus(value &#x3D; ?): whenever your code from serviceImpl thrown this Exception will response a HTTP status with it:<br><img src="/../images/blogRestApi/whereTheCodeThrownNotFoundException.png" alt="whereTheCodeThrownNotFoundException"></li>
-<li>This resourceNotFoundException class is extended by RuntimeExeption, for that we can use super() method in the constructor to send back to the client a customized message. For example:<br><img src="/../images/blogRestApi/resourceNotFoundException.png" alt="ResourceNotFoundException"></li>
-</ol>
-<h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a>DTO</h2><ol>
-<li>We use DTO to send data to clients to hide implementation datails. Send JPA Entities can became a security issue.</li>
-<li>In DTO we only need all fields and his setter and getter methods.</li>
-<li>Controller(Dto obj from client) -&gt; service(interface) -&gt; serviceImpl(convert Dto to JPA entity) -&gt; repository(save JPA entity to database)<br> -&gt; repository(response a JPA entity) -&gt; serviceImpl(convert JPA entity to Dto obj) -&gt; service(interface) -&gt; controller(get a Dto obj from service to send to client)</li>
-</ol>
-<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><ol>
-<li>From spring 4.3 onwards, if a class is configured as a spring bean and it has only one constructor, then we can omit the @Autowired annotation.</li>
-</ol>
-<h2 id="PostMapping-GetMapping-DeleteMapping-and-PutMapping"><a href="#PostMapping-GetMapping-DeleteMapping-and-PutMapping" class="headerlink" title="@PostMapping, @GetMapping, @DeleteMapping and @PutMapping"></a>@PostMapping, @GetMapping, @DeleteMapping and @PutMapping</h2><ol>
-<li>They are basically a combination of @RequestMapping + (Post,Get,Put,Delete) method.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-How-to-create-a-hexo-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/20/How-to-create-a-hexo-blog/">How to create a hexo blog</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/20/How-to-create-a-hexo-blog/" class="archive-article-date">
-  	<time datetime="2023-01-20T15:23:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog"><a href="#This-is-my-first-blog-and-i-have-thank-to-CodeSheep-to-help-to-create-it-And-here-the-video-from-youtube-How-to-create-yourself-blog" class="headerlink" title="This is my first blog, and i have thank to CodeSheep to help to create it. And here the video from youtube How to create yourself blog"></a>This is my first blog, and i have thank to <a target="_blank" rel="noopener" href="https://github.com/hansonwang99">CodeSheep</a> to help to create it. And here the video from youtube <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=erKYtw4Rfhk">How to create yourself blog</a></h2><h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
-<li>Node.js</li>
-<li>npm</li>
-</ul>
-<h2 id="How-to-set-hexo"><a href="#How-to-set-hexo" class="headerlink" title="How to set hexo"></a>How to set hexo</h2><ol>
-<li>Use npm to download hexo package with command line: (npm install -g hexo-cli)</li>
-<li>Command line: (hexo -v) to check if the hexo is installed successfully</li>
-<li>Create a directory (dir name what you want): blog</li>
-<li>Command line: (hexo init), it will create all the stuff you need for the blog in the dir</li>
-</ol>
-<h2 id="How-to-create-a-blog"><a href="#How-to-create-a-blog" class="headerlink" title="How to create a blog"></a>How to create a blog</h2><ol>
-<li>Use command line: (hexo n “blog title”) to create a new blog.mb</li>
-<li>You can use Visual Studio Code to write your blog</li>
-<li>Once you finished writing your blog at first use command line: (hexo clean) to clean -&gt; (hexo g) to generate -&gt; (hexo s) to start</li>
-</ol>
-<h2 id="How-to-deploy-to-github"><a href="#How-to-deploy-to-github" class="headerlink" title="How to deploy to github"></a>How to deploy to github</h2><ol>
-<li>Create a repository with your account name, for example: tianfanshan.github.io</li>
-<li>Back to command line use: (npm install –save hexo-deployer-git)</li>
-<li>Set _config.yml file, there is a deploy field:<br> deploy:<br>   type: git<br>   repo: your-repository-HTTPs<br>   branch: master</li>
-<li>Deploy your blog to github with command line: (hexo d)</li>
-<li>Maybe you have to log in you github account on terminal</li>
-<li>Then you can access your blog on line by searching the blog repository name on url, for example: tianfanshan.github.io</li>
-</ol>
-<h2 id="How-to-change-your-blog-themes"><a href="#How-to-change-your-blog-themes" class="headerlink" title="How to change your blog themes"></a>How to change your blog themes</h2><ol>
-<li>Find a hexo blog theme you like on github</li>
-<li>Use command line to clone it to your blog directory: git clone (repository of themes) themes&#x2F;(dirName)</li>
-<li>Set _config.yml file, there is a them field:<br> theme: dirName</li>
-<li>Use command line to see your blog locally: hexo clean -&gt; hexo g -&gt; hexo s</li>
-<li>Use command line to push your new blog to git hub</li>
-</ol>
-<h2 id="Remove-post"><a href="#Remove-post" class="headerlink" title="Remove post"></a>Remove post</h2><ol>
-<li>Go to blog&#x2F;source&#x2F;_posts, and delete the post you want</li>
-<li>Command line: hexo clean -&gt; hexo g -&gt; hexo d</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/20/How-to-create-a-hexo-blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -784,8 +354,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
