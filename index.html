@@ -176,6 +176,7 @@
 <li>In the ProductRepository simply add a customized query by using the annotation <strong>@Query</strong>, then we can add the query we want as an attribute in it. Instead of using <strong>products</strong> table at here we use the Entity name <strong>Product</strong>, then we can pass the parameter from request in it too.<br> <img src="/../images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png" alt="custimiedQueryForSearchProducts"></li>
 </ul>
 <h2 id="Product-Entity"><a href="#Product-Entity" class="headerlink" title="Product Entity"></a>Product Entity</h2><ul>
+<li>SKU stands for Stock Keeping Unit.</li>
 <li>In the Entity we implement 2 new annotations:<ol>
 <li><strong>@CreationTimestamp</strong>: whenever we save a entity, hibernate will automatically assign the timestamp for the property.</li>
 <li><strong>@UpdateTimestamp</strong>: whenever we update a entity, hibernate will automatically assign the value for the property.<br> <img src="/../images/blogRestApi/searchApplicaton/productEntity.png" alt="productEntity"></li>

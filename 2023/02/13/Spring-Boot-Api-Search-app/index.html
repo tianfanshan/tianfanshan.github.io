@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://example.com/images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png">
 <meta property="og:image" content="http://example.com/images/blogRestApi/searchApplicaton/productEntity.png">
 <meta property="article:published_time" content="2023-02-13T14:48:36.000Z">
-<meta property="article:modified_time" content="2023-02-13T15:05:15.597Z">
+<meta property="article:modified_time" content="2023-02-13T15:08:49.334Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png">
@@ -181,6 +181,7 @@
 <li>In the ProductRepository simply add a customized query by using the annotation <strong>@Query</strong>, then we can add the query we want as an attribute in it. Instead of using <strong>products</strong> table at here we use the Entity name <strong>Product</strong>, then we can pass the parameter from request in it too.<br> <img src="/../images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png" alt="custimiedQueryForSearchProducts"></li>
 </ul>
 <h2 id="Product-Entity"><a href="#Product-Entity" class="headerlink" title="Product Entity"></a>Product Entity</h2><ul>
+<li>SKU stands for Stock Keeping Unit.</li>
 <li>In the Entity we implement 2 new annotations:<ol>
 <li><strong>@CreationTimestamp</strong>: whenever we save a entity, hibernate will automatically assign the timestamp for the property.</li>
 <li><strong>@UpdateTimestamp</strong>: whenever we update a entity, hibernate will automatically assign the value for the property.<br> <img src="/../images/blogRestApi/searchApplicaton/productEntity.png" alt="productEntity"></li>
