@@ -152,6 +152,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Boot-Transactional-Demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/14/Spring-Boot-Transactional-Demo/">Spring Boot Transactional Demo</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/14/Spring-Boot-Transactional-Demo/" class="archive-article-date">
+  	<time datetime="2023-02-14T09:31:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><ul>
+<li><p>In real-world application like e-commerce, when the client solicited a order with wrong payment, there is necessary to use @Transactional to rollback. Because it doesn’t make sense to keep all the information in the database if payment is not available.</p>
+<ul>
+<li><p>At first create a simple Springboot REST api, is just a normal rest api, nothing special.<br> <img src="/../images/blogRestApi/transactionalDemo/simpleSpringBootRestApi.png" alt="simpleSpringBootRESTApi"></p>
+</li>
+<li><p>Then in the service implementation the workflow is: <strong>Save order details -&gt; Save payment details</strong>. If we don’t add @Transactional annotation even if the payment type is wrong it will be stored in our database the order without payment.</p>
+</li>
+<li><p>By adding @Transactional annotation, if payment failed for this order, then it won’t save in database, and the saved order will get rool back.<br> <img src="/../images/blogRestApi/transactionalDemo/orderServiceImpl.png" alt="orderServiceImpl"></p>
+</li>
+<li><p>We don’t have to use @EnableTransactionManagement in the main class, because whenever we use @Transactional annotation in SpringBoot Application the Spting boot by default enable transaction management.<br> <img src="/../images/blogRestApi/transactionalDemo/mainClass.png" alt="mainClass"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/14/Spring-Boot-Transactional-Demo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring-Boot-Api-Search-app" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -906,97 +982,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/31/Database-Authentication/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-In-Memory-Authentication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/30/In-Memory-Authentication/">In-Memory Authentication</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/30/In-Memory-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-30T20:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"></p>
-<ul>
-<li><p>Create new <strong>@Bean in SecurityConfig(Line 40 - 56)</strong>, there is the function of creating users. <strong>UserDetailsService</strong> and <strong>UserDetails</strong> belong the package org.springframework.security.core.userdetails. </p>
-</li>
-<li><p>We can use them to create new users as object, there we are using a new <strong>@Bean(Line 22)</strong> to bycrypt our user’s password, it returns a PasswordEncoder object providing <strong>encode(Line 45,51) method</strong> to bycrypt the password.</p>
-</li>
-<li><p>Then return a UserDetailsService object by <strong>new InMemoryUserDetailsManager()</strong> passing the users we created before.</p>
-</li>
-<li><p>To restraint users to access <strong>delete, update and create</strong> endpoint we have to update our <strong>SecurityFilterChain(Line 26 - 38)</strong>, in there we only permit GET method for any user with any role or even they are not logged(Line 33), to access another type of method it’s necessary to be authenticated(Line34).</p>
-</li>
-<li><p>At last of updating our class need to add <strong>@EnableMethodSecurity</strong>, there is a few annotations in it: <strong>@PreAuthorize, @PostAuthorize, @Prefilter and @PostFilter</strong>, at here we need to use this <strong>@PreAuthorize</strong> in our controller to provice the role based access to the RESTFull API.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/editSecurityConfigClass.png" alt="editSecurityConfigClass"></p>
-</li>
-<li><p>Now we go to controller to simply add this <strong>@PreAuthorize</strong> annotation above the endpoint we want.</p>
-</li>
-<li><p>As you can see at Line 32 we permit the user with role ADMIN to use it.</p>
-</li>
-<li><p>Also it can permit multiple role: Line 24.</p>
-</li>
-<li><p>This annotation accept a String, so we can concatenate 2 roles with <strong>||</strong> symbol.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/addPreAuthorizeInController.png" alt="addPreAuthorizeInController"></p>
-</li>
-<li><p>Last thing i want to show up is, when we use a endpoint <strong>unauthorized</strong> it’s throwing a wrong status: the 500, obviously we don’t expecte it.</p>
-</li>
-<li><p>Before we update <strong>GlobalExceptionHandler</strong> let’s see the console, the throwing exception is <strong>AccessDeniedException</strong>, this is the exception we have to handle in it.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionConsole.png" alt="accessDeniedExceptionConsole"></p>
-</li>
-<li><p>At <strong>GlobalExceptionHandler</strong> simply handle the <strong>AccessDeniedException</strong> at Line 78, that when it’s throwing we can modify it.</p>
-</li>
-<li><p>The only thing we have to change is the paramete(pass the AccessDeniedException in it) and returning <strong>HttpStatus.UNAUTHORIZED</strong>, that’s all so far.<br> <img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionHandler.png" alt="accessDeniedExceptionHandler"></p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/30/In-Memory-Authentication/">展开全文 >></a>
         </p>
       
 
