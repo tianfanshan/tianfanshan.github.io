@@ -42,9 +42,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2><ul>
+		<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2> <span id="more"></span>
+<ul>
 <li><p>At first create <strong>Category, CategoryRepository, CategoryService, CategoryServiceImpl, CategoryDto, CategoryResponse and CategoryController</strong>, very simple.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addCategoryToOurApplicationToManagerPosts.png" alt="addCategoryToOurApplicationToManagerPosts"><figcaption class="figure__caption">addCategoryToOurApplicationToManagerPosts</figcaption></figure></p>
 </li>
 <li><p>The only different thing we have to change it is to make <em>Category and Post</em> one to many relationship with adding <em>@OneToMany int Category at postsList</em>, <em>and @ManyToOne in Post at category</em>.</p>

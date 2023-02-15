@@ -42,19 +42,17 @@
 	
 
 	
-		<span id="more"></span>
-
-
-<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><ul>
-<li><p>In real-world application like e-commerce, when the client solicited a order with wrong payment, there is necessary to use @Transactional to rollback. Because it doesn’t make sense to keep all the information in the database if payment is not available.</p>
+		<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><span id="more"></span>
 <ul>
-<li><p>At first create a simple Springboot REST api, is just a normal rest api, nothing special.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/simpleSpringBootRestApi.png" alt="simpleSpringBootRESTApi"><figcaption class="figure__caption">simpleSpringBootRESTApi</figcaption></figure></p>
+<li><p>In real-world application like e-commerce, when the client solicited a order with wrong payment, there is necessary to use @Transactional to rollback.<br>  Because it doesn’t make sense to keep all the information in the database if payment is not available.</p>
+<ul>
+<li><p>At first create a simple Springboot REST api, is just a normal rest api, nothing special.<br><figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/simpleSpringBootRestApi.png" alt="simpleSpringBootRESTApi"><figcaption class="figure__caption">simpleSpringBootRESTApi</figcaption></figure></p>
 </li>
 <li><p>Then in the service implementation the workflow is: <strong>Save order details -&gt; Save payment details</strong>. If we don’t add @Transactional annotation even if the payment type is wrong it will be stored in our database the order without payment.</p>
 </li>
-<li><p>By adding @Transactional annotation, if payment failed for this order, then it won’t save in database, and the saved order will get rool back.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/orderServiceImpl.png" alt="orderServiceImpl"><figcaption class="figure__caption">orderServiceImpl</figcaption></figure></p>
+<li><p>By adding @Transactional annotation, if payment failed for this order, then it won’t save in database, and the saved order will get rool back.<br><figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/orderServiceImpl.png" alt="orderServiceImpl"><figcaption class="figure__caption">orderServiceImpl</figcaption></figure></p>
 </li>
-<li><p>We don’t have to use @EnableTransactionManagement in the main class, because whenever we use @Transactional annotation in SpringBoot Application the Spting boot by default enable transaction management.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/mainClass.png" alt="mainClass"><figcaption class="figure__caption">mainClass</figcaption></figure></p>
+<li><p>We don’t have to use @EnableTransactionManagement in the main class, because whenever we use @Transactional annotation in SpringBoot Application the Spting boot by default enable transaction management.<br><figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/mainClass.png" alt="mainClass"><figcaption class="figure__caption">mainClass</figcaption></figure></p>
 </li>
 </ul>
 </li>

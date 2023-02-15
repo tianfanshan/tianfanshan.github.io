@@ -48,23 +48,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2><ul>
-<li><p><strong>LoginDto and RegisterDto</strong> to transfer the data between client and server, we only have to provide 2 fields, the user can login with username or email.<br> LoginDto:<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/loginDto.png" alt="loginDto"><figcaption class="figure__caption">loginDto</figcaption></figure><br> RegisterDto:<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/registerDto.png" alt="registerDto"><figcaption class="figure__caption">registerDto</figcaption></figure></p>
-</li>
-<li><p><strong>AuthService</strong> interface that we gonna to implement the methods of login, and also register.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/authServiceInterface.png" alt="authServiceInterface"><figcaption class="figure__caption">authServiceInterface</figcaption></figure></p>
-</li>
-<li><p><strong>AuthServiceImpl</strong>, at first inject <strong>UserRepository, RoleRepository, AuthenticationManager and initialize BCryptPasswordEncoder</strong>.</p>
-<ol>
-<li><strong>Part Login</strong>, create authentication by using <strong>authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail(), loginDto.getPassword));</strong> and passing user’s datas to verify, if it passed then store it into the <strong>spring security context holder</strong>.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/implementLoginInAuthServiceImpl.png" alt="implementLoginInAuthServiceImpl"><figcaption class="figure__caption">implementLoginInAuthServiceImpl</figcaption></figure><br> Create <strong>AuthController</strong> to use the login method from service.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/authController.png" alt="authController"><figcaption class="figure__caption">authController</figcaption></figure><br> Remove <strong>.httpBasic(Customizer.withDefaults())</strong> from securityconfig, instead of using it we are implementing our own login API, provice login API by adding <strong>.requestMatchers(“&#x2F;api&#x2F;auth&#x2F;**”).permitAll behind authorize</strong> to provide permission for all the users to access this rest API, it measns all the RESTAPIs that we define in our controller will be accessible by all the users.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/modifySecurityFilterChain.png" alt="modifySecurityFilterChain"><figcaption class="figure__caption">modifySecurityFilterChain</figcaption></figure></li>
-<li><strong>Part Register</strong>, implemente register in <strong>AuthServiceImpl</strong>. In the method at first have to check if <strong>the username of registerDto</strong> is already exists in our database, same as <strong>the email of this registerDto</strong>, if it is already exist in our database then throw a <strong>BlogAPIException with BAD_REQUEST and the message</strong>.<br> At line 63 - 76 we created a new user object to store the data of registerDto, and also we have to encode the password before we store it, then give this new user a default role, it has to be “ROLE_USER”, at last save this user to our database and return the message back to client.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png" alt="implementRegisterInAuthServiceImpl"><figcaption class="figure__caption">implementRegisterInAuthServiceImpl</figcaption></figure></li>
-</ol>
-</li>
-<li><p>But when we try to use endponts with roles, it will return a 403 forbidden status. Because we are not passing the usernameOrEmail and the password to the <strong>header</strong>, in the next blog i will use JWT to provide them, then we can use the API with logged user.</p>
-</li>
-</ul>
-
+		<h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2>
+		<p><a class="article__read-more-link" href="/2023/02/01/Login-and-Register/">...read more</a></p>
 	
 
 	
@@ -87,23 +72,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2><ul>
-<li><p>Create User and Role entity to generate tables in database, their’s association is <strong>@ManyToMany</strong>. But we only add this annotation in User, because it is a <strong>unidirectional association</strong>. In other words, the users care about roles but roles don’t care about users.<br> User entity:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/userEntity.png" alt="userEntity"><figcaption class="figure__caption">userEntity</figcaption></figure><br> Role entity:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/roleEntity.png" alt="roleEntity"><figcaption class="figure__caption">roleEntity</figcaption></figure></p>
-</li>
-<li><p>Currently we need to create <strong>UserRepository</strong> for extract the user from database(also the RoleRepository), at here we customize some methods, someone is returning <strong>User in format Optional to avoid NullPointerException</strong> and Optional also provides methods that we will use late.<br> User repository:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/userRepository.png" alt="userRepository"><figcaption class="figure__caption">userRepository</figcaption></figure><br> Role repository:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/roleRepository.png" alt="roleRepository"><figcaption class="figure__caption">roleRepository</figcaption></figure></p>
-</li>
-<li><p>Create a new class to implements the <strong>UserDetailsService interface</strong>, then override the <strong>loadUserByUsername</strong> method, lately we will use this method in our <strong>SecurityConfig</strong> class. In this method at first extract the user from database(Line 27 - 30) with the parameter <strong>usernameOrEmail</strong>, it returns an Optional user, so we can use <strong>orElseThrow() to throw a new UsernameNotFoundException</strong> here. Line 32 - 36 create a <strong>Set of GrantedAuthority</strong>, we can get user’s role set from the above object, then convert the set of roles to type <strong>GrantedAuthority</strong>, this is the authority of user, essentially is a set of Strings. At last generate a <strong>new org.springframework.security.core.userdetails.User();</strong> back, this constructor expect (String username, String password, Collection of GrantedAuthority).<br> CustomUserDetailsService:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/customUserDetailsService.png" alt="customUserDetailsService"><figcaption class="figure__caption">customUserDetailsService</figcaption></figure></p>
-</li>
-<li><p>Before all let’s comment the <strong>userDetailsService bean</strong>, we no longer need them because we are using users from database not <strong>in-memory</strong>. At first inject the <strong>UserDetailsService</strong> to this class by creating the constructor, instead of injecting the class object directly, we can use the interface to achive the loose coupling. Line 29 - 32 Then configure <strong>AuthenticationManager</strong>, by <strong>AuthenticationConfiguration’s object.getAuthenticationManager()</strong> method, it automatically uses the <strong>UserDetailsService</strong>, and as you know we already overrided the method to get the user from database and returns a <strong>UserDetails</strong>, and it also uses password encoder to encode and decode the password.<br> SecurityConfig:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/securityConfig.png" alt="securityConfig"><figcaption class="figure__caption">securityConfig</figcaption></figure></p>
-</li>
-<li><p>To test this functionality it is necessary to insert some data to our database, at first we can manually bycrypt the password to insert to database for the users, just print it on our console.<br> PasswordGeneratorEncoder:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/encodePasswordManually.png" alt="encodePasswordManually"><figcaption class="figure__caption">encodePasswordManually</figcaption></figure></p>
-</li>
-<li><p>Insert datas to our database manually, there is something to remind, it by default will add this <strong>“ROLE_”</strong> prefix at the role what we are searching on <strong>@PreAuthorize</strong>, to prevent mismatch at the roles table we have to add <strong>“ROLE_”</strong> to the role of database.<br> User table:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/manuallyCreateUsersWithManuallyEncodedPassword.png" alt="manuallyCreateUserWithManuallyEncodedPassword"><figcaption class="figure__caption">manuallyCreateUserWithManuallyEncodedPassword</figcaption></figure><br> users_roles table:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertUsers_rolesTable.png" alt="manuallyInsertUsers_rolesTable"><figcaption class="figure__caption">manuallyInsertUsers_rolesTable</figcaption></figure><br> Roles table:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertRolesTable.png" alt="manuallyInsertRolesTable"><figcaption class="figure__caption">manuallyInsertRolesTable</figcaption></figure></p>
-</li>
-</ul>
-
+		<h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2>
+		<p><a class="article__read-more-link" href="/2023/01/31/Database-Authentication/">...read more</a></p>
 	
 
 	
@@ -126,38 +96,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"><figcaption class="figure__caption">removeSecurityPropiertInApplication_yml</figcaption></figure></p>
-<ul>
-<li><p>Create new <strong>@Bean in SecurityConfig(Line 40 - 56)</strong>, there is the function of creating users. <strong>UserDetailsService</strong> and <strong>UserDetails</strong> belong the package org.springframework.security.core.userdetails. </p>
-</li>
-<li><p>We can use them to create new users as object, there we are using a new <strong>@Bean(Line 22)</strong> to bycrypt our user’s password, it returns a PasswordEncoder object providing <strong>encode(Line 45,51) method</strong> to bycrypt the password.</p>
-</li>
-<li><p>Then return a UserDetailsService object by <strong>new InMemoryUserDetailsManager()</strong> passing the users we created before.</p>
-</li>
-<li><p>To restraint users to access <strong>delete, update and create</strong> endpoint we have to update our <strong>SecurityFilterChain(Line 26 - 38)</strong>, in there we only permit GET method for any user with any role or even they are not logged(Line 33), to access another type of method it’s necessary to be authenticated(Line34).</p>
-</li>
-<li><p>At last of updating our class need to add <strong>@EnableMethodSecurity</strong>, there is a few annotations in it: <strong>@PreAuthorize, @PostAuthorize, @Prefilter and @PostFilter</strong>, at here we need to use this <strong>@PreAuthorize</strong> in our controller to provice the role based access to the RESTFull API.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/editSecurityConfigClass.png" alt="editSecurityConfigClass"><figcaption class="figure__caption">editSecurityConfigClass</figcaption></figure></p>
-</li>
-<li><p>Now we go to controller to simply add this <strong>@PreAuthorize</strong> annotation above the endpoint we want.</p>
-</li>
-<li><p>As you can see at Line 32 we permit the user with role ADMIN to use it.</p>
-</li>
-<li><p>Also it can permit multiple role: Line 24.</p>
-</li>
-<li><p>This annotation accept a String, so we can concatenate 2 roles with <strong>||</strong> symbol.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/addPreAuthorizeInController.png" alt="addPreAuthorizeInController"><figcaption class="figure__caption">addPreAuthorizeInController</figcaption></figure></p>
-</li>
-<li><p>Last thing i want to show up is, when we use a endpoint <strong>unauthorized</strong> it’s throwing a wrong status: the 500, obviously we don’t expecte it.</p>
-</li>
-<li><p>Before we update <strong>GlobalExceptionHandler</strong> let’s see the console, the throwing exception is <strong>AccessDeniedException</strong>, this is the exception we have to handle in it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionConsole.png" alt="accessDeniedExceptionConsole"><figcaption class="figure__caption">accessDeniedExceptionConsole</figcaption></figure></p>
-</li>
-<li><p>At <strong>GlobalExceptionHandler</strong> simply handle the <strong>AccessDeniedException</strong> at Line 78, that when it’s throwing we can modify it.</p>
-</li>
-<li><p>The only thing we have to change is the paramete(pass the AccessDeniedException in it) and returning <strong>HttpStatus.UNAUTHORIZED</strong>, that’s all so far.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/accessDeniedExceptionHandler.png" alt="accessDeniedExceptionHandler"><figcaption class="figure__caption">accessDeniedExceptionHandler</figcaption></figure></p>
-</li>
-</ul>
-
+		<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2>
+		<p><a class="article__read-more-link" href="/2023/01/30/In-Memory-Authentication/">...read more</a></p>
 	
 
 	
@@ -180,25 +120,9 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
-<li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.</li>
-<li>In Spring we have <strong>Spring Security Framework</strong>, it provides a basic authentication for us.</li>
-</ul>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
-<li>Add <strong>spring-boot-starter-security dependency</strong> in pom.xml, it includes spring-aop, spring-security-config and spring-security-web in it, that is necessary for our authentication. Once have <strong>spring-boot-starter-security dependency</strong> added in, when we start the application it privides us username(by default is “user”) and a random password, it appears in the console.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/securityDependency.png" alt="addSpringBootStarterSecurityDependency"><figcaption class="figure__caption">addSpringBootStarterSecurityDependency</figcaption></figure></li>
-<li>Customize <strong>username</strong>, <strong>password</strong> and roles in application.yml for user who can access our application.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/customizeUserPasswordAndRoles.png" alt="customizeApplication_yml"><figcaption class="figure__caption">customizeApplication_yml</figcaption></figure></li>
-<li>Implementing basic authenthication, create package <strong>config</strong> and <strong>SecurityConfig</strong> in there, then craete the Bean <strong>SecurityFilterChain</strong> to filter clients. Use annotation <strong>@Configuration</strong> at the class. In the main class we already have the <strong>@SpringBootApplication</strong>, it includes <strong>@Configuration</strong> and will scan any package and will create bean, but it’s a good practice to create multiple configuration classes and keep the related configuration and it’s not a good idea to keep all the configurations in a single class.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/basicAuthenticationClass.png" alt="basicAuthenticationClass"><figcaption class="figure__caption">basicAuthenticationClass</figcaption></figure></li>
-</ul>
-<h2 id="Test-Basic-Authentication-on-postman"><a href="#Test-Basic-Authentication-on-postman" class="headerlink" title="Test Basic Authentication on postman"></a>Test Basic Authentication on postman</h2><ul>
-<li>When we try to use API without authorized, it will send back a <strong>401 unauthorized</strong> status.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsUnauthorized.png" alt="testGetPostsUnauthorized"><figcaption class="figure__caption">testGetPostsUnauthorized</figcaption></figure></li>
-<li>We can use our username and password what we configured in our application.yml to access the application.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/testGetPostsAuthorized.png" alt="testGetPostsAuthorized"><figcaption class="figure__caption">testGetPostsAuthorized</figcaption></figure></li>
-<li>Another thing intresting is postman is using <strong>base64 format</strong> to convert our username and password to send to header, also <strong>Spring Boot</strong> will decode it to check them, we can copy the base64 format code from header where the key <strong>Authorization</strong> to decode online.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/base64Format.png" alt="base64format"><figcaption class="figure__caption">base64format</figcaption></figure></li>
-<li>Go to <a target="_blank" rel="noopener" href="https://www.base64decode.org/">Base64 Decode and Encode</a> paste the be formated code and decode, we can see username:password below.<br> <figure class="figure"><img src="/../images/blogRestApi/security/basicAuthentication/base64Decode.png" alt="base64decode"><figcaption class="figure__caption">base64decode</figcaption></figure></li>
-</ul>
-<h2 id="How-does-the-Basic-Authentication-system-works"><a href="#How-does-the-Basic-Authentication-system-works" class="headerlink" title="How does the Basic Authentication system works"></a>How does the Basic Authentication system works</h2><p> 1- <strong>Client</strong> pass username and password to <strong>–&gt;</strong><br> 2- <strong>SecurityFilterChain</strong> extract password and username to <strong>–&gt;</strong><br> 3- <strong>UsernamePasswordAuthenticationToken</strong> class will create the object of this class to <strong>–&gt;</strong><br> 4- <strong>AuthenticationManager</strong> is responsible to authenticate the request <strong>–success to–&gt; 5</strong>, <strong>–failure to–&gt; 6</strong><br> 5. Store authentication object to <strong>SecurityContextHolder</strong> -&gt; enable <strong>RemenberMeService</strong> -&gt; continue Application<br> 6- Clear <strong>SecurityContextHolder</strong> object -&gt; disable <strong>RemenberMeService</strong> -&gt; <strong>AuthenticationEntryPoint</strong> return 401 unauthorized</p>
-
+		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.
+		<p><a class="article__read-more-link" href="/2023/01/29/Security-Basic-Authentication/">...read more</a></p>
 	
 
 	
@@ -221,24 +145,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><figure class="figure"><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"><figcaption class="figure__caption">springBootStarterValidationDependency</figcaption></figure></p>
-<h2 id="Add-requirements-for-every-DTO-we-need"><a href="#Add-requirements-for-every-DTO-we-need" class="headerlink" title="Add requirements for every DTO we need"></a>Add requirements for every DTO we need</h2><ul>
-<li>PostDto:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/addingRequirementToPostDto.png" alt="addRequirementPostDto"><figcaption class="figure__caption">addRequirementPostDto</figcaption></figure></li>
-<li>CommentDto:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/addingRequirementToCommentDto.png" alt="addRequirementCommentDto"><figcaption class="figure__caption">addRequirementCommentDto</figcaption></figure></li>
-</ul>
-<h2 id="Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post"><a href="#Add-Valid-to-controller-where-the-method-we-need-to-use-validation-for-DTO-same-in-comments-as-post" class="headerlink" title="Add @Valid to controller where the method we need to use validation for DTO, same in comments as post:"></a>Add <strong>@Valid</strong> to controller where the method we need to use validation for DTO, same in comments as post:</h2><p> <figure class="figure"><img src="/../images/blogRestApi/validation/add@ValidInController.png" alt="add@ValidToMethodInController"><figcaption class="figure__caption">add@ValidToMethodInController</figcaption></figure></p>
-<h2 id="After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it"><a href="#After-the-above-steps-are-completed-the-validation-works-but-it-will-throw-many-information-to-the-client-for-that-we-have-to-customize-the-exception-for-it" class="headerlink" title="After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:"></a>After the above steps are completed, the validation works but it will throw many information to the client, for that we have to customize the exception for it:</h2><ul>
-<li>At first go to the <strong>GlobalExceptionHandler</strong> and extend it the <strong>ResponseEntityExceptionHandler</strong> then override <strong>handleMethodArgumentNotValid</strong> method.</li>
-<li>Line 27 - 33: Create a <strong>HashMap</strong> to store key(error field) and value(error message), at last we send this hashMap back to the client with a <strong>HttpStatus.BAD_REQUEST</strong>.</li>
-<li>We also can use another way to achive the same effect: <strong>line 36 - 46</strong>, with this method we no longer need to <strong>extends ResponseEntityExceptionHandler</strong>, because we are using <strong>MethodArgumentNotValidException.class</strong> in it.<br> <figure class="figure"><img src="/../images/blogRestApi/validation/globalExceptionHandlerNotValidException.png" alt="globalExceptionHnadlerNotValidException"><figcaption class="figure__caption">globalExceptionHnadlerNotValidException</figcaption></figure></li>
-</ul>
-<h2 id="After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages"><a href="#After-all-above-steps-when-we-use-postman-to-test-with-bad-input-it-will-send-back-to-us-only-fields-along-with-their-messages" class="headerlink" title="After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:"></a>After all above steps when we use postman to test with bad input, it will send back to us only fields along with their messages:</h2><ul>
-<li>Test comment:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/testCommentOnPostman.png" alt="testCommentOnPostman"><figcaption class="figure__caption">testCommentOnPostman</figcaption></figure></li>
-<li>Test post:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/testOnPostman.png" alt="testPostOnPostman"><figcaption class="figure__caption">testPostOnPostman</figcaption></figure></li>
-</ul>
-
+		<h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2>
+		<p><a class="article__read-more-link" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">...read more</a></p>
 	
 
 	
@@ -261,17 +169,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
-<li>We was sending to much information of exception to the client, in reality they don’t need all that<ol>
-<li>Create a new class in payload package of errors to send to the client, there are 3 fields: Data, errorMassage and details.<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/detailClass.png" alt="errordetail"><figcaption class="figure__caption">errordetail</figcaption></figure></li>
-<li>Create <strong>GlobalExceptionHandler</strong> in exception package, we have to annotate <strong>@ControllerAdvice</strong>. It works like AOP, we often use it with <strong>@ExceptionHandler</strong>, <strong>@@InitBinder</strong> and <strong>@ModelAttribute</strong>.<br> In every handler we create a <strong>errorDetail</strong> object to send back to the client, there is a constructor it requires 3 parameters(can be more), at here we give a data, exceptionMessage and the request url only(webRequest.getDescription(false)).<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/exceptionHandlerClass.png" alt="globalExceptionHandler"><figcaption class="figure__caption">globalExceptionHandler</figcaption></figure></li>
-<li>As well we are sending back a <strong>ResponseEntity with HttpStatus</strong>, then we no longer need the <strong>@ResponseStatus</strong> on specific exception.<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/refactExceptionClass.png" alt="refactSpecificExpection"><figcaption class="figure__caption">refactSpecificExpection</figcaption></figure></li>
-</ol>
-</li>
-</ul>
-
+		<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2>
+		<p><a class="article__read-more-link" href="/2023/01/26/Global-Exceptions-handler/">...read more</a></p>
 	
 
 	
@@ -294,26 +193,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
-<li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
-<li>Add ModelMapper library dependency at our application:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"><figcaption class="figure__caption">addModelMapperLibraryDependency</figcaption></figure></li>
-<li>Define the ModelMapper bean in our Spring configuration:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"><figcaption class="figure__caption">defineModelMapperInsideSpringBootApplication</figcaption></figure></li>
-<li>Inject ModelMapper into ServiceImpl:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/injectModelMapperIntoPostServiceImpl.png" alt="injectModelMapperIntoServiceImpl"><figcaption class="figure__caption">injectModelMapperIntoServiceImpl</figcaption></figure> </li>
-<li>Before we use the modelMapper:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/convertEntityAndDtoOldVersion.png" alt="convertorBeforeUseTheModelMapper"><figcaption class="figure__caption">convertorBeforeUseTheModelMapper</figcaption></figure></li>
-<li><strong>After refact convertor with modelMapper we make it 8 lines less than before, image that we have more than 10 entities</strong>:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/convertorOfEntityAndDtoWithModelMapper.png" alt="convertorOfEntityAndDtoWithModelMapper"><figcaption class="figure__caption">convertorOfEntityAndDtoWithModelMapper</figcaption></figure></li>
-</ol>
-</li>
-</ul>
-<h2 id="Refact-getPostById-And-getAllPosts"><a href="#Refact-getPostById-And-getAllPosts" class="headerlink" title="Refact getPostById And getAllPosts"></a>Refact getPostById And getAllPosts</h2><ul>
-<li>When we want to get a post we also want the comments come along with it, let’s start coding:<ol>
-<li>At first we only have to change code in DTO, add a new field to store the set of comments:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/addCommentsSetInPostDto.png" alt="postDto"><figcaption class="figure__caption">postDto</figcaption></figure></li>
-<li>Then we can get a <strong>stackOverFlow</strong> exception, because there is a <strong>toString</strong> method in entity, to avoid that we have to remove the <strong>@Data</strong> annotation(there is getter, setter, toString etc..) in there, then we put <strong>@Getter</strong> and <strong>@Setter</strong> above the entity class to fix it:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/removeDataFromEntityAndAddGetterAndSetter.png" alt="postEntity"><figcaption class="figure__caption">postEntity</figcaption></figure></li>
-</ol>
-</li>
-</ul>
-
+		<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2>
+		<p><a class="article__read-more-link" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">...read more</a></p>
 	
 
 	
@@ -336,51 +217,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
-<li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"><figcaption class="figure__caption">commentEntity</figcaption></figure></li>
-</ol>
-<h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
-<li>We have to add to post entity a <strong>comments HashSet</strong> field, because we want to avoid duplicate the comments of the post.</li>
-<li>Give it a @OneToMany annotation because post is the mantainer of the relationship, hence it also has to be <strong>mappedBy &#x3D; “post”</strong>.</li>
-<li><strong>cascade &#x3D; CascadeType.ALL</strong>, so that he can perform cascading operations.</li>
-<li><strong>orphanRemoval &#x3D; true</strong>, post is the father and comments are childs, when the childs disconnected with father it will be removed from database automatically.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/postEntityUpdated.png" alt="updatedPostEntity"><figcaption class="figure__caption">updatedPostEntity</figcaption></figure></li>
-</ol>
-<h2 id="Comment-Repository"><a href="#Comment-Repository" class="headerlink" title="Comment Repository"></a>Comment Repository</h2><ol>
-<li>Nothing new, there is a findByPostId to get a list of comments.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentRepository.png" alt="commentRepository"><figcaption class="figure__caption">commentRepository</figcaption></figure></li>
-</ol>
-<h2 id="Comment-Service-Interface"><a href="#Comment-Service-Interface" class="headerlink" title="Comment Service Interface"></a>Comment Service Interface</h2><ol>
-<li>Interface created to provide methods to controller<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentServiceInterface.png" alt="commentService"><figcaption class="figure__caption">commentService</figcaption></figure></li>
-</ol>
-<h2 id="Method-to-check-post-and-comment-in-CommentServiceImpl"><a href="#Method-to-check-post-and-comment-in-CommentServiceImpl" class="headerlink" title="Method to check post and comment in CommentServiceImpl"></a>Method to check post and comment in CommentServiceImpl</h2><ol>
-<li>Create a private method to check if the post and comment exists with the ids we passed to parameter, if not will throw an <strong>ResourceNotFoundException</strong>. It will also check if the comment belongs to the post, if not will throw a <strong>BlogAPIException</strong>, because that was a bad request.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkCommentAndPost.png" alt="checkPostAndComment"><figcaption class="figure__caption">checkPostAndComment</figcaption></figure></li>
-</ol>
-<h2 id="Create-comment-in-CommentServiceImpl"><a href="#Create-comment-in-CommentServiceImpl" class="headerlink" title="Create comment in CommentServiceImpl"></a>Create comment in CommentServiceImpl</h2><ol>
-<li>This method requies 2 parameters: postId and commentDto.</li>
-<li>Line 35: Check if this post exists, if not throw a <strong>ResourceNotFoundException</strong>, and retrive the post entity.</li>
-<li>Line 37: Convert the commentDto to entity.</li>
-<li>Line 39: Set the post to the comment.</li>
-<li>Line 41: Create comment, it will return a entity(not DTO).</li>
-<li>Line 43: Convert entity to DTO then return to the client.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCreateComment.png" alt="createComment"><figcaption class="figure__caption">createComment</figcaption></figure></li>
-</ol>
-<h2 id="Check-post-and-comment-then-do-stuff"><a href="#Check-post-and-comment-then-do-stuff" class="headerlink" title="Check post and comment then do stuff"></a>Check post and comment then do stuff</h2><ol>
-<li>All of those 3 method we created do the same stuff, they check the post and commant with the checking method we created in class.</li>
-<li>Line 78 - 84: Get comment by id.</li>
-<li>Line 86 - 98: Update the comment.</li>
-<li>Line 100 - 106: Delete the comment.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndCommentThenDoStuff.png" alt="checkPostAndCommentThenDoStuff"><figcaption class="figure__caption">checkPostAndCommentThenDoStuff</figcaption></figure></li>
-</ol>
-<h2 id="Get-comments-by-post-id-and-pagination"><a href="#Get-comments-by-post-id-and-pagination" class="headerlink" title="Get comments by post id and pagination"></a>Get comments by post id and pagination</h2><ol>
-<li>Line 49: Check if the post with postId exists, if not throw <strong>ResourceNotFoundException</strong></li>
-<li>Line 51: Find comments by post id, it returns a List of comments.</li>
-<li>Line 53 - 55: Make sure if all pages can contain all comments, if the client try to get a unexists page, it will throw a <strong>ResourceBadRequestException</strong>.</li>
-<li>Line 57: Get a sublist of the list of comments we retrived on line 51, it will return a list of comments for the page.</li>
-<li>Line 59: Generate a pageable, it requires 2 parameters: pageNumber and pageSize.</li>
-<li>Line 61: Create <strong>new PageImpl</strong>, it requires 3 parameters: subCommentsList(Line 57), commentPageable(Line 59) and comments.size().</li>
-<li>Line 63,65: Get the comment list for page out, then convert it to commentDto list.</li>
-<li>Line 67 - 75: Create a new CommentResponse object and store all the things we need to send back to the client.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/checkPostAndGetCommentsByPostIdPagination.png" alt="getAllCommentsByPostIdPagination"><figcaption class="figure__caption">getAllCommentsByPostIdPagination</figcaption></figure></li>
-</ol>
-
+		<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2>
+		<p><a class="article__read-more-link" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">...read more</a></p>
 	
 
 	
@@ -403,33 +241,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><figcaption class="figure__caption">paginationAndSortingPreview</figcaption></figure><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
-<h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"><figcaption class="figure__caption">postTestOnPostmanPaginationAndSorting</figcaption></figure></p>
-<ol>
-<li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
-<li>In <strong>Body</strong> we are responsing to the client a object we created including: content(the list of PostDto), pageNumber, pageSize, totalElements, totalPages, and if is the lastPage.</li>
-</ol>
-<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><ol>
-<li><p>At <strong>Controller</strong> recive 4 parameters then return to the client a <strong>PostResponse object</strong>(class we created to store all the informations) to client:<br> <figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/postControllerPaginationAndSorting.png" alt="postControllerPaginationAndSorting"><figcaption class="figure__caption">postControllerPaginationAndSorting</figcaption></figure></p>
-</li>
-<li><p>If there are no comming parameters, it will be default <strong>Constants</strong> we created in another class:<br> <figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/defaultConstantsForPaginationAndSorting.png" alt="defaultConstantsForPaginationAndSorting"><figcaption class="figure__caption">defaultConstantsForPaginationAndSorting</figcaption></figure></p>
-</li>
-<li><p>Go to <strong>Service</strong> with 4 parametes:<br> <figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/postServicePaginationAndSorting.png" alt="postServicePaginationAndSorting"><figcaption class="figure__caption">postServicePaginationAndSorting</figcaption></figure></p>
-</li>
-<li><p>Now we came to <strong>PostServiceImpl</strong>:<br> <figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/postServiceImplPaginationAndSorting.png" alt="postServiceImplPaginationAndSorting"><figcaption class="figure__caption">postServiceImplPaginationAndSorting</figcaption></figure></p>
-<ul>
-<li>Line 42: generate a <strong>Sort</strong> by checking the <strong>sortDirt</strong> is asc or desc.</li>
-<li>Line 45, 47: generate a pageable for findAll method that provide us from Repository, <strong>JpaRepository is extending PagingAndSortingRepository and there are 2 moethod in it: findAll(Sort sort) and findAll(Pageable pageable)</strong>, at here we are using the second one.<br><strong>pageable</strong> requires 3 parameters: pageNumber, pageSize and sort.<br>It returns a list of post but with <strong>Page</strong> format.</li>
-<li>Line 50: get the content from postsPageable, it returns a normal list of posts.</li>
-<li>Line 52: we convert the list of posts -&gt; list of postsDto, here the name is concent.</li>
-<li>Line 54 -&gt; 60: create a <strong>PostResponse class object</strong>, then set all field: content(created in line 52), the rest values we are getting them from postsPageable, here are the fields:<br><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/classToResponseToClientForPaginationAndSorting.png" alt="classToResponseToClientForPaginationAndSorting"><figcaption class="figure__caption">classToResponseToClientForPaginationAndSorting</figcaption></figure></li>
-<li>Line 62: return the <strong>PostResponse class object</strong> we created in the previous step to the client.</li>
-</ul>
-</li>
-</ol>
-<h3 id="It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day"><a href="#It’s-not-difficult-but-is-a-bit-complex-hope-you-can-find-what-you-want-to-know-here-have-a-nice-day" class="headerlink" title="It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!"></a>It’s not difficult but is a bit complex, hope you can find what you want to know here, have a nice day!</h3>
+		<h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2>
+		<p><a class="article__read-more-link" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">...read more</a></p>
 	
 
 	
@@ -452,41 +265,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><ol>
-<li>@Data of <strong>lombok Dependency</strong> at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
-<li>@AllArgsConstructor of <strong>lombok Dependency</strong> to create all arguments constructor for us.</li>
-<li>@NoArgsConstructor of <strong>lombok Dependency</strong> to create non argument constructor for us.</li>
-<li>@Entity use is at entity class to create table in our database.</li>
-<li>@Table(name &#x3D; ?, uniqueConstraints &#x3D;?): set table name and set a table column to be unique.</li>
-<li>@Column(name &#x3D; ?, nullable &#x3D;false): set column name and set column to be not null.<br><figure class="figure"><img src="/../images/blogRestApi/entityResource.png" alt="entityResource"><figcaption class="figure__caption">entityResource</figcaption></figure></li>
-</ol>
-<h2 id="Repository-the-interface"><a href="#Repository-the-interface" class="headerlink" title="Repository the interface"></a>Repository the interface</h2><ol>
-<li>Extends the interface to JpaRepository we no longer need to add @Repository annotation, because the simpleJpaRepository is taking care this staff for us.</li>
-<li>JpaRepository is generic, we have to give it a generic type: &lt;(entity class name),(entity class id type)&gt;.</li>
-<li>By extending JpaRepository we will get all basic CRUD methods for the entity to talk to the database.</li>
-</ol>
-<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
-<li>@RestController annotation is internally using: @Controller and @ResponseBody.</li>
-<li>Inject service(the interface) to make it loose coupling(we have to avoid tightly coupling)</li>
-</ol>
-<h2 id="ResourceNotFoundException"><a href="#ResourceNotFoundException" class="headerlink" title="ResourceNotFoundException"></a>ResourceNotFoundException</h2><ol>
-<li>@ResponseStatus(value &#x3D; ?): whenever your code from serviceImpl thrown this Exception will response a HTTP status with it:<br><figure class="figure"><img src="/../images/blogRestApi/whereTheCodeThrownNotFoundException.png" alt="whereTheCodeThrownNotFoundException"><figcaption class="figure__caption">whereTheCodeThrownNotFoundException</figcaption></figure></li>
-<li>This resourceNotFoundException class is extended by RuntimeExeption, for that we can use super() method in the constructor to send back to the client a customized message. For example:<br><figure class="figure"><img src="/../images/blogRestApi/resourceNotFoundException.png" alt="ResourceNotFoundException"><figcaption class="figure__caption">ResourceNotFoundException</figcaption></figure></li>
-</ol>
-<h2 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a>DTO</h2><ol>
-<li>We use DTO to send data to clients to hide implementation datails. Send JPA Entities can became a security issue.</li>
-<li>In DTO we only need all fields and his setter and getter methods.</li>
-<li>Controller(Dto obj from client) -&gt; service(interface) -&gt; serviceImpl(convert Dto to JPA entity) -&gt; repository(save JPA entity to database)<br> -&gt; repository(response a JPA entity) -&gt; serviceImpl(convert JPA entity to Dto obj) -&gt; service(interface) -&gt; controller(get a Dto obj from service to send to client)</li>
-</ol>
-<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><ol>
-<li>From spring 4.3 onwards, if a class is configured as a spring bean and it has only one constructor, then we can omit the @Autowired annotation.</li>
-</ol>
-<h2 id="PostMapping-GetMapping-DeleteMapping-and-PutMapping"><a href="#PostMapping-GetMapping-DeleteMapping-and-PutMapping" class="headerlink" title="@PostMapping, @GetMapping, @DeleteMapping and @PutMapping"></a>@PostMapping, @GetMapping, @DeleteMapping and @PutMapping</h2><ol>
-<li>They are basically a combination of @RequestMapping + (Post,Get,Put,Delete) method.</li>
-</ol>
-
+		<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2>
+		<p><a class="article__read-more-link" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">...read more</a></p>
 	
 
 	

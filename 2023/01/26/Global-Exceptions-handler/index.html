@@ -42,9 +42,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
+		<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><span id="more"></span>
+<ul>
 <li>We was sending to much information of exception to the client, in reality they don’t need all that<ol>
 <li>Create a new class in payload package of errors to send to the client, there are 3 fields: Data, errorMassage and details.<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/detailClass.png" alt="errordetail"><figcaption class="figure__caption">errordetail</figcaption></figure></li>
 <li>Create <strong>GlobalExceptionHandler</strong> in exception package, we have to annotate <strong>@ControllerAdvice</strong>. It works like AOP, we often use it with <strong>@ExceptionHandler</strong>, <strong>@@InitBinder</strong> and <strong>@ModelAttribute</strong>.<br> In every handler we create a <strong>errorDetail</strong> object to send back to the client, there is a constructor it requires 3 parameters(can be more), at here we give a data, exceptionMessage and the request url only(webRequest.getDescription(false)).<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/exceptionHandlerClass.png" alt="globalExceptionHandler"><figcaption class="figure__caption">globalExceptionHandler</figcaption></figure></li>

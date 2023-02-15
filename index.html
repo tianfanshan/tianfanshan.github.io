@@ -46,20 +46,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2><h3 id="Dependency-lombok"><a href="#Dependency-lombok" class="headerlink" title="Dependency lombok"></a>Dependency lombok</h3><p><strong>@Data</strong><br>It makes us no longer need to create getter, setter, toString and other methods.<br><strong>@AllArgsConstructor</strong><br>Create all arguments constructor for us.<br><strong>@NoArgsConstructor</strong><br>Create non argument constructor for us.<br><strong>@Getter</strong><br>Create getter method for every field we have in the class.<br><strong>@Setter</strong><br>Create setter method for every field we have in the class.</p>
-<h3 id="jakarta-persistence"><a href="#jakarta-persistence" class="headerlink" title="jakarta.persistence"></a>jakarta.persistence</h3><p> <strong>@Entity and @Id</strong><br>     If they are not in a java class then this class is completely a typical POJO java class. Now after adding these two annotations, it can be used as an entity class corresponding to the table in the database.<br> <strong>@Table</strong><br>     It is an optional annotation<br> <strong>@Column</strong><br> <strong>@GeneratedValue</strong><br> <strong>@OneToOne</strong><br> <strong>@OneToMany</strong><br> <strong>@ManyToOne</strong><br> <strong>@ManyToMany</strong><br> <strong>@JoinTable</strong><br> <strong>@JoinColumn</strong></p>
-<h3 id="org-springframework-web-bind-annotation"><a href="#org-springframework-web-bind-annotation" class="headerlink" title="org.springframework.web.bind.annotation"></a>org.springframework.web.bind.annotation</h3><p> <strong>@RestController</strong><br> <strong>@RequestMapping</strong><br> <strong>@PostMapping</strong><br> <strong>@GetMapping</strong><br> <strong>@PutMapping</strong><br> <strong>@DeleteMapping</strong><br> <strong>@PathVariable</strong><br> <strong>@RequestBody</strong><br> <strong>@RequestParam</strong><br> <strong>@ControllerAdvice</strong><br> <strong>@ExceptionHandler</strong></p>
-<h3 id="jakarta-validation-constraints"><a href="#jakarta-validation-constraints" class="headerlink" title="jakarta.validation.constraints"></a>jakarta.validation.constraints</h3><p> <strong>@NotEmpty</strong><br> <strong>@NotNull</strong><br> <strong>@NotBlank</strong><br> <strong>@Email</strong><br> <strong>@Size</strong><br> <strong>@Max</strong><br> <strong>@Min</strong><br> <strong>@Pattern</strong></p>
-<h3 id="jakarta-validation"><a href="#jakarta-validation" class="headerlink" title="jakarta.validation"></a>jakarta.validation</h3><p> <strong>@Valid</strong></p>
-<h3 id="org-springframework-security-access-prepost"><a href="#org-springframework-security-access-prepost" class="headerlink" title="org.springframework.security.access.prepost"></a>org.springframework.security.access.prepost</h3><p> <strong>@PreAuthorize</strong></p>
-<h3 id="org-springframework-beans-factory-annotation"><a href="#org-springframework-beans-factory-annotation" class="headerlink" title="org.springframework.beans.factory.annotation"></a>org.springframework.beans.factory.annotation</h3><p> <strong>@Value</strong></p>
-<h3 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a>org.springframework.stereotype</h3><p> <strong>@Component</strong><br> <strong>@Service</strong></p>
-<h3 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a>org.springframework.context.annotation</h3><p> <strong>@Bean</strong><br> <strong>@Configuratio</strong>n</p>
-<h3 id="org-springframework-security-config-annotation-method-configuration"><a href="#org-springframework-security-config-annotation-method-configuration" class="headerlink" title="org.springframework.security.config.annotation.method.configuration"></a>org.springframework.security.config.annotation.method.configuration</h3><p> <strong>@EnableMethodSecurity</strong></p>
-<h3 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure"></a>org.springframework.boot.autoconfigure</h3><p> <strong>@SpringBootApplication</strong></p>
-
+		<h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2>
+		<p><a class="article__read-more-link" href="/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/">...read more</a></p>
 	
 
 	
@@ -82,48 +70,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Why-do-we-use-Microservices"><a href="#Why-do-we-use-Microservices" class="headerlink" title="Why do we use Microservices"></a>Why do we use Microservices</h2><ul>
-<li>Microservices Architecture enables large teams to build scalable applications that composed of many loosely coupled services. <ul>
-<li>For example a shopping cart application, there are many independent services like ProductService, InventoryService, StockService etc. And they are loosely coupled in microservices project, we call them microservice, each of them has it’s own database.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h2><ul>
-<li><p>For each microservice of a Microservices Project should be:</p>
-<ul>
-<li>Developed independently.</li>
-<li>Deployed independently.</li>
-<li>Scaled independently.</li>
-</ul>
-</li>
-<li><p>And those services can communicate with each other by using 2 types of communication:</p>
-<ul>
-<li>Syschronous:<br>  Use HTTP protocol to make a HTTP request from one microservice to another one.</li>
-<li>Asynchronous:<br>  Use message brocker for asynchronous communication between multiple microservices, for example <strong>RabbitMQ</strong>, <strong>Apacha Kafka</strong> etc.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Examples-of-Microservices-project-key-component"><a href="#Examples-of-Microservices-project-key-component" class="headerlink" title="Examples of Microservices project key component"></a>Examples of Microservices project key component</h2><ul>
-<li><p><strong>API Gateway</strong><br> An API Gateway is an API management tool that sits between a client and collection of backend services, it acts as a reverse proxy to accept all API calls, aggregate the vatious services required to fulfill them, and return the appropriate result.</p>
-</li>
-<li><p><strong>Service Registry</strong><br> A Service Registry is a database for the storage of data structures for application level communication. It serves as a central location where app developers can register and find the schemas used for particular apps.</p>
-</li>
-<li><p>They works like:<br> Client -&gt; API Gateway -&gt; API Gateway discover microservice’s hostname and pory by using Service Registry -&gt; allow to that request to particular microservice</p>
-</li>
-<li><p><strong>Config Service</strong><br> It is one of the project under Microservices Project and is used for centralised external configuration for every Microservice.</p>
-</li>
-<li><p><strong>Distributed Tracing</strong><br> It tracing provides a connected view of related errors and transactions by capturing the interactions between software sysrems. Tracing allows Sentry to track your software performance and show the impact of errors across multiple systems. Connect your front-end to your back-end through service trace issues. Enable performance monitoring to augment your existing error data, tracking interactions from front-end to back-end.</p>
-</li>
-<li><p><strong>Circuit breaker pattern</strong><br> It handles faults that might take a variable amount of time to recover from, when connecting to a remote service or resource. This can improve the stability and resilency of an application.</p>
-</li>
-</ul>
-<h2 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h2><ul>
-<li>It basically provides the tools to implement those commonly used patterns in a microservices project(e.g. configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus). It allows us to quickly build a Microservices Project environment.</li>
-<li>And also it allows us to quickly add a new microservice into our Microservice Project, to ease build the environment.</li>
-</ul>
-
+		<h2 id="Why-do-we-use-Microservices"><a href="#Why-do-we-use-Microservices" class="headerlink" title="Why do we use Microservices"></a>Why do we use Microservices</h2>
+		<p><a class="article__read-more-link" href="/2023/02/15/Microservices/">...read more</a></p>
 	
 
 	
@@ -146,24 +94,8 @@
 	
 
 	
-		<span id="more"></span>
-
-
-<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><ul>
-<li><p>In real-world application like e-commerce, when the client solicited a order with wrong payment, there is necessary to use @Transactional to rollback. Because it doesn’t make sense to keep all the information in the database if payment is not available.</p>
-<ul>
-<li><p>At first create a simple Springboot REST api, is just a normal rest api, nothing special.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/simpleSpringBootRestApi.png" alt="simpleSpringBootRESTApi"><figcaption class="figure__caption">simpleSpringBootRESTApi</figcaption></figure></p>
-</li>
-<li><p>Then in the service implementation the workflow is: <strong>Save order details -&gt; Save payment details</strong>. If we don’t add @Transactional annotation even if the payment type is wrong it will be stored in our database the order without payment.</p>
-</li>
-<li><p>By adding @Transactional annotation, if payment failed for this order, then it won’t save in database, and the saved order will get rool back.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/orderServiceImpl.png" alt="orderServiceImpl"><figcaption class="figure__caption">orderServiceImpl</figcaption></figure></p>
-</li>
-<li><p>We don’t have to use @EnableTransactionManagement in the main class, because whenever we use @Transactional annotation in SpringBoot Application the Spting boot by default enable transaction management.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/mainClass.png" alt="mainClass"><figcaption class="figure__caption">mainClass</figcaption></figure></p>
-</li>
-</ul>
-</li>
-</ul>
-
+		<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2>
+		<p><a class="article__read-more-link" href="/2023/02/14/Spring-Boot-Transactional-Demo/">...read more</a></p>
 	
 
 	
@@ -186,20 +118,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Customized-query-for-ProductRepository"><a href="#Customized-query-for-ProductRepository" class="headerlink" title="Customized query for ProductRepository"></a>Customized query for ProductRepository</h2><ul>
-<li>In the ProductRepository simply add a customized query by using the annotation <strong>@Query</strong>, then we can add the query we want as an attribute in it. Instead of using <strong>products</strong> table at here we use the Entity name <strong>Product</strong>, then we can pass the parameter from request in it too.<br> <figure class="figure"><img src="/../images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png" alt="custimiedQueryForSearchProducts"><figcaption class="figure__caption">custimiedQueryForSearchProducts</figcaption></figure></li>
-</ul>
-<h2 id="Product-Entity"><a href="#Product-Entity" class="headerlink" title="Product Entity"></a>Product Entity</h2><ul>
-<li>SKU stands for Stock Keeping Unit.</li>
-<li>In the Entity we implement 2 new annotations:<ol>
-<li><strong>@CreationTimestamp</strong>: whenever we save a entity, hibernate will automatically assign the timestamp for the property.</li>
-<li><strong>@UpdateTimestamp</strong>: whenever we update a entity, hibernate will automatically assign the value for the property.<br> <figure class="figure"><img src="/../images/blogRestApi/searchApplicaton/productEntity.png" alt="productEntity"><figcaption class="figure__caption">productEntity</figcaption></figure></li>
-</ol>
-</li>
-</ul>
-<h3 id="The-rest-are-ordinary-springboot-application-codes-nothing-new"><a href="#The-rest-are-ordinary-springboot-application-codes-nothing-new" class="headerlink" title="The rest are ordinary springboot application codes, nothing new."></a>The rest are ordinary springboot application codes, nothing new.</h3>
+		<h2 id="Customized-query-for-ProductRepository"><a href="#Customized-query-for-ProductRepository" class="headerlink" title="Customized query for ProductRepository"></a>Customized query for ProductRepository</h2>
+		<p><a class="article__read-more-link" href="/2023/02/13/Spring-Boot-Api-Search-app/">...read more</a></p>
 	
 
 	
@@ -222,44 +142,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h2><ul>
-<li>Docker is an open source platform that enables developers to build, deploy, run, update and manage containers-standardized, executable components that combine application source code with the operating system libraries and dependencies required to run that code in any environment.</li>
-</ul>
-<h2 id="Most-commonly-used-Docker-command"><a href="#Most-commonly-used-Docker-command" class="headerlink" title="Most commonly used Docker command"></a>Most commonly used Docker command</h2><ul>
-<li><em>-t</em>: tag</li>
-<li><em>.</em>: the Dockerfile is present within a current directory</li>
-<li><em>-p</em>: port</li>
-<li><em>-p 8081:8080</em>: 8081 is the port on local machine, 8080 is the port on Docker container. We use 8081 to run Application and it will run on the port 8080 of Docker container</li>
-<li><em>-d</em> Detached mode</li>
-<li>On Detached mode means that a Docker container runs in the background of your terminal</li>
-<li><em>-f</em> filter</li>
-<li>DRIVER type bridge: many containers can communicate with each other</li>
-<li><em>–name</em>: container name</li>
-<li><em>–network</em>: network name<br> <em>-e</em>: environment<br> -&gt; To build Docker image: <strong>docker build -t [ApplicationName] .</strong><br> -&gt; Check Docker images: <strong>docker images</strong><br> -&gt; Customize tag name: <strong>docker build -t [ApplicationName]:[tagName]</strong><br> -&gt; Run Docker image on container: <strong>docker run -p 8081:8080 [ApplicationName]</strong><br> -&gt; <strong>CTRL + C</strong> to stop the Docker container<br> -&gt; To check running containers: <strong>docker ps</strong><br> -&gt; Run Docker image on Detached mode: <strong>docker run -p 8081:8080 -d [ApplicationName]</strong><br> -&gt; To show logs of running Docker container: <strong>docker logs -f [DockerId]</strong><br> -&gt; Use Docker command to stop the container what is running on detached mode: <strong>docker stop [DockerId]</strong><br> -&gt; Login Docker account on terminal: <strong>docker login</strong><br> -&gt; Create Docker repository on DockerHub: <strong>docker tag [LocalDockerContainerRepositoryName] [DockerHubUserId/DockerHubRepositrotyName]:[TagName]</strong><br> -&gt; Push Docker image to DockerHub: <strong>docker push [LocalDockerContainerRepositoryName]:[LocalTagName]</strong><br> -&gt; Pull docker image from DockerHub: <strong>docker pull [DockerHubUserId/DockerHubRepositoryName]:[DockerHubImageTag]</strong><br> -&gt; Create new network: <strong>docker network create [CustomizedNetworkName]</strong><br> -&gt; Check all Docker networks: <strong>docker network ls</strong><br> -&gt; Run a docker container on network place: <strong>docker run –name [DockerContainerName] –network [DockernetworkName]</strong><br> -&gt; Give a bash in a Docker container: <strong>docker exec -it [first4LengthOfContainerId] bash</strong><br> -&gt; Docker command to run Docker compose: <strong>docker-compose up -d –build</strong></li>
-</ul>
-<h3 id="Dockerize-a-Springboot-Application"><a href="#Dockerize-a-Springboot-Application" class="headerlink" title="Dockerize a Springboot Application"></a>Dockerize a Springboot Application</h3><ul>
-<li><p>Create and define <strong>Dockerfile</strong>:<br> -&gt; Create <strong>Dockerfile</strong> in the application<br> <figure class="figure"><img src="/../images/blogRestApi/dockerizeSpringbootApplication/dockerfile.png" alt="dockerfile"><figcaption class="figure__caption">dockerfile</figcaption></figure><br> -&gt; Use Maven to build <strong>JAR</strong> file<br> <figure class="figure"><img src="/../images/blogRestApi/dockerizeSpringbootApplication/mavenBuildJarFile.png" alt="mavenBuildJar"><figcaption class="figure__caption">mavenBuildJar</figcaption></figure><br> -&gt; Define <strong>Dockerfile</strong>:<br> - <em>FROM</em>: define base image<br> - <em>LABEL</em>: define mantainer<br> - <em>WORKDIR</em>: define working directory, whenever deploy a Docker image, this directory will be created in a Docker container<br> - <em>COPY</em>: to copy our jar file into the directory in a container<br> - <em>ENTRYPOINT</em>: to start the jar file in a Docker container<br> <figure class="figure"><img src="/../images/blogRestApi/dockerizeSpringbootApplication/defineDockerfile.png" alt="defineDockerfile"><figcaption class="figure__caption">defineDockerfile</figcaption></figure></p>
-</li>
-<li><p>Use that <strong>Dockerfile</strong> to build Docker image:<br> -&gt; Open a terminal at level of the application<br> -&gt; To build Docker image by using command: <strong>docker build -t [ApplicationName] .</strong><br> -&gt; Customize tag name: <strong>docker build -t [ApplicationName]:[tagName]</strong><br> -&gt; Open <strong>Docker Desktop</strong> to allow the Docker image can run on it<br> -&gt; To run the Docker image on Docker container by using the command: <strong>docker run -p 8081:8080 [ApplicationName]</strong></p>
-</li>
-<li><p>Run Docker container on <strong>Detached mode</strong><br> -&gt; Run docker image on Detached mode: <strong>docker run -p 8081:8080 -d [ApplicationName]</strong><br> -&gt; To show logs of running Docker container: <strong>docker logs -f [DockerId]</strong><br> -&gt; Can’s stop the container by using <strong>CTRL + C</strong>, because it is running on the back ground<br> -&gt; Use Docker command to stop the container: <strong>docker stop [DockerId]</strong></p>
-</li>
-</ul>
-<h3 id="Push-Docker-Image-to-DockerHub"><a href="#Push-Docker-Image-to-DockerHub" class="headerlink" title="Push Docker Image to DockerHub"></a>Push Docker Image to DockerHub</h3><ul>
-<li>DockerHub is a plece where we can store Docker images as a cloud repository<br> -&gt; Create DockerHub account<br> -&gt; Login Docker account on terminal by using command: <strong>docker login</strong><br> -&gt; Pass your DockerHub id and password<br> -&gt; Create Docker repository on DockerHub: <strong>docker tag [LocalDockerContainerRepositoryName] [DockerHubUserId/DockerHubRepositrotyName]:[TagName]</strong><br> -&gt; Push Docker image to DockerHub: <strong>docker push [LocalDockerContainerRepositoryName]:[LocalTagName]</strong></li>
-</ul>
-<h3 id="Pull-Docker-image-from-DockerHub"><a href="#Pull-Docker-image-from-DockerHub" class="headerlink" title="Pull Docker image from DockerHub"></a>Pull Docker image from DockerHub</h3><ul>
-<li>We can pull any docker image from DockerHub even if it’s not ours<br> -&gt; Pull docker image from DockerHub: <strong>docker pull [DockerHubUserId/DockerHubRepositoryName]:[DockerHubImageTag]</strong></li>
-</ul>
-<h3 id="Run-multiple-containers-in-one-network-and-run-a-MySQL-database-on-Docker-container-with-Springboot-application"><a href="#Run-multiple-containers-in-one-network-and-run-a-MySQL-database-on-Docker-container-with-Springboot-application" class="headerlink" title="Run multiple containers in one network, and run a MySQL database on Docker container with Springboot application"></a>Run multiple containers in one <strong>network</strong>, and run a MySQL database on Docker container with Springboot application</h3><ul>
-<li>If we want to communicate many applications we have to run their containers on the same network<br>-&gt; Create new network: <strong>docker network create [CustomizedNetworkName]</strong><br>-&gt; Run a mysql docker container on network place: <strong>docker run –name [DockerContainerName] –network [DockernetworkName] -e MYSQL_ROOT_PASSWORD&#x3D;[password] -e MYSQL_DATABASE&#x3D;[badataseName] -d mysql</strong><br>-&gt; Create application.yml file with the properties of the mysql docker container:<br>   <figure class="figure"><img src="/../images/blogRestApi/dockerizeSpringbootApplication/applicationDocker_yml.png" alt="applicationDocker_yml"><figcaption class="figure__caption">applicationDocker_yml</figcaption></figure><br>-&gt; Run springboot application docker container on network place: <strong>docker run –name [DockerContainerName] –network [DockernetworkName] -p [port:port] [dockerImageName]</strong></li>
-</ul>
-<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h3><ul>
-<li>By implementing Docker compose we can define and start multi container Docker applications by one step.<br>-&gt; Create <strong>docker-compose.yml</strong> file in springboot application to configure Docker compose<br>   <figure class="figure"><img src="/../images/blogRestApi/dockerizeSpringbootApplication/dockerComposeYml.png" alt="dockerComposeYml"><figcaption class="figure__caption">dockerComposeYml</figcaption></figure><br>-&gt; Use Docker command to run Docker compose: <strong>docker-compose up -d –build</strong></li>
-</ul>
-
+		<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h2>
+		<p><a class="article__read-more-link" href="/2023/02/11/Docker-and-Dockerize-a-Springboot-Application/">...read more</a></p>
 	
 
 	
@@ -282,40 +166,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud"><a href="#For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud" class="headerlink" title="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud."></a>For real-world project is necessary to deploy the application on cloud or service, so we are introducing <strong>AWS Cloud</strong> here. At here we have to deploy the <em>Spring Boot Blog App</em> and <em>MySQL</em> on cloud.</h2><h3 id="As-a-Java-developer-we-at-least-have-to-know-5-AWS-services"><a href="#As-a-Java-developer-we-at-least-have-to-know-5-AWS-services" class="headerlink" title="As a Java developer we at least have to know 5 AWS services:"></a>As a Java developer we at least have to know 5 AWS services:</h3><pre><code>- AWS EC2: Elastic Computer Cloud
-- AWS Elastic Beanstalk Service
-- AWS RDS: Relational Database Service
-- AWS S3: Simple Storage Service
-- AWS Route 53
-</code></pre>
-<ul>
-<li><p><strong>AWS EC2</strong><br> It provides scalable computing capacity in the AWS cloud leveraging, it enables organizations to develop and deploy applications faster, without needing to invest in hardware upfront. Users can launch virtual servers configure security and networking, and manage cookies from an intuitive dashboard.</p>
-</li>
-<li><p><strong>AWS Elastic Beanstalk Service</strong><br> It can deploy web applications.</p>
-</li>
-<li><p><strong>AWS RDS</strong><br> It’s a managed SQL database service provided by Amazon Web Service. Amazon RDS supports an array of database engines to store and organize data. It also helps with relational database management tasks, such as data migration, backup, recovery and patching.</p>
-</li>
-<li><p><strong>AWS S3</strong><br> It’s a program that’s build to store, protect and retrieve data from “buckets” at any time from anywhere on any device. Organizations of any size in any industry can use this service. Use cases include websites, mobile apps, archiving, data backups and restorations, IoT devices, enterprice application storage, and providing the underlying storage layer for your data lake.</p>
-</li>
-<li><p><strong>AWS Route 53</strong><br> It’s highly available and scalable <em>Domain Name System (DNS)</em> web service. Route 53 connects users requests to internet applications running on AWS or on-premises.</p>
-</li>
-</ul>
-<h3 id="How-do-these-5-services-work"><a href="#How-do-these-5-services-work" class="headerlink" title="How do these 5 services work:"></a>How do these 5 services work:</h3><ul>
-<li><strong>Elastic Beanstalk</strong> will create <strong>EC2</strong> service for us. <strong>EC2</strong> provides a virtual server instance, install Java, tomcat… on top of it, and also the application will run on it.</li>
-<li><strong>Elastic Beanstalk</strong> will create <strong>S3 Bucket</strong> to upload JAR file or WAR file on AWS cloud, and store all the uploaded code in <strong>S3 Bucket</strong>.</li>
-<li><strong>Elastic Beanstalk</strong> will connect <strong>RDS</strong> to set up MySQL database on cloud.</li>
-<li>Use <strong>Route 53</strong> to configure a domain for our application, when client access the web(e.g. <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a>) will look for data in <strong>S3 Bucket</strong>.</li>
-</ul>
-<h3 id="Deploy-MySQL-database-to-AWS-RDS"><a href="#Deploy-MySQL-database-to-AWS-RDS" class="headerlink" title="Deploy MySQL database to AWS RDS"></a>Deploy MySQL database to <strong>AWS RDS</strong></h3><p>   -&gt; Select RDS of AWS<br>   -&gt; Create database<br>   -&gt; Standard create<br>   -&gt; Engine options: MySQL<br>   -&gt; Templates: Free tier<br>   -&gt; Settings: DB cluster identifier, Master username and password<br>   -&gt; Public access: Yes<br>   -&gt; Create database<br>   -&gt; DB Identifier<br>   -&gt; Security: default<br>   -&gt; Security group ID<br>   -&gt; Edit inbound rules<br>   -&gt; Type: MySQL&#x2F;Aurora<br>   -&gt; Source: Anywhere-IPv4<br>   -&gt; Save rules</p>
-<h3 id="Use-MySQL-Workbench-to-connect-AWS-MySQL-Database"><a href="#Use-MySQL-Workbench-to-connect-AWS-MySQL-Database" class="headerlink" title="Use MySQL Workbench to connect AWS MySQL Database"></a>Use MySQL Workbench to connect AWS MySQL Database</h3><p>   -&gt; Passing the Endpoint from RDS<br>   <figure class="figure"><img src="/../images/blogRestApi/deployToAWS/endpoint.png" alt="endpoint"><figcaption class="figure__caption">endpoint</figcaption></figure><br>   -&gt; To MySQL Workbench, to connect woth AWS RDS<br>   <figure class="figure"><img src="/../images/blogRestApi/deployToAWS/useMySQLWorkbenchToConnectAWSRDS.png" alt="useMySQLWorkbenchToConnectAWSRDS"><figcaption class="figure__caption">useMySQLWorkbenchToConnectAWSRDS</figcaption></figure><br>   -&gt; Insert manualy the <strong>ROLE_ADMIN</strong> and <strong>ROLE_USER</strong> to deployed database<br>   <figure class="figure"><img src="/../images/blogRestApi/deployToAWS/insertRoles.png" alt="insertRoles"><figcaption class="figure__caption">insertRoles</figcaption></figure></p>
-<h3 id="Application-yml"><a href="#Application-yml" class="headerlink" title="Application.yml"></a>Application.yml</h3><ul>
-<li>In production we need several environment for production, debelopment, QA etc… For that we have to create multiple application.yml configuration for our app by extends -prod, - dev, -qa.</li>
-<li>Use spring.profiles.active&#x3D;prod to use application-prod.yml configuration, at there we have to configurate url <strong>the endpoint</strong> instead of localhost.<br>   <figure class="figure"><img src="/../images/blogRestApi/deployToAWS/application-prod.png" alt="application-prod"><figcaption class="figure__caption">application-prod</figcaption></figure></li>
-</ul>
-<h3 id="Deploy-Springboot-blog-application-to-AWS-using-Elastic-Beanstalk"><a href="#Deploy-Springboot-blog-application-to-AWS-using-Elastic-Beanstalk" class="headerlink" title="Deploy Springboot blog application to AWS using Elastic Beanstalk"></a>Deploy Springboot blog application to AWS using Elastic Beanstalk</h3><p>   -&gt; Create <strong>JAR</strong> file by using Maven, select <em>clean</em> and <em>install</em> of Lifecycle, then click <em>Run Maven Build</em><br>      <figure class="figure"><img src="/../images/blogRestApi/deployToAWS/createJARFile.png" alt="createJARFile"><figcaption class="figure__caption">createJARFile</figcaption></figure><br>   -&gt; Generate <strong>JAR</strong> file in target dir<br>   -&gt; Elastic Beanstalk<br>   -&gt; Create application<br>   -&gt; Fill application name<br>   -&gt; Platform: Java<br>   -&gt; Application code: Upload your code<br>   -&gt; Choose file: created <strong>JAR</strong> file<br>      Behind the scenes <strong>Elastic Beanstalk</strong> will create <strong>S3 Bucket</strong> to upload the file<br>   -&gt; Configure more option: private MySQL Database username and password<br>   -&gt; Database: edit<br>      Fetching <strong>RDS</strong> configuration options<br>   -&gt; Provide username and password<br>   -&gt; Save<br>   -&gt; Create app<br>      <strong>Elastic Beanstalk</strong> will create environment for us to deploy our application, we have to wait a few minutes.<br>      Once finished the processo, <strong>AWS Elastic Beanstalk</strong> will provide us a domain to access application instead of using localhost</p>
-
+		<h2 id="For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud"><a href="#For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud" class="headerlink" title="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud."></a>For real-world project is necessary to deploy the application on cloud or service, so we are introducing <strong>AWS Cloud</strong> here. At here we have to deploy the <em>Spring Boot Blog App</em> and <em>MySQL</em> on cloud.</h2>
+		<p><a class="article__read-more-link" href="/2023/02/08/Deploy-Spring-Boot-Bloog-App-on-AWS-Cloud/">...read more</a></p>
 	
 
 	
@@ -338,42 +190,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="Why-do-we-need-to-versioning-REST-APIs"><a href="#Why-do-we-need-to-versioning-REST-APIs" class="headerlink" title="Why do we need to versioning REST APIs"></a>Why do we need to versioning REST APIs</h2><ul>
-<li><p>Consider we have deployed our API application on cloud or some server, and there are different clients who are consuming it, for example: Android application, web application etc. So there are different clients who are consuming the same API. If we made some changes in future API, they may have issues with the version, to avoid this kind of issues we usually will create multiple varsion for them.</p>
-</li>
-<li><p>There are 4 ways of versioning a REST APIs:</p>
-<ul>
-<li><strong>URI path</strong></li>
-<li><strong>Query parameters</strong></li>
-<li><strong>Custom headers</strong></li>
-<li><strong>Content negotiation</strong></li>
-</ul>
-</li>
-<li><p>APIs only need to be up-versioned when a breaking change is made:</p>
-<ul>
-<li>Changing the request&#x2F;response format(e.g. from XML to JSON)</li>
-<li>Changeing a property name(e.g. from name to productName) or data type on a property(e.g. from an interger to a float)</li>
-<li>Adding a required field on the request(e.g. new required header or property in a request body)</li>
-<li>Removing a property on the response(e.g. removing description from a product)</li>
-</ul>
-</li>
-</ul>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ul>
-<li><p>Create a example Dto to simulate changes<br> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/postDtoV2.png" alt="postDtoV2"><figcaption class="figure__caption">postDtoV2</figcaption></figure></p>
-</li>
-<li><p>Versioning with <strong>URI path</strong>, Real-world examples: Twitter, Pay pal, Google etc…<br> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithURIPath.png" alt="versioningWithURIPath"><figcaption class="figure__caption">versioningWithURIPath</figcaption></figure></p>
-</li>
-<li><p>Versioning with <strong>Parameters</strong><br> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithParameters.png" alt="versioningWithParameters"><figcaption class="figure__caption">versioningWithParameters</figcaption></figure></p>
-</li>
-<li><p>Versioning with <strong>Custom headers</strong><br> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithCustomHeaders.png" alt="versioningWithCustomHeaders"><figcaption class="figure__caption">versioningWithCustomHeaders</figcaption></figure></p>
-</li>
-<li><p>Versioning with <strong>Content Negotiation</strong><br> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/versioningWithContentNegotiation.png" alt="versioningWithContentNegotiation"><figcaption class="figure__caption">versioningWithContentNegotiation</figcaption></figure></p>
-</li>
-</ul>
-<h2 id="We-also-have-to-add-version-to-our-security-config-to-prevent-other-versions-from-running"><a href="#We-also-have-to-add-version-to-our-security-config-to-prevent-other-versions-from-running" class="headerlink" title="We also have to add version to our security config, to prevent other versions from running"></a>We also have to add version to our security config, to prevent other versions from running</h2><p> <figure class="figure"><img src="/../images/blogRestApi/versioningRESTAPIs/addingVersionInSecurityConfig.png" alt="addingVersionInSecurityConfig"><figcaption class="figure__caption">addingVersionInSecurityConfig</figcaption></figure></p>
-
+		<h2 id="Why-do-we-need-to-versioning-REST-APIs"><a href="#Why-do-we-need-to-versioning-REST-APIs" class="headerlink" title="Why do we need to versioning REST APIs"></a>Why do we need to versioning REST APIs</h2>
+		<p><a class="article__read-more-link" href="/2023/02/08/Versioning-REST-APIs/">...read more</a></p>
 	
 
 	
@@ -396,30 +214,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2><ul>
-<li><p>At first create <strong>Category, CategoryRepository, CategoryService, CategoryServiceImpl, CategoryDto, CategoryResponse and CategoryController</strong>, very simple.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addCategoryToOurApplicationToManagerPosts.png" alt="addCategoryToOurApplicationToManagerPosts"><figcaption class="figure__caption">addCategoryToOurApplicationToManagerPosts</figcaption></figure></p>
-</li>
-<li><p>The only different thing we have to change it is to make <em>Category and Post</em> one to many relationship with adding <em>@OneToMany int Category at postsList</em>, <em>and @ManyToOne in Post at category</em>.</p>
-<p> Add posts list to <strong>Category</strong> to relation them:<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addPostsListToCategory.png" alt="addPostsListToCategory"><figcaption class="figure__caption">addPostsListToCategory</figcaption></figure></p>
-<p> Add category to <strong>Post</strong> to relation them:<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addCategoryFiledInPostEntity.png" alt="addCategoryFiledInPost"><figcaption class="figure__caption">addCategoryFiledInPost</figcaption></figure></p>
-</li>
-</ul>
-<h2 id="New-let’s-start-change-a-big-of-code-to-our-post"><a href="#New-let’s-start-change-a-big-of-code-to-our-post" class="headerlink" title="New let’s start change a big of code to our post."></a>New let’s start change a big of code to our post.</h2><ul>
-<li><p>Add categoryId filed in <strong>PostDto</strong> to use it to find the matched category.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addCategoryIdFiledInPostDto.png" alt="addCategoryIdFiledInPostDto"><figcaption class="figure__caption">addCategoryIdFiledInPostDto</figcaption></figure></p>
-</li>
-<li><p>Customize the method to find posts by category id in <strong>PostRepository</strong>, it returns a List of posts with the categoryId.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/customizeNewMethodInPostRepository.png" alt="customizeNewMethodInPostRepository"><figcaption class="figure__caption">customizeNewMethodInPostRepository</figcaption></figure></p>
-</li>
-<li><p><strong>PostService</strong>.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addNewMethodInPostServiceInterface.png" alt="postService"><figcaption class="figure__caption">postService</figcaption></figure></p>
-</li>
-<li><p>Modify 3 method in <strong>PostServiceImpl</strong>. <em>Create</em> a post with a category, <em>update</em> a post to make it possible to update the category and <em>get</em> the posts by the passing category’s id.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/postServiceImpl.png" alt="postServiceImpl"><figcaption class="figure__caption">postServiceImpl</figcaption></figure></p>
-</li>
-</ul>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
-<li>Very simple change to our codes, but it can make the application more organizable.</li>
-</ul>
-
+		<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2>
+		<p><a class="article__read-more-link" href="/2023/02/07/Categorize-posts-Category-Management/">...read more</a></p>
 	
 
 	
@@ -442,58 +238,8 @@
 	
 
 	
-		<span id="more"></span>
-
-
-<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
-<li><p>At first it is necessary to add <strong>3 JWT related Macen dependencies: jjwt-imp, jjwt-ap and jjwt-jackson</strong> to our pom.xml<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/3Dependencies.png" alt="3JwtDependencies"><figcaption class="figure__caption">3JwtDependencies</figcaption></figure></p>
-</li>
-<li><p>Create JwtAuthenticationEntryPoint to throw 401 to the client, at first add the <strong>@Component</strong> to make it a <strong>Spring Bean</strong>, this is invoked when user tires to access a secured REST resource without supplying any credentials, we should just send a 401 Unauthorized response because there is no “login page” to redirect. This class is implementing AuthenticationEntryPoint, so it allows us to override the <strong>commence(HttpServletRequest request,HttpServletResponse response,AuthenticationException authException)</strong> method to response customized status and message.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationEntryPoint.png" alt="jwtAuthenticationEntryPoint"><figcaption class="figure__caption">jwtAuthenticationEntryPoint</figcaption></figure></p>
-</li>
-<li><p>Add the jwt.secret and jwt.expireTime to our application.yml, it is necessary because we have to use them to create our JWT token, we encoded the secret key by use <a target="_blank" rel="noopener" href="https://emn178.github.io/online-tools/sha256.html">SHA256</a> before pass it into there, and set a expire time for the JWT token.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/addPropertiesToApplication_yml.png" alt="application_yml"><figcaption class="figure__caption">application_yml</figcaption></figure></p>
-</li>
-<li><p>Create a <strong>JwtTokenProvider</strong> to provide the token, at first annotate it <strong>@Component</strong> to make it as <strong>Spring Bean</strong>, there are 3 public method and 1 private method in it: <strong>generateJwtToken(Authentication authentication), getUsernameOrEmailFromJwtToken(String token), validateJwtToken(String token) and decodeJwtSecret()</strong>. Before all it is necessary to fetch the values we defined in <strong>applivation.yml by using the @Value(${field}) annotation</strong>.</p>
-<ul>
-<li><p><strong>generateJwtToken(Authentication authentication)</strong>, it expect an authentication parameter that the user passed in the <strong>log-in</strong> method. Then we can get the usernameOrEmail from it, and also have to create the currente date and the expiration date to generate the JWT token, at last return it by using Jwts.builder() to setSubject(usernameOrEmail), setIssueAt(new Date()), setExpiration(expireDate), before to use the compact() method we have to sign it with the creat key by using the <strong>decodeJwtSecret() method</strong> to decode our encoded secret key from application.yml.</p>
-</li>
-<li><p><strong>getUsernameOrEmailFromJwtToken(String token)</strong> pass the token as parameter into it. At first convert this token to <strong>Claims class object</strong> by giving <strong>the decoded JWT secret key</strong> and <strong>the token that what we are passing as parameter</strong>, then return the usernameOrEmail by getting the subject from this Claims class object.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtProviderGenerateAndGet.png" alt="jwtProvicerGenerateAndGet"><figcaption class="figure__caption">jwtProvicerGenerateAndGet</figcaption></figure></p>
-</li>
-<li><p><strong>validateJwtToken(String token)</strong> to validate the parameter token and return a boolean. At here we use the try-catch block to <strong>throw BlogAPIException and give it a customized message</strong>, before the catch block we try to validate the token by using <strong>Jwts.parserBuilder</strong> pass the decoded JWT secret and the paramater token in it, if it works then return true.</p>
-</li>
-<li><p><strong>decodeJwtSecret</strong> to decode the JWT secret what we are fetching from application.yml, because we have a encoded JWT secret there, this is a privade method to use in the class.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtProviderValidateAndDecode.png" alt="jwtProviderValidateAndDecode"><figcaption class="figure__caption">jwtProviderValidateAndDecode</figcaption></figure></p>
-</li>
-</ul>
-</li>
-<li><p><strong>JwtAuthenticationFilter</strong> class to extend <strong>OncePerRequestFilter</strong> and override the class method to do the filter per request, on any servlet container. At first add the <strong>@Component</strong> to make it a <strong>Spring Bean</strong>, then we have to inject <strong>JwtTokenProvider and the interface UserDetailsService</strong>, in this class we have the overrided method and a private method.</p>
-<ul>
-<li><strong>getJwtTokenFromHttpServletRequest</strong> private mathod, it expect a HttpServletRequest parameter what we are passing from <strong>doFilterInternal</strong> method. At first get the token from the <strong>HttpServletRequest’s header</strong>, there are a few key-values set and what we want is the “Authorization”, it contains the token. Then make sure that the token is not null and it has “Bearer “ prefix then return the token without prefix by using the substring() method.</li>
-<li><strong>doFilterInternal</strong> to execute once per request. We can get the JwtToken from <strong>HttpServletRequest’s header</strong> that we talked in previous point, it returns the token we want to use in this method. Make sure that this token is not null and use the <strong>validateJwtToken() method of JwtTokenProvider</strong> to validate this token by passing it as parameter. Fetch the usernameOrEmail by using the <strong>getUsernameOrEmailFromJwtToken() method of JwtTokenProvider</strong>. Use the <strong>loadUserByUsername() of UserdetailsService interface that we implemented in our CustomUserDetailsService class</strong> to load user from database, and it returns a <strong>UserDetails class object</strong>. Then create <strong>UsernamePasswordAuthenticationToken class object</strong> by passing 3 parameters: the UserDetails class object what we created in previous step, it contains creadentials like username and password, then at second parameter pass a null because it expect a creadentials but we are already passed it with the first parameter, and get the set of authorities like [“USER”,”ADMIN”]. Add <strong>HttpServletRequest class object</strong> to this authentication token, by using setDetails(), it expect a <strong>WebAuthenticationDetails</strong>, we can get it by building it with <strong>HttpServletRequest class object</strong>. After finish all we have to set the token to <strong>SecurityContextHolder.getContext().setAuthentication()</strong> by pass the created token. At last call doFilter method of the filterChain object to pass request and response.<br><figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationFilter.png" alt="jwtAuthenticationFilter"><figcaption class="figure__caption">jwtAuthenticationFilter</figcaption></figure></li>
-</ul>
-</li>
-<li><p>Create <strong>JwtAuthResponseDto</strong> to transfer the token between service and client.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtAuthResponseDto.png" alt="jwtAuthResponseDto"><figcaption class="figure__caption">jwtAuthResponseDto</figcaption></figure></p>
-</li>
-<li><p>We have to change a bit our <strong>SecurityConfig</strong> to make the JWT system works. Inject <strong>JwtAuthenticationEntryPoint and JwtAuthenticationFilter</strong> in it. Then we change a bit our <strong>securityFilterChain method</strong>: </p>
-<ol>
-<li>Below http.csrf().disable add exceptionHandling by passing our <strong>jwtAuthenticationEntryPoint</strong> with lambda expresion, it will execute whenever an unauthorized user tries to access the protected resource.</li>
-<li>As the same with sessionManagement, JWT is a stateless authentication, so let’s configure session management to make this SessionCreationPolicy.STATELESS.<br> At last we want to execut our JWT authentication filter before other spring security, so it is possible by using the method <strong>http.addFilterBefore()</strong>, there expect 2 parameters:</li>
-<li>The filter we want to execute before.</li>
-<li>The filter we want to execute after.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/securityConfigJwt.png" alt="securityConfigJwt"><figcaption class="figure__caption">securityConfigJwt</figcaption></figure></li>
-</ol>
-</li>
-<li><p>Change Loing API to return JWT token by using the <strong>generateJwtToken()</strong> method  we created in the <strong>JwtTokenProvider class</strong> and pass the authentication in it. Inject <strong>JwtTokenProvider</strong> and just use the <strong>generateJwtToken()</strong> method in login method by passing the <strong>Authentication class object</strong> we created with authenticationManager with <strong>usernameOrEmail and password</strong>, it will generate a JWT token then the only thing we have to do is return it back to the controller.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/authService.png" alt="authService"><figcaption class="figure__caption">authService</figcaption></figure></p>
-</li>
-<li><p>When we log-in with a user, can get a JwtAuthResponseDto including the token type and the token, then we can use this token in <strong>Authorization -&gt; Beare token</strong>,. In the endpoint we want to use if the user doesn’t have access then return 401 status back.<br> AuthController:<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/authController.png" alt="authController"><figcaption class="figure__caption">authController</figcaption></figure><br> Get Token by log-in:<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/showTokenOnPostman.png" alt="getTokenOnPostman"><figcaption class="figure__caption">getTokenOnPostman</figcaption></figure><br> Passing the token in <strong>Authorization -&gt; Bearer Token</strong>:<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/passingTheTokenInAuthorization.png" alt="passingTheTokenInAuthorization"><figcaption class="figure__caption">passingTheTokenInAuthorization</figcaption></figure><br> Create post with token:<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/createPostWithToken.png" alt="createPostWithToken"><figcaption class="figure__caption">createPostWithToken</figcaption></figure><br> Try to create post without token:<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/return401backIfItIsNotAuthorized.png" alt="tryToCreatePostWithOutToken"><figcaption class="figure__caption">tryToCreatePostWithOutToken</figcaption></figure></p>
-</li>
-</ul>
-<h2 id="Hot-does-it-work"><a href="#Hot-does-it-work" class="headerlink" title="Hot does it work."></a>Hot does it work.</h2><ul>
-<li><p><strong>Client</strong> logged -&gt; <strong>AuthService</strong> -&gt; <strong>AuthServiceImpl</strong> -&gt; create authentication, set authentication to SecurityContextHolder -&gt; <strong>JwtTokenProvider</strong> -&gt; create JWT token by passing the authentication -&gt; return token to login method of <strong>AuthServiceImpl</strong> -&gt; return token to <strong>AuthService</strong> interface -&gt; <strong>AuthController</strong> -&gt; create the <em>JwtAuthResponseDto</em> class object and set the token -&gt; return this <em>JwtAuthResponseDto</em> class object to the <strong>client</strong></p>
-</li>
-<li><p><strong>Client</strong> no logged and try to access the endpoint -&gt; <strong>SecurityConfig</strong> -&gt; he can only use endpoint with GET method -&gt; if try to access endpoints with another methods -&gt; <strong>JwtAuthenticationEntryPoint</strong> -&gt; return a HttpServletResponse.SC_UNAUTHORIZED with a message back to the client as response.</p>
-</li>
-<li><p><strong>Client</strong> logged and try to access the endpoint with token -&gt; <strong>SecurityConfig</strong> -&gt; before other filter will do <strong>JwtAuthenticationFilter</strong> first -&gt; get token from <strong>FilterChain object</strong>, validate the token, fetch <em>usernameOrEmail</em> from token -&gt; <strong>UserDetailsService interface</strong> with parameter <em>usernameOrEmail</em> -&gt; <strong>CustomUserDetailsService</strong> with parameter <em>usernameOrEmail</em> -&gt; return an UserDetails class object by inserting <em>usernameOrPassword</em>, password and users authorities -&gt; <strong>UserDetailsService interface</strong> with UserDetails class object -&gt; <strong>JwtAuthenticationFilter</strong> -&gt; generate <em>UsernamePasswordAuthenticationToken</em> class object by using UserDetails class objec and users authorities -&gt; add request to this <em>UsernamePasswordAuthenticationToken class object</em> -&gt; set this <em>UsernamePasswordAuthenticationToken class object</em> to the security context holder(header) -&gt; <em>FilterChain class object</em> do the filter -&gt; his power depends on whether his identity corresponds to the identity in each controller.</p>
-</li>
-</ul>
-
+		<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2>
+		<p><a class="article__read-more-link" href="/2023/02/04/Implement-JWT-to-application/">...read more</a></p>
 	
 
 	
@@ -516,27 +262,8 @@
 	
 
 	
-		<span id="more"></span>
-
-<h2 id="What-is-JWT"><a href="#What-is-JWT" class="headerlink" title="What is JWT."></a>What is JWT.</h2><ul>
-<li>JWT stands for JSON WEB TOKEN, it is an open standard that defines a compact and self-contained way for securtly transmitting information between parties as a JSON object.</li>
-<li>It follows stateless authentication mechanism.</li>
-<li>It consist of three parts separated by <strong>.</strong>. They are header, payload and signature. <ul>
-<li>Header contains type of algorithm and type of the token.</li>
-<li>Payload contains information about the user.</li>
-<li>Signature is using the header, payload and secret key to generate signature with <strong>base64</strong>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="How-does-JWT-work"><a href="#How-does-JWT-work" class="headerlink" title="How does JWT work."></a>How does JWT work.</h2><ul>
-<li>Client pass the usename and password to validate.</li>
-<li>Once it is validated, on server will generate JWT using secret key.</li>
-<li>Return this JWT to client.</li>
-<li>Client have to use this JWT to call endpoint.</li>
-<li>On service will validate this JWT with secret key.</li>
-<li>If it passed then return the response.</li>
-</ul>
-
+		<h2 id="What-is-JWT"><a href="#What-is-JWT" class="headerlink" title="What is JWT."></a>What is JWT.</h2>
+		<p><a class="article__read-more-link" href="/2023/02/03/JWT/">...read more</a></p>
 	
 
 	
