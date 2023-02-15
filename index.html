@@ -82,7 +82,9 @@
 	
 
 	
-		<h2 id="Why-do-we-use-Microservices"><a href="#Why-do-we-use-Microservices" class="headerlink" title="Why do we use Microservices"></a>Why do we use Microservices</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Why-do-we-use-Microservices"><a href="#Why-do-we-use-Microservices" class="headerlink" title="Why do we use Microservices"></a>Why do we use Microservices</h2><ul>
 <li>Microservices Architecture enables large teams to build scalable applications that composed of many loosely coupled services. <ul>
 <li>For example a shopping cart application, there are many independent services like ProductService, InventoryService, StockService etc. And they are loosely coupled in microservices project, we call them microservice, each of them has it’s own database.</li>
 </ul>
@@ -144,7 +146,10 @@
 	
 
 	
-		<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><ul>
+		<span id="more"></span>
+
+
+<h2 id="Demos-of-Transactional-annotation"><a href="#Demos-of-Transactional-annotation" class="headerlink" title="Demos of @Transactional annotation"></a>Demos of @Transactional annotation</h2><ul>
 <li><p>In real-world application like e-commerce, when the client solicited a order with wrong payment, there is necessary to use @Transactional to rollback. Because it doesn’t make sense to keep all the information in the database if payment is not available.</p>
 <ul>
 <li><p>At first create a simple Springboot REST api, is just a normal rest api, nothing special.<br> <figure class="figure"><img src="/../images/blogRestApi/transactionalDemo/simpleSpringBootRestApi.png" alt="simpleSpringBootRESTApi"><figcaption class="figure__caption">simpleSpringBootRESTApi</figcaption></figure></p>
@@ -181,7 +186,9 @@
 	
 
 	
-		<h2 id="Customized-query-for-ProductRepository"><a href="#Customized-query-for-ProductRepository" class="headerlink" title="Customized query for ProductRepository"></a>Customized query for ProductRepository</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Customized-query-for-ProductRepository"><a href="#Customized-query-for-ProductRepository" class="headerlink" title="Customized query for ProductRepository"></a>Customized query for ProductRepository</h2><ul>
 <li>In the ProductRepository simply add a customized query by using the annotation <strong>@Query</strong>, then we can add the query we want as an attribute in it. Instead of using <strong>products</strong> table at here we use the Entity name <strong>Product</strong>, then we can pass the parameter from request in it too.<br> <figure class="figure"><img src="/../images/blogRestApi/searchApplicaton/customizeQueryForSearchProducts.png" alt="custimiedQueryForSearchProducts"><figcaption class="figure__caption">custimiedQueryForSearchProducts</figcaption></figure></li>
 </ul>
 <h2 id="Product-Entity"><a href="#Product-Entity" class="headerlink" title="Product Entity"></a>Product Entity</h2><ul>
@@ -215,7 +222,9 @@
 	
 
 	
-		<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h2><ul>
+		<span id="more"></span>
+
+<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h2><ul>
 <li>Docker is an open source platform that enables developers to build, deploy, run, update and manage containers-standardized, executable components that combine application source code with the operating system libraries and dependencies required to run that code in any environment.</li>
 </ul>
 <h2 id="Most-commonly-used-Docker-command"><a href="#Most-commonly-used-Docker-command" class="headerlink" title="Most commonly used Docker command"></a>Most commonly used Docker command</h2><ul>
@@ -273,7 +282,9 @@
 	
 
 	
-		<h2 id="For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud"><a href="#For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud" class="headerlink" title="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud."></a>For real-world project is necessary to deploy the application on cloud or service, so we are introducing <strong>AWS Cloud</strong> here. At here we have to deploy the <em>Spring Boot Blog App</em> and <em>MySQL</em> on cloud.</h2><h3 id="As-a-Java-developer-we-at-least-have-to-know-5-AWS-services"><a href="#As-a-Java-developer-we-at-least-have-to-know-5-AWS-services" class="headerlink" title="As a Java developer we at least have to know 5 AWS services:"></a>As a Java developer we at least have to know 5 AWS services:</h3><pre><code>- AWS EC2: Elastic Computer Cloud
+		<span id="more"></span>
+
+<h2 id="For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud"><a href="#For-real-world-project-is-necessary-to-deploy-the-application-on-cloud-or-service-so-we-are-introducing-AWS-Cloud-here-At-here-we-have-to-deploy-the-Spring-Boot-Blog-App-and-MySQL-on-cloud" class="headerlink" title="For real-world project is necessary to deploy the application on cloud or service, so we are introducing AWS Cloud here. At here we have to deploy the Spring Boot Blog App and MySQL on cloud."></a>For real-world project is necessary to deploy the application on cloud or service, so we are introducing <strong>AWS Cloud</strong> here. At here we have to deploy the <em>Spring Boot Blog App</em> and <em>MySQL</em> on cloud.</h2><h3 id="As-a-Java-developer-we-at-least-have-to-know-5-AWS-services"><a href="#As-a-Java-developer-we-at-least-have-to-know-5-AWS-services" class="headerlink" title="As a Java developer we at least have to know 5 AWS services:"></a>As a Java developer we at least have to know 5 AWS services:</h3><pre><code>- AWS EC2: Elastic Computer Cloud
 - AWS Elastic Beanstalk Service
 - AWS RDS: Relational Database Service
 - AWS S3: Simple Storage Service
@@ -327,7 +338,9 @@
 	
 
 	
-		<h2 id="Why-do-we-need-to-versioning-REST-APIs"><a href="#Why-do-we-need-to-versioning-REST-APIs" class="headerlink" title="Why do we need to versioning REST APIs"></a>Why do we need to versioning REST APIs</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Why-do-we-need-to-versioning-REST-APIs"><a href="#Why-do-we-need-to-versioning-REST-APIs" class="headerlink" title="Why do we need to versioning REST APIs"></a>Why do we need to versioning REST APIs</h2><ul>
 <li><p>Consider we have deployed our API application on cloud or some server, and there are different clients who are consuming it, for example: Android application, web application etc. So there are different clients who are consuming the same API. If we made some changes in future API, they may have issues with the version, to avoid this kind of issues we usually will create multiple varsion for them.</p>
 </li>
 <li><p>There are 4 ways of versioning a REST APIs:</p>
@@ -383,7 +396,9 @@
 	
 
 	
-		<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2><ul>
+		<span id="more"></span>
+
+<h2 id="To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them"><a href="#To-ornagized-our-posts-is-necessary-hence-we-are-going-to-create-new-entity-to-classify-them" class="headerlink" title="To ornagized our posts is necessary, hence we are going to create new entity to classify them."></a>To ornagized our posts is necessary, hence we are going to create new entity to classify them.</h2><ul>
 <li><p>At first create <strong>Category, CategoryRepository, CategoryService, CategoryServiceImpl, CategoryDto, CategoryResponse and CategoryController</strong>, very simple.<br> <figure class="figure"><img src="/../images/blogRestApi/categorizePost/addCategoryToOurApplicationToManagerPosts.png" alt="addCategoryToOurApplicationToManagerPosts"><figcaption class="figure__caption">addCategoryToOurApplicationToManagerPosts</figcaption></figure></p>
 </li>
 <li><p>The only different thing we have to change it is to make <em>Category and Post</em> one to many relationship with adding <em>@OneToMany int Category at postsList</em>, <em>and @ManyToOne in Post at category</em>.</p>
@@ -427,7 +442,10 @@
 	
 
 	
-		<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
+		<span id="more"></span>
+
+
+<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
 <li><p>At first it is necessary to add <strong>3 JWT related Macen dependencies: jjwt-imp, jjwt-ap and jjwt-jackson</strong> to our pom.xml<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/3Dependencies.png" alt="3JwtDependencies"><figcaption class="figure__caption">3JwtDependencies</figcaption></figure></p>
 </li>
 <li><p>Create JwtAuthenticationEntryPoint to throw 401 to the client, at first add the <strong>@Component</strong> to make it a <strong>Spring Bean</strong>, this is invoked when user tires to access a secured REST resource without supplying any credentials, we should just send a 401 Unauthorized response because there is no “login page” to redirect. This class is implementing AuthenticationEntryPoint, so it allows us to override the <strong>commence(HttpServletRequest request,HttpServletResponse response,AuthenticationException authException)</strong> method to response customized status and message.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationEntryPoint.png" alt="jwtAuthenticationEntryPoint"><figcaption class="figure__caption">jwtAuthenticationEntryPoint</figcaption></figure></p>
@@ -498,7 +516,9 @@
 	
 
 	
-		<h2 id="What-is-JWT"><a href="#What-is-JWT" class="headerlink" title="What is JWT."></a>What is JWT.</h2><ul>
+		<span id="more"></span>
+
+<h2 id="What-is-JWT"><a href="#What-is-JWT" class="headerlink" title="What is JWT."></a>What is JWT.</h2><ul>
 <li>JWT stands for JSON WEB TOKEN, it is an open standard that defines a compact and self-contained way for securtly transmitting information between parties as a JSON object.</li>
 <li>It follows stateless authentication mechanism.</li>
 <li>It consist of three parts separated by <strong>.</strong>. They are header, payload and signature. <ul>

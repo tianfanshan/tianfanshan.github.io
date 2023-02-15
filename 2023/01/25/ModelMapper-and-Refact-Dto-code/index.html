@@ -42,7 +42,9 @@
 	
 
 	
-		<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
 <li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
 <li>Add ModelMapper library dependency at our application:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"><figcaption class="figure__caption">addModelMapperLibraryDependency</figcaption></figure></li>
 <li>Define the ModelMapper bean in our Spring configuration:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"><figcaption class="figure__caption">defineModelMapperInsideSpringBootApplication</figcaption></figure></li>

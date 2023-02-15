@@ -48,7 +48,9 @@
 	
 
 	
-		<h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2><ul>
+		<span id="more"></span>
+
+<h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2><ul>
 <li><p><strong>LoginDto and RegisterDto</strong> to transfer the data between client and server, we only have to provide 2 fields, the user can login with username or email.<br> LoginDto:<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/loginDto.png" alt="loginDto"><figcaption class="figure__caption">loginDto</figcaption></figure><br> RegisterDto:<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/registerDto.png" alt="registerDto"><figcaption class="figure__caption">registerDto</figcaption></figure></p>
 </li>
 <li><p><strong>AuthService</strong> interface that we gonna to implement the methods of login, and also register.<br> <figure class="figure"><img src="/../images/blogRestApi/security/loginAndRegister/authServiceInterface.png" alt="authServiceInterface"><figcaption class="figure__caption">authServiceInterface</figcaption></figure></p>
@@ -85,7 +87,9 @@
 	
 
 	
-		<h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2><ul>
+		<span id="more"></span>
+
+<h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2><ul>
 <li><p>Create User and Role entity to generate tables in database, their’s association is <strong>@ManyToMany</strong>. But we only add this annotation in User, because it is a <strong>unidirectional association</strong>. In other words, the users care about roles but roles don’t care about users.<br> User entity:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/userEntity.png" alt="userEntity"><figcaption class="figure__caption">userEntity</figcaption></figure><br> Role entity:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/roleEntity.png" alt="roleEntity"><figcaption class="figure__caption">roleEntity</figcaption></figure></p>
 </li>
 <li><p>Currently we need to create <strong>UserRepository</strong> for extract the user from database(also the RoleRepository), at here we customize some methods, someone is returning <strong>User in format Optional to avoid NullPointerException</strong> and Optional also provides methods that we will use late.<br> User repository:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/userRepository.png" alt="userRepository"><figcaption class="figure__caption">userRepository</figcaption></figure><br> Role repository:<br> <figure class="figure"><img src="/../images/blogRestApi/security/databaseAuthentication/roleRepository.png" alt="roleRepository"><figcaption class="figure__caption">roleRepository</figcaption></figure></p>
@@ -122,7 +126,9 @@
 	
 
 	
-		<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"><figcaption class="figure__caption">removeSecurityPropiertInApplication_yml</figcaption></figure></p>
+		<span id="more"></span>
+
+<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"><figcaption class="figure__caption">removeSecurityPropiertInApplication_yml</figcaption></figure></p>
 <ul>
 <li><p>Create new <strong>@Bean in SecurityConfig(Line 40 - 56)</strong>, there is the function of creating users. <strong>UserDetailsService</strong> and <strong>UserDetails</strong> belong the package org.springframework.security.core.userdetails. </p>
 </li>
@@ -174,7 +180,9 @@
 	
 
 	
-		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
 <li>When we release a RESTFull API we don’t want every one can access it, for that <strong>Authentication system</strong> is necessary.</li>
 <li>In Spring we have <strong>Spring Security Framework</strong>, it provides a basic authentication for us.</li>
 </ul>
@@ -213,7 +221,9 @@
 	
 
 	
-		<h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><figure class="figure"><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"><figcaption class="figure__caption">springBootStarterValidationDependency</figcaption></figure></p>
+		<span id="more"></span>
+
+<h2 id="Add-spring-boot-starter-validation-dependency-to-pom-xml"><a href="#Add-spring-boot-starter-validation-dependency-to-pom-xml" class="headerlink" title="Add spring-boot-starter-validation dependency to pom.xml:"></a>Add spring-boot-starter-validation dependency to pom.xml:</h2><p><figure class="figure"><img src="/../images/blogRestApi/validation/addingValidationDependencyToPom.png" alt="springBootStarterValidationDependency"><figcaption class="figure__caption">springBootStarterValidationDependency</figcaption></figure></p>
 <h2 id="Add-requirements-for-every-DTO-we-need"><a href="#Add-requirements-for-every-DTO-we-need" class="headerlink" title="Add requirements for every DTO we need"></a>Add requirements for every DTO we need</h2><ul>
 <li>PostDto:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/addingRequirementToPostDto.png" alt="addRequirementPostDto"><figcaption class="figure__caption">addRequirementPostDto</figcaption></figure></li>
 <li>CommentDto:<br> <figure class="figure"><img src="/../images/blogRestApi/validation/addingRequirementToCommentDto.png" alt="addRequirementCommentDto"><figcaption class="figure__caption">addRequirementCommentDto</figcaption></figure></li>
@@ -251,7 +261,9 @@
 	
 
 	
-		<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Handler-specific-exceptions-and-global-exception"><a href="#Handler-specific-exceptions-and-global-exception" class="headerlink" title="Handler specific exceptions and global exception"></a>Handler specific exceptions and global exception</h2><ul>
 <li>We was sending to much information of exception to the client, in reality they don’t need all that<ol>
 <li>Create a new class in payload package of errors to send to the client, there are 3 fields: Data, errorMassage and details.<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/detailClass.png" alt="errordetail"><figcaption class="figure__caption">errordetail</figcaption></figure></li>
 <li>Create <strong>GlobalExceptionHandler</strong> in exception package, we have to annotate <strong>@ControllerAdvice</strong>. It works like AOP, we often use it with <strong>@ExceptionHandler</strong>, <strong>@@InitBinder</strong> and <strong>@ModelAttribute</strong>.<br> In every handler we create a <strong>errorDetail</strong> object to send back to the client, there is a constructor it requires 3 parameters(can be more), at here we give a data, exceptionMessage and the request url only(webRequest.getDescription(false)).<br> <figure class="figure"><img src="/../images/blogRestApi/globalExceptionHandler/exceptionHandlerClass.png" alt="globalExceptionHandler"><figcaption class="figure__caption">globalExceptionHandler</figcaption></figure></li>
@@ -282,7 +294,9 @@
 	
 
 	
-		<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
+		<span id="more"></span>
+
+<h2 id="Dependency-ModelMapper"><a href="#Dependency-ModelMapper" class="headerlink" title="Dependency: ModelMapper"></a>Dependency: ModelMapper</h2><ul>
 <li><strong>At first we know at real time projects there are not only 2 entities in application.</strong> In the class serviceImpl we have 2 convertor to convert between DtoObject and EntityObject, as you can see we need to write a lot of codes there manually, so there is a third part java library to help us to do this stuff automatically, the ModelMapper. steps:<ol>
 <li>Add ModelMapper library dependency at our application:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/addModelMapperLibraryDependency.png" alt="addModelMapperLibraryDependency"><figcaption class="figure__caption">addModelMapperLibraryDependency</figcaption></figure></li>
 <li>Define the ModelMapper bean in our Spring configuration:<br> <figure class="figure"><img src="/../images/blogRestApi/modelMapper/defineModelMapperInsideSpringBootApplication.png" alt="defineModelMapperInsideSpringBootApplication"><figcaption class="figure__caption">defineModelMapperInsideSpringBootApplication</figcaption></figure></li>
@@ -322,7 +336,9 @@
 	
 
 	
-		<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
+		<span id="more"></span>
+
+<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
 <li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"><figcaption class="figure__caption">commentEntity</figcaption></figure></li>
 </ol>
 <h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
@@ -387,7 +403,9 @@
 	
 
 	
-		<h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><figcaption class="figure__caption">paginationAndSortingPreview</figcaption></figure><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
+		<span id="more"></span>
+
+<h2 id="About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot"><a href="#About-pagination-and-sorting-at-first-i-want-to-show-you-a-preview-with-a-screenshot" class="headerlink" title="About pagination and sorting, at first i want to show you a preview with a screenshot :"></a>About pagination and sorting, at first i want to show you a preview with a screenshot :</h2><p><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/pagingAndSortingExample.png" alt="paginationAndSortingPreview"><figcaption class="figure__caption">paginationAndSortingPreview</figcaption></figure><br> Generally most web pages’s are like that, instead of list they can be pictures, posts, comments etc, and we can browse them by pages, or sort them with the title, age, likes etc, but the size of the page was normally fixed that depending on web developers, they can give you that option if they want. Let’s start the list pagination and sorting journey.</p>
 <h2 id="As-a-RESTFull-API-application-we-use-postman-to-test-it"><a href="#As-a-RESTFull-API-application-we-use-postman-to-test-it" class="headerlink" title="As a RESTFull API application we use postman to test it:"></a>As a RESTFull API application we use postman to test it:</h2><p><figure class="figure"><img src="/../images/blogRestApi/paginationAndSorting/postTestOnPostmanPaginationAndSorting.png" alt="postTestOnPostmanPaginationAndSorting"><figcaption class="figure__caption">postTestOnPostmanPaginationAndSorting</figcaption></figure></p>
 <ol>
 <li>At first we pass the quest from URL with <strong>RequestParam</strong>, there are 4 options: pageNumber, pageSize, sortBy and sortDirection. By default they are defined in <strong>PostController</strong>.</li>
@@ -434,7 +452,9 @@
 	
 
 	
-		<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><ol>
+		<span id="more"></span>
+
+<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><ol>
 <li>@Data of <strong>lombok Dependency</strong> at Entity, so that it no longer needs to create getter setter and toString method manually.</li>
 <li>@AllArgsConstructor of <strong>lombok Dependency</strong> to create all arguments constructor for us.</li>
 <li>@NoArgsConstructor of <strong>lombok Dependency</strong> to create non argument constructor for us.</li>

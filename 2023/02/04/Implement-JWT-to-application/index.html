@@ -42,7 +42,10 @@
 	
 
 	
-		<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
+		<span id="more"></span>
+
+
+<h2 id="In-this-blog-i’m-going-to-implement-JWT-to-the-application"><a href="#In-this-blog-i’m-going-to-implement-JWT-to-the-application" class="headerlink" title="In this blog i’m going to implement JWT to the application"></a>In this blog i’m going to implement JWT to the application</h2><ul>
 <li><p>At first it is necessary to add <strong>3 JWT related Macen dependencies: jjwt-imp, jjwt-ap and jjwt-jackson</strong> to our pom.xml<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/3Dependencies.png" alt="3JwtDependencies"><figcaption class="figure__caption">3JwtDependencies</figcaption></figure></p>
 </li>
 <li><p>Create JwtAuthenticationEntryPoint to throw 401 to the client, at first add the <strong>@Component</strong> to make it a <strong>Spring Bean</strong>, this is invoked when user tires to access a secured REST resource without supplying any credentials, we should just send a 401 Unauthorized response because there is no “login page” to redirect. This class is implementing AuthenticationEntryPoint, so it allows us to override the <strong>commence(HttpServletRequest request,HttpServletResponse response,AuthenticationException authException)</strong> method to response customized status and message.<br> <figure class="figure"><img src="/../images/blogRestApi/security/implementJWT/jwtAuthenticationEntryPoint.png" alt="jwtAuthenticationEntryPoint"><figcaption class="figure__caption">jwtAuthenticationEntryPoint</figcaption></figure></p>

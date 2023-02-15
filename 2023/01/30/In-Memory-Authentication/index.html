@@ -42,7 +42,9 @@
 	
 
 	
-		<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"><figcaption class="figure__caption">removeSecurityPropiertInApplication_yml</figcaption></figure></p>
+		<span id="more"></span>
+
+<h2 id="We-don’t-create-a-RESTFull-API-for-only-one-user"><a href="#We-don’t-create-a-RESTFull-API-for-only-one-user" class="headerlink" title="We don’t create a RESTFull API for only one user."></a>We don’t create a RESTFull API for only one user.</h2><p> When we release a application is for many clients, for that it is necessary to refact our code a bit, at first let’s remove the user properties from <strong>application.yml</strong>, that we no longer need it.<br> <figure class="figure"><img src="/../images/blogRestApi/security/inMemoryAuthentication/removeSecurityProrietyInApplication_yml.png" alt="removeSecurityPropiertInApplication_yml"><figcaption class="figure__caption">removeSecurityPropiertInApplication_yml</figcaption></figure></p>
 <ul>
 <li><p>Create new <strong>@Bean in SecurityConfig(Line 40 - 56)</strong>, there is the function of creating users. <strong>UserDetailsService</strong> and <strong>UserDetails</strong> belong the package org.springframework.security.core.userdetails. </p>
 </li>

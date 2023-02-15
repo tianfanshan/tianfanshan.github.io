@@ -42,7 +42,9 @@
 	
 
 	
-		<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
+		<span id="more"></span>
+
+<h2 id="Create-comment-entity"><a href="#Create-comment-entity" class="headerlink" title="Create comment entity"></a>Create comment entity</h2><ol>
 <li>The relationship between comment and post is Many to One, one post can have many comments, but one comment only belongs one post, hence we have the annotation @ManyToOne on the field post of comment entity, and it has a <strong>FetchType.LAZY</strong> to lazy loading.<br><figure class="figure"><img src="/../images/blogRestApi/commentsRelationthipWithPost/commentEntity.png" alt="commentEntity"><figcaption class="figure__caption">commentEntity</figcaption></figure></li>
 </ol>
 <h2 id="Update-post-entity"><a href="#Update-post-entity" class="headerlink" title="Update post entity"></a>Update post entity</h2><ol>
