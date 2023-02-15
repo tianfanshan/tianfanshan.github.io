@@ -152,6 +152,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Database-Authentication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/31/Database-Authentication/">Database Authentication</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/31/Database-Authentication/" class="archive-article-date">
+  	<time datetime="2023-01-31T20:56:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database"><a href="#At-this-scene-instead-of-using-in-memory-authentication-we-rae-going-to-extract-users-from-our-database" class="headerlink" title="At this scene instead of using in-memory authentication we rae going to extract users from our database."></a>At this scene instead of using <strong>in-memory authentication</strong> we rae going to extract users from our database.</h2><ul>
+<li><p>Create User and Role entity to generate tables in database, their’s association is <strong>@ManyToMany</strong>. But we only add this annotation in User, because it is a <strong>unidirectional association</strong>. In other words, the users care about roles but roles don’t care about users.<br> User entity:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/userEntity.png" alt="userEntity"><br> Role entity:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/roleEntity.png" alt="roleEntity"></p>
+</li>
+<li><p>Currently we need to create <strong>UserRepository</strong> for extract the user from database(also the RoleRepository), at here we customize some methods, someone is returning <strong>User in format Optional to avoid NullPointerException</strong> and Optional also provides methods that we will use late.<br> User repository:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/userRepository.png" alt="userRepository"><br> Role repository:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/roleRepository.png" alt="roleRepository"></p>
+</li>
+<li><p>Create a new class to implements the <strong>UserDetailsService interface</strong>, then override the <strong>loadUserByUsername</strong> method, lately we will use this method in our <strong>SecurityConfig</strong> class. In this method at first extract the user from database(Line 27 - 30) with the parameter <strong>usernameOrEmail</strong>, it returns an Optional user, so we can use <strong>orElseThrow() to throw a new UsernameNotFoundException</strong> here. Line 32 - 36 create a <strong>Set of GrantedAuthority</strong>, we can get user’s role set from the above object, then convert the set of roles to type <strong>GrantedAuthority</strong>, this is the authority of user, essentially is a set of Strings. At last generate a <strong>new org.springframework.security.core.userdetails.User();</strong> back, this constructor expect (String username, String password, Collection of GrantedAuthority).<br> CustomUserDetailsService:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/customUserDetailsService.png" alt="customUserDetailsService"></p>
+</li>
+<li><p>Before all let’s comment the <strong>userDetailsService bean</strong>, we no longer need them because we are using users from database not <strong>in-memory</strong>. At first inject the <strong>UserDetailsService</strong> to this class by creating the constructor, instead of injecting the class object directly, we can use the interface to achive the loose coupling. Line 29 - 32 Then configure <strong>AuthenticationManager</strong>, by <strong>AuthenticationConfiguration’s object.getAuthenticationManager()</strong> method, it automatically uses the <strong>UserDetailsService</strong>, and as you know we already overrided the method to get the user from database and returns a <strong>UserDetails</strong>, and it also uses password encoder to encode and decode the password.<br> SecurityConfig:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/securityConfig.png" alt="securityConfig"></p>
+</li>
+<li><p>To test this functionality it is necessary to insert some data to our database, at first we can manually bycrypt the password to insert to database for the users, just print it on our console.<br> PasswordGeneratorEncoder:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/encodePasswordManually.png" alt="encodePasswordManually"></p>
+</li>
+<li><p>Insert datas to our database manually, there is something to remind, it by default will add this <strong>“ROLE_”</strong> prefix at the role what we are searching on <strong>@PreAuthorize</strong>, to prevent mismatch at the roles table we have to add <strong>“ROLE_”</strong> to the role of database.<br> User table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyCreateUsersWithManuallyEncodedPassword.png" alt="manuallyCreateUserWithManuallyEncodedPassword"><br> users_roles table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertUsers_rolesTable.png" alt="manuallyInsertUsers_rolesTable"><br> Roles table:<br> <img src="/../images/blogRestApi/security/databaseAuthentication/manuallyInsertRolesTable.png" alt="manuallyInsertRolesTable"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/31/Database-Authentication/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-In-Memory-Authentication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
