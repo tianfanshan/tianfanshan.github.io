@@ -152,6 +152,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-The-commontly-annotations-we-used-in-a-SpringBoot-Application" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/">The commontly annotations we used in a SpringBoot Application</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/" class="archive-article-date">
+  	<time datetime="2023-02-15T09:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2><h3 id="Dependency-lombok"><a href="#Dependency-lombok" class="headerlink" title="Dependency lombok"></a>Dependency lombok</h3><ul>
+<li>@Data<br>   It makes us no longer need to create getter, setter, toString and other methods.</li>
+<li>@AllArgsConstructor<br>   Create all arguments constructor for us.</li>
+<li>@NoArgsConstructor<br>   Create non argument constructor for us.</li>
+<li>@Getter<br>   Create getter method for every field we have in the class.</li>
+<li>@Setter<br>   Create setter method for every field we have in the class.</li>
+</ul>
+<h3 id="jakarta-persistence"><a href="#jakarta-persistence" class="headerlink" title="jakarta.persistence"></a>jakarta.persistence</h3><ul>
+<li>@Entity and @Id<br>   If they are not in a java class then this class is completely a typical POJO java class. Now after adding these two annotations, it can be used as an entity class corresponding to the table in the database.</li>
+<li>@Table<br>   It is an optional annotation</li>
+<li>@Column</li>
+<li>@GeneratedValue</li>
+<li>@OneToOne</li>
+<li>@OneToMany</li>
+<li>@ManyToOne</li>
+<li>@ManyToMany</li>
+<li>@JoinTable</li>
+<li>@JoinColumn</li>
+</ul>
+<h3 id="org-springframework-web-bind-annotation"><a href="#org-springframework-web-bind-annotation" class="headerlink" title="org.springframework.web.bind.annotation"></a>org.springframework.web.bind.annotation</h3><ul>
+<li>@RestController</li>
+<li>@RequestMapping</li>
+<li>@PostMapping</li>
+<li>@GetMapping</li>
+<li>@PutMapping</li>
+<li>@DeleteMapping</li>
+<li>@PathVariable</li>
+<li>@RequestBody</li>
+<li>@RequestParam</li>
+<li>@ControllerAdvice</li>
+<li>@ExceptionHandler</li>
+</ul>
+<h3 id="jakarta-validation-constraints"><a href="#jakarta-validation-constraints" class="headerlink" title="jakarta.validation.constraints"></a>jakarta.validation.constraints</h3><ul>
+<li>@NotEmpty</li>
+<li>@NotNull</li>
+<li>@NotBlank</li>
+<li>@Email</li>
+<li>@Size</li>
+<li>@Max</li>
+<li>@Min</li>
+<li>@Pattern</li>
+</ul>
+<h3 id="jakarta-validation"><a href="#jakarta-validation" class="headerlink" title="jakarta.validation"></a>jakarta.validation</h3><ul>
+<li>@Valid</li>
+</ul>
+<h3 id="org-springframework-security-access-prepost"><a href="#org-springframework-security-access-prepost" class="headerlink" title="org.springframework.security.access.prepost"></a>org.springframework.security.access.prepost</h3><ul>
+<li>@PreAuthorize</li>
+</ul>
+<h3 id="org-springframework-beans-factory-annotation"><a href="#org-springframework-beans-factory-annotation" class="headerlink" title="org.springframework.beans.factory.annotation"></a>org.springframework.beans.factory.annotation</h3><ul>
+<li>@Value</li>
+</ul>
+<h3 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a>org.springframework.stereotype</h3><ul>
+<li>@Component</li>
+<li>@Service</li>
+</ul>
+<h3 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a>org.springframework.context.annotation</h3><ul>
+<li>@Bean</li>
+<li>@Configuration</li>
+</ul>
+<h3 id="org-springframework-security-config-annotation-method-configuration"><a href="#org-springframework-security-config-annotation-method-configuration" class="headerlink" title="org.springframework.security.config.annotation.method.configuration"></a>org.springframework.security.config.annotation.method.configuration</h3><ul>
+<li>@EnableMethodSecurity</li>
+</ul>
+<h3 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure"></a>org.springframework.boot.autoconfigure</h3><ul>
+<li>@SpringBootApplication</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Microservices" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -960,85 +1087,9 @@
 
 
   
-    <article id="post-Login-and-Register" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/01/Login-and-Register/">Login and Register</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/01/Login-and-Register/" class="archive-article-date">
-  	<time datetime="2023-02-01T16:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API"><a href="#HTTP-Basic-Authentication-is-not-recommended-so-we-are-creating-our-own-login-and-register-API" class="headerlink" title="HTTP Basic Authentication is not recommended so we are creating our own login and register API"></a>HTTP Basic Authentication is not recommended so we are creating our own login and register API</h2><ul>
-<li><p><strong>LoginDto and RegisterDto</strong> to transfer the data between client and server, we only have to provide 2 fields, the user can login with username or email.<br> LoginDto:<br> <img src="/../images/blogRestApi/security/loginAndRegister/loginDto.png" alt="loginDto"><br> RegisterDto:<br> <img src="/../images/blogRestApi/security/loginAndRegister/registerDto.png" alt="registerDto"></p>
-</li>
-<li><p><strong>AuthService</strong> interface that we gonna to implement the methods of login, and also register.<br> <img src="/../images/blogRestApi/security/loginAndRegister/authServiceInterface.png" alt="authServiceInterface"></p>
-</li>
-<li><p><strong>AuthServiceImpl</strong>, at first inject <strong>UserRepository, RoleRepository, AuthenticationManager and initialize BCryptPasswordEncoder</strong>.</p>
-<ol>
-<li><strong>Part Login</strong>, create authentication by using <strong>authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail(), loginDto.getPassword));</strong> and passing user’s datas to verify, if it passed then store it into the <strong>spring security context holder</strong>.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementLoginInAuthServiceImpl.png" alt="implementLoginInAuthServiceImpl"><br> Create <strong>AuthController</strong> to use the login method from service.<br> <img src="/../images/blogRestApi/security/loginAndRegister/authController.png" alt="authController"><br> Remove <strong>.httpBasic(Customizer.withDefaults())</strong> from securityconfig, instead of using it we are implementing our own login API, provice login API by adding <strong>.requestMatchers(“&#x2F;api&#x2F;auth&#x2F;**”).permitAll behind authorize</strong> to provide permission for all the users to access this rest API, it measns all the RESTAPIs that we define in our controller will be accessible by all the users.<br> <img src="/../images/blogRestApi/security/loginAndRegister/modifySecurityFilterChain.png" alt="modifySecurityFilterChain"></li>
-<li><strong>Part Register</strong>, implemente register in <strong>AuthServiceImpl</strong>. In the method at first have to check if <strong>the username of registerDto</strong> is already exists in our database, same as <strong>the email of this registerDto</strong>, if it is already exist in our database then throw a <strong>BlogAPIException with BAD_REQUEST and the message</strong>.<br> At line 63 - 76 we created a new user object to store the data of registerDto, and also we have to encode the password before we store it, then give this new user a default role, it has to be “ROLE_USER”, at last save this user to our database and return the message back to client.<br> <img src="/../images/blogRestApi/security/loginAndRegister/implementRegisterInAuthServiceImpl.png" alt="implementRegisterInAuthServiceImpl"></li>
-</ol>
-</li>
-<li><p>But when we try to use endponts with roles, it will return a 403 forbidden status. Because we are not passing the usernameOrEmail and the password to the <strong>header</strong>, in the next blog i will use JWT to provide them, then we can use the API with logged user.</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/01/Login-and-Register/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

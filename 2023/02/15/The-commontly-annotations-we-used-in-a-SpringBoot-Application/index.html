@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>The commontly annotations we used in a SpringBoot Application | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/page/2/index.html">
+  <meta name="description" content="Spring boot provides us a lot of annotations to helps us to build a application with itDependency lombok @Data   It makes us no longer need to create getter, setter, toString and other methods. @AllAr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The commontly annotations we used in a SpringBoot Application">
+<meta property="og:url" content="http://example.com/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring boot provides us a lot of annotations to helps us to build a application with itDependency lombok @Data   It makes us no longer need to create getter, setter, toString and other methods. @AllAr">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-15T09:51:14.000Z">
+<meta property="article:modified_time" content="2023-02-15T20:43:13.020Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-The-commontly-annotations-we-used-in-a-SpringBoot-Application" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The commontly annotations we used in a SpringBoot Application
+    </h1>
+  
+
+        
+        <a href="/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/" class="archive-article-date">
+  	<time datetime="2023-02-15T09:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2><h3 id="Dependency-lombok"><a href="#Dependency-lombok" class="headerlink" title="Dependency lombok"></a>Dependency lombok</h3><ul>
+<li>@Data<br>   It makes us no longer need to create getter, setter, toString and other methods.</li>
+<li>@AllArgsConstructor<br>   Create all arguments constructor for us.</li>
+<li>@NoArgsConstructor<br>   Create non argument constructor for us.</li>
+<li>@Getter<br>   Create getter method for every field we have in the class.</li>
+<li>@Setter<br>   Create setter method for every field we have in the class.</li>
+</ul>
+<h3 id="jakarta-persistence"><a href="#jakarta-persistence" class="headerlink" title="jakarta.persistence"></a>jakarta.persistence</h3><ul>
+<li>@Entity and @Id<br>   If they are not in a java class then this class is completely a typical POJO java class. Now after adding these two annotations, it can be used as an entity class corresponding to the table in the database.</li>
+<li>@Table<br>   It is an optional annotation</li>
+<li>@Column</li>
+<li>@GeneratedValue</li>
+<li>@OneToOne</li>
+<li>@OneToMany</li>
+<li>@ManyToOne</li>
+<li>@ManyToMany</li>
+<li>@JoinTable</li>
+<li>@JoinColumn</li>
+</ul>
+<h3 id="org-springframework-web-bind-annotation"><a href="#org-springframework-web-bind-annotation" class="headerlink" title="org.springframework.web.bind.annotation"></a>org.springframework.web.bind.annotation</h3><ul>
+<li>@RestController</li>
+<li>@RequestMapping</li>
+<li>@PostMapping</li>
+<li>@GetMapping</li>
+<li>@PutMapping</li>
+<li>@DeleteMapping</li>
+<li>@PathVariable</li>
+<li>@RequestBody</li>
+<li>@RequestParam</li>
+<li>@ControllerAdvice</li>
+<li>@ExceptionHandler</li>
+</ul>
+<h3 id="jakarta-validation-constraints"><a href="#jakarta-validation-constraints" class="headerlink" title="jakarta.validation.constraints"></a>jakarta.validation.constraints</h3><ul>
+<li>@NotEmpty</li>
+<li>@NotNull</li>
+<li>@NotBlank</li>
+<li>@Email</li>
+<li>@Size</li>
+<li>@Max</li>
+<li>@Min</li>
+<li>@Pattern</li>
+</ul>
+<h3 id="jakarta-validation"><a href="#jakarta-validation" class="headerlink" title="jakarta.validation"></a>jakarta.validation</h3><ul>
+<li>@Valid</li>
+</ul>
+<h3 id="org-springframework-security-access-prepost"><a href="#org-springframework-security-access-prepost" class="headerlink" title="org.springframework.security.access.prepost"></a>org.springframework.security.access.prepost</h3><ul>
+<li>@PreAuthorize</li>
+</ul>
+<h3 id="org-springframework-beans-factory-annotation"><a href="#org-springframework-beans-factory-annotation" class="headerlink" title="org.springframework.beans.factory.annotation"></a>org.springframework.beans.factory.annotation</h3><ul>
+<li>@Value</li>
+</ul>
+<h3 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a>org.springframework.stereotype</h3><ul>
+<li>@Component</li>
+<li>@Service</li>
+</ul>
+<h3 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a>org.springframework.context.annotation</h3><ul>
+<li>@Bean</li>
+<li>@Configuration</li>
+</ul>
+<h3 id="org-springframework-security-config-annotation-method-configuration"><a href="#org-springframework-security-config-annotation-method-configuration" class="headerlink" title="org.springframework.security.config.annotation.method.configuration"></a>org.springframework.security.config.annotation.method.configuration</h3><ul>
+<li>@EnableMethodSecurity</li>
+</ul>
+<h3 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure"></a>org.springframework.boot.autoconfigure</h3><ul>
+<li>@SpringBootApplication</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/02/01/Login-and-Register/" class="archive-article-date">
-  	<time datetime="2023-02-01T16:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/02/01/Login-and-Register/">Login and Register</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/15/The-commontly-annotations-we-used-in-a-SpringBoot-Application/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/31/Database-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-31T20:56:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/02/15/Microservices/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Microservices</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/31/Database-Authentication/">Database Authentication</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/30/In-Memory-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-30T20:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/30/In-Memory-Authentication/">In-Memory Authentication</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/29/Security-Basic-Authentication/" class="archive-article-date">
-  	<time datetime="2023-01-29T07:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/29/Security-Basic-Authentication/">Security Basic Authentication</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/" class="archive-article-date">
-  	<time datetime="2023-01-27T16:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/27/Spring-Boot-Validation-and-customize-exception-for-it/">Spring Boot Validation and customize Exception for it</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/26/Global-Exceptions-handler/" class="archive-article-date">
-  	<time datetime="2023-01-26T09:40:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/26/Global-Exceptions-handler/">Global Exceptions handler</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/25/ModelMapper-and-Refact-Dto-code/" class="archive-article-date">
-  	<time datetime="2023-01-25T13:50:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/25/ModelMapper-and-Refact-Dto-code/">ModelMapper and Refact Dto code</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/" class="archive-article-date">
-  	<time datetime="2023-01-24T14:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/24/Spring-Boot-RESTFull-API-Comment-OneToMany-Relationship/">Spring Boot RESTFull API Comment OneToMany Relationship</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/" class="archive-article-date">
-  	<time datetime="2023-01-23T09:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/23/Spring-Boot-RESTFull-API-Pagination-and-Sorting/">Spring Boot RESTFull API Pagination and Sorting</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/" class="archive-article-date">
-  	<time datetime="2023-01-21T09:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2023/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2023/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2023/page/3/">3</a><a class="extend next" rel="next" href="/archives/2023/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +390,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
