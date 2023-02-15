@@ -172,71 +172,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2><h3 id="Dependency-lombok"><a href="#Dependency-lombok" class="headerlink" title="Dependency lombok"></a>Dependency lombok</h3><ul>
-<li><strong>@Data</strong><br>It makes us no longer need to create getter, setter, toString and other methods.</li>
-<li><strong>@AllArgsConstructor</strong><br>Create all arguments constructor for us.</li>
-<li><strong>@NoArgsConstructor</strong><br>Create non argument constructor for us.</li>
-<li><strong>@Getter</strong><br>Create getter method for every field we have in the class.</li>
-<li><strong>@Setter</strong><br>Create setter method for every field we have in the class.</li>
-</ul>
-<h3 id="jakarta-persistence"><a href="#jakarta-persistence" class="headerlink" title="jakarta.persistence"></a>jakarta.persistence</h3><ul>
-<li><strong>@Entity and @Id</strong><br>  If they are not in a java class then this class is completely a typical POJO java class. Now after adding these two annotations, it can be used as an entity class corresponding to the table in the database.</li>
-<li><strong>@Table</strong><br>  It is an optional annotation</li>
-<li><strong>@Column</strong></li>
-<li><strong>@GeneratedValue</strong></li>
-<li><strong>@OneToOne</strong></li>
-<li><strong>@OneToMany</strong></li>
-<li><strong>@ManyToOne</strong></li>
-<li><strong>@ManyToMany</strong></li>
-<li><strong>@JoinTable</strong></li>
-<li><strong>@JoinColumn</strong></li>
-</ul>
-<h3 id="org-springframework-web-bind-annotation"><a href="#org-springframework-web-bind-annotation" class="headerlink" title="org.springframework.web.bind.annotation"></a>org.springframework.web.bind.annotation</h3><ul>
-<li><strong>@RestController</strong></li>
-<li><strong>@RequestMapping</strong></li>
-<li><strong>@PostMapping</strong></li>
-<li><strong>@GetMapping</strong></li>
-<li><strong>@PutMapping</strong></li>
-<li><strong>@DeleteMapping</strong></li>
-<li><strong>@PathVariable</strong></li>
-<li><strong>@RequestBody</strong></li>
-<li><strong>@RequestParam</strong></li>
-<li><strong>@ControllerAdvice</strong></li>
-<li><strong>@ExceptionHandler</strong></li>
-</ul>
-<h3 id="jakarta-validation-constraints"><a href="#jakarta-validation-constraints" class="headerlink" title="jakarta.validation.constraints"></a>jakarta.validation.constraints</h3><ul>
-<li><strong>@NotEmpty</strong></li>
-<li><strong>@NotNull</strong></li>
-<li><strong>@NotBlank</strong></li>
-<li><strong>@Email</strong></li>
-<li><strong>@Size</strong></li>
-<li><strong>@Max</strong></li>
-<li><strong>@Min</strong></li>
-<li><strong>@Pattern</strong></li>
-</ul>
-<h3 id="jakarta-validation"><a href="#jakarta-validation" class="headerlink" title="jakarta.validation"></a>jakarta.validation</h3><ul>
-<li><strong>@Valid</strong></li>
-</ul>
-<h3 id="org-springframework-security-access-prepost"><a href="#org-springframework-security-access-prepost" class="headerlink" title="org.springframework.security.access.prepost"></a>org.springframework.security.access.prepost</h3><ul>
-<li><strong>@PreAuthorize</strong></li>
-</ul>
-<h3 id="org-springframework-beans-factory-annotation"><a href="#org-springframework-beans-factory-annotation" class="headerlink" title="org.springframework.beans.factory.annotation"></a>org.springframework.beans.factory.annotation</h3><ul>
-<li><strong>@Value</strong></li>
-</ul>
-<h3 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a>org.springframework.stereotype</h3><ul>
-<li><strong>@Component</strong></li>
-<li><strong>@Service</strong></li>
-</ul>
-<h3 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a>org.springframework.context.annotation</h3><ul>
-<li><strong>@Bean</strong></li>
-<li><strong>@Configuratio</strong>n</li>
-</ul>
-<h3 id="org-springframework-security-config-annotation-method-configuration"><a href="#org-springframework-security-config-annotation-method-configuration" class="headerlink" title="org.springframework.security.config.annotation.method.configuration"></a>org.springframework.security.config.annotation.method.configuration</h3><ul>
-<li><strong>@EnableMethodSecurity</strong></li>
-</ul>
-<h3 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure"></a>org.springframework.boot.autoconfigure</h3><ul>
-<li><strong>@SpringBootApplication</strong></li>
-</ul>
+        <h2 id="Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it"><a href="#Spring-boot-provides-us-a-lot-of-annotations-to-helps-us-to-build-a-application-with-it" class="headerlink" title="Spring boot provides us a lot of annotations to helps us to build a application with it"></a>Spring boot provides us a lot of annotations to helps us to build a application with it</h2><h3 id="Dependency-lombok"><a href="#Dependency-lombok" class="headerlink" title="Dependency lombok"></a>Dependency lombok</h3><p><strong>@Data</strong><br>It makes us no longer need to create getter, setter, toString and other methods.<br><strong>@AllArgsConstructor</strong><br>Create all arguments constructor for us.<br><strong>@NoArgsConstructor</strong><br>Create non argument constructor for us.<br><strong>@Getter</strong><br>Create getter method for every field we have in the class.<br><strong>@Setter</strong><br>Create setter method for every field we have in the class.</p>
+<h3 id="jakarta-persistence"><a href="#jakarta-persistence" class="headerlink" title="jakarta.persistence"></a>jakarta.persistence</h3><p> <strong>@Entity and @Id</strong><br>     If they are not in a java class then this class is completely a typical POJO java class. Now after adding these two annotations, it can be used as an entity class corresponding to the table in the database.<br> <strong>@Table</strong><br>     It is an optional annotation<br> <strong>@Column</strong><br> <strong>@GeneratedValue</strong><br> <strong>@OneToOne</strong><br> <strong>@OneToMany</strong><br> <strong>@ManyToOne</strong><br> <strong>@ManyToMany</strong><br> <strong>@JoinTable</strong><br> <strong>@JoinColumn</strong></p>
+<h3 id="org-springframework-web-bind-annotation"><a href="#org-springframework-web-bind-annotation" class="headerlink" title="org.springframework.web.bind.annotation"></a>org.springframework.web.bind.annotation</h3><p> <strong>@RestController</strong><br> <strong>@RequestMapping</strong><br> <strong>@PostMapping</strong><br> <strong>@GetMapping</strong><br> <strong>@PutMapping</strong><br> <strong>@DeleteMapping</strong><br> <strong>@PathVariable</strong><br> <strong>@RequestBody</strong><br> <strong>@RequestParam</strong><br> <strong>@ControllerAdvice</strong><br> <strong>@ExceptionHandler</strong></p>
+<h3 id="jakarta-validation-constraints"><a href="#jakarta-validation-constraints" class="headerlink" title="jakarta.validation.constraints"></a>jakarta.validation.constraints</h3><p> <strong>@NotEmpty</strong><br> <strong>@NotNull</strong><br> <strong>@NotBlank</strong><br> <strong>@Email</strong><br> <strong>@Size</strong><br> <strong>@Max</strong><br> <strong>@Min</strong><br> <strong>@Pattern</strong></p>
+<h3 id="jakarta-validation"><a href="#jakarta-validation" class="headerlink" title="jakarta.validation"></a>jakarta.validation</h3><p> <strong>@Valid</strong></p>
+<h3 id="org-springframework-security-access-prepost"><a href="#org-springframework-security-access-prepost" class="headerlink" title="org.springframework.security.access.prepost"></a>org.springframework.security.access.prepost</h3><p> <strong>@PreAuthorize</strong></p>
+<h3 id="org-springframework-beans-factory-annotation"><a href="#org-springframework-beans-factory-annotation" class="headerlink" title="org.springframework.beans.factory.annotation"></a>org.springframework.beans.factory.annotation</h3><p> <strong>@Value</strong></p>
+<h3 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a>org.springframework.stereotype</h3><p> <strong>@Component</strong><br> <strong>@Service</strong></p>
+<h3 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a>org.springframework.context.annotation</h3><p> <strong>@Bean</strong><br> <strong>@Configuratio</strong>n</p>
+<h3 id="org-springframework-security-config-annotation-method-configuration"><a href="#org-springframework-security-config-annotation-method-configuration" class="headerlink" title="org.springframework.security.config.annotation.method.configuration"></a>org.springframework.security.config.annotation.method.configuration</h3><p> <strong>@EnableMethodSecurity</strong></p>
+<h3 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure"></a>org.springframework.boot.autoconfigure</h3><p> <strong>@SpringBootApplication</strong></p>
 
       
 
