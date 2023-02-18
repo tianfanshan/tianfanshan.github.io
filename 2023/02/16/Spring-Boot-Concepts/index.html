@@ -77,7 +77,39 @@
 <li>spring-boot-starter-web, it can create spring MVC web application and spring MVC REST API application.</li>
 <li>spring-boot-starter-webflux, it can create Spring Boot Reactive Web application.</li>
 </ul>
-<h3 id="Types-of-Embedded-Servers-in-Spring-Boot"><a href="#Types-of-Embedded-Servers-in-Spring-Boot" class="headerlink" title="Types of Embedded Servers in Spring Boot"></a>Types of Embedded Servers in Spring Boot</h3><h3 id="How-to-run-Spring-Boot-application-from-command-line"><a href="#How-to-run-Spring-Boot-application-from-command-line" class="headerlink" title="How to run Spring Boot application from command line"></a>How to run Spring Boot application from command line</h3><h3 id="Describe-the-flow-of-REST-API-HTTP-request-through-the-Spring-Boot-project"><a href="#Describe-the-flow-of-REST-API-HTTP-request-through-the-Spring-Boot-project" class="headerlink" title="Describe the flow of REST API HTTP request through the Spring Boot project"></a>Describe the flow of REST API HTTP request through the Spring Boot project</h3><h3 id="How-to-create-and-deploy-Spring-Boot-WAR-to-External-Tomcat-Server"><a href="#How-to-create-and-deploy-Spring-Boot-WAR-to-External-Tomcat-Server" class="headerlink" title="How to create and deploy Spring Boot WAR to External Tomcat Server"></a>How to create and deploy Spring Boot WAR to External Tomcat Server</h3><h3 id="What-is-Spring-Boot-DevTools-used-for"><a href="#What-is-Spring-Boot-DevTools-used-for" class="headerlink" title="What is Spring Boot DevTools used for"></a>What is Spring Boot DevTools used for</h3><h3 id="How-to-add-security-to-Spring-Boot-and-Explain-Security-Auto-Configuration"><a href="#How-to-add-security-to-Spring-Boot-and-Explain-Security-Auto-Configuration" class="headerlink" title="How to add security to Spring Boot and Explain Security Auto Configuration"></a>How to add security to Spring Boot and Explain Security Auto Configuration</h3><h3 id="Use-profiles-in-Spring-Boot-project"><a href="#Use-profiles-in-Spring-Boot-project" class="headerlink" title="Use profiles in Spring Boot project"></a>Use profiles in Spring Boot project</h3>
+<h3 id="Types-of-Embedded-Servers-in-Spring-Boot"><a href="#Types-of-Embedded-Servers-in-Spring-Boot" class="headerlink" title="Types of Embedded Servers in Spring Boot"></a>Types of Embedded Servers in Spring Boot</h3><p> The reasion why do we need a embedded server in the application, because if we don’t use it then it’s necessary to download and set up the server and also have to deploy the application manually.<br> By default the dependency spring-boot-starter-web internally provides Tomcat server, and there are two more embedded services: Jetty and Undertow, we can use in our project instead of using Tomcat. To use another embedded server we have to exclude the Tomcat server, at first add the exclusions tag in spring-boot-starter-web, and excluding the default Tomcat server, then add new server dependency in the pom file.</p>
+<h3 id="How-to-run-Spring-Boot-application-from-command-line"><a href="#How-to-run-Spring-Boot-application-from-command-line" class="headerlink" title="How to run Spring Boot application from command line"></a>How to run Spring Boot application from command line</h3><p> We have two options for running it: using <strong>java -jar</strong> or using Spring Boot Maven plugin <strong>-mvn spring-boot:run</strong>.<br> When we run the application without installed Maven in our machine the the mvnw.cmd will install Maven for us to run the application.</p>
+<ol>
+<li>Open terminal in the project folder</li>
+<li>Package Spring Boot Application as jar file by using command: <strong>mvnw package</strong></li>
+<li>Run application if Maven installed: <strong>mvn spring-boot:run</strong></li>
+<li>Run application if Maven is not installed: <strong>mvnw spring-boot:run</strong></li>
+<li>Or go to the target level by using command: <strong>cd target</strong></li>
+<li>Run application: <strong>java -jar fileName-SNAPSHOT.jar</strong></li>
+</ol>
+<h3 id="Describe-the-flow-of-REST-API-HTTP-request-through-the-Spring-Boot-project"><a href="#Describe-the-flow-of-REST-API-HTTP-request-through-the-Spring-Boot-project" class="headerlink" title="Describe the flow of REST API HTTP request through the Spring Boot project"></a>Describe the flow of REST API HTTP request through the Spring Boot project</h3><p> There are 3 important layers: Controller, Service and DAO<br> <strong>Controller layer</strong>, it is responsible to process the requests, it’s also called API layer.<br> <strong>Service layer</strong>, it is used to mantain all the business logic, if we have any third part REST API call or any public third part REST API call, we can keep them in a service layer.<br> <strong>DAO or repository layer</strong>, it’s responsible to talk to the database, it holds all the database logic or persistence logic.<br> The flow: client -&gt; controller -&gt; service -&gt; DAO -&gt; database<br> The flow: database -&gt; DAO -&gt; service -&gt; controller -&gt; client</p>
+<h3 id="How-to-create-and-deploy-Spring-Boot-WAR-to-External-Tomcat-Server"><a href="#How-to-create-and-deploy-Spring-Boot-WAR-to-External-Tomcat-Server" class="headerlink" title="How to create and deploy Spring Boot WAR to External Tomcat Server"></a>How to create and deploy Spring Boot WAR to External Tomcat Server</h3><p> When we create a spring boot war project, it is necessary to choose war the packaging file type instead of jar. Once we created the war project we can se there are 3 difference: in pom.xml there is packagin with war, a tomcat dependency with scope provided and a ServletInitializer class in project.<br> How to run it to External Tomcat Server:</p>
+<ol>
+<li>Build Maven</li>
+<li>Download Tomcat to our machine</li>
+<li>copy paste war file from target that created by using Maven builder to webapp dir of tomcat folder</li>
+<li>click startup icon of bin folder of tomcat</li>
+<li>Use war file name as RUL address behind port</li>
+</ol>
+<h3 id="What-is-Spring-Boot-DevTools-used-for"><a href="#What-is-Spring-Boot-DevTools-used-for" class="headerlink" title="What is Spring Boot DevTools used for"></a>What is Spring Boot DevTools used for</h3><p> Without added spring-boot-starter-devtools dependency, we have to restart the application manually when a developer changed the code to show it up on the application.<br> Once we added spring-boot-devtools in our application, spring boot will detect our changes in the project, and based on that , it will restart the server automatically.</p>
+<h3 id="How-to-add-security-to-Spring-Boot-and-Explain-Security-Auto-Configuration"><a href="#How-to-add-security-to-Spring-Boot-and-Explain-Security-Auto-Configuration" class="headerlink" title="How to add security to Spring Boot and Explain Security Auto Configuration"></a>How to add security to Spring Boot and Explain Security Auto Configuration</h3><p> Add spring-boot-starter-security in pom.xml, it will add all this spring boot related libraries and the compatible version. When we run the application, spring boot will provides a random password for us on the console, then we can use it with the default userid user to log-in our application to get the permission to use the application.<br> We can also customize our username and password by configuring the properties file:</p>
+<ul>
+<li>spring.security.usernam&#x3D;?</li>
+<li>spring.security.password&#x3D;?</li>
+<li>spring.security.roles&#x3D;?</li>
+</ul>
+<h3 id="Use-profiles-in-Spring-Boot-project"><a href="#Use-profiles-in-Spring-Boot-project" class="headerlink" title="Use profiles in Spring Boot project"></a>Use profiles in Spring Boot project</h3><p> It means we can create different properties file to use for specific environment, and we can active the specific properties file by using: spring.profile.active&#x3D;?<br> There are 3 examples we were used in our application:</p>
+<ul>
+<li>application-prod.yml</li>
+<li>application-dev.yml</li>
+<li>application-qa.yml</li>
+</ul>
+
 	
 
 	
