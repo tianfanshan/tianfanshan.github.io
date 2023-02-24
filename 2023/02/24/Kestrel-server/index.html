@@ -56,7 +56,12 @@
 6. Decryption of SSL certificates
 </code></pre>
 <p> Once we want to deploy our application on the Reverse Proxy Server, it will transfer the request to kestrel. At moment we can use IIS Express to simulate IIS. </p>
-<p> Without Reverse Proxy Server works like:<br>    Internet &lt;–HTTP–&gt; kestrel &lt;—-&gt; Application code<br> With Reverse Proxy Server works like:<br>    Internet &lt;–HTTP–&gt; IIS&#x2F;Apache&#x2F;NGNIX &lt;—-&gt; kestrel &lt;—-&gt; Application code</p>
+<p> Without Reverse Proxy Server works like:</p>
+<pre><code>Internet &lt;--HTTP--&gt; kestrel &lt;----&gt; Application code
+</code></pre>
+<p> With Reverse Proxy Server works like:</p>
+<pre><code>Internet &lt;--HTTP--&gt; IIS/Apache/NGNIX &lt;----&gt; kestrel &lt;----&gt; Application code
+</code></pre>
 <p> When we run the application there the terminal will pop out, and you can see the messages of the kestrel server show on it<br> <figure class="figure"><img src="/../images/CsharpDotnet/KestrelServer/kestrelServerRunsOnTerminal.png" alt="terminal"><figcaption class="figure__caption">terminal</figcaption></figure></p>
 <h2 id="The-launchSettings-json-file"><a href="#The-launchSettings-json-file" class="headerlink" title="The launchSettings.json file"></a>The launchSettings.json file</h2><p> We can configure the properties of the server in this file:<br>    <figure class="figure"><img src="/../images/CsharpDotnet/KestrelServer/defaultProfiles.png" alt="defaultProfiles"><figcaption class="figure__caption">defaultProfiles</figcaption></figure><br>    1. dotnetRunMessages: true; to show the messages of server on the terminal<br>    2. launchBrowser: true; it will automatically open the browser<br>    3. applicationUrl: url; to set the root url<br>    <figure class="figure"><img src="/../images/CsharpDotnet/KestrelServer/iisSettings.png" alt="iisSettings"><figcaption class="figure__caption">iisSettings</figcaption></figure><br>    1. windowsAuthentication: false; enable the windows authentication or not<br>    2. iisExpress.applicationUrl: url; to set the IIS Express root url</p>
 <p> And we can choose on witch server to run the application:<br>    <figure class="figure"><img src="/../images/CsharpDotnet/KestrelServer/IISExpress.png" alt="IISExpress"><figcaption class="figure__caption">IISExpress</figcaption></figure></p>
