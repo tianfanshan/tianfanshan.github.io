@@ -78,7 +78,7 @@
 <li>Fetch parameter from URL and show it on the browser.<br>  <figure class="figure"><img src="/../images/CsharpDotnet/Middleware/theWayFourDemoOnBrowser.png" alt="conventionalMiddlewareExampleOnBrowser"><figcaption class="figure__caption">conventionalMiddlewareExampleOnBrowser</figcaption></figure></li>
 </ol>
 <h2 id="Where-do-we-have-to-use-middlewares"><a href="#Where-do-we-have-to-use-middlewares" class="headerlink" title="Where do we have to use middlewares"></a>Where do we have to use middlewares</h2><p> It is recommended to use the Middleware between Authorization and Endpoint. In an ASP.NET Core web application there are a lot of gates in it, and we can use any middleware between each of them, but it is no recommended.<br> We usually have our ASP.NET application with those components with the order:</p>
-<pre><code>Client &amp;lt;----&amp;gt; ExceptionHandler &amp;lt;----&amp;gt; HSTS &amp;lt;----&amp;gt; HttpsRedirection &amp;lt;----&amp;gt; Static Files &amp;lt;----&amp;gt; Routing &amp;lt;----&amp;gt; COURS &amp;lt;----&amp;gt; Authentication &amp;lt;----&amp;gt; Authorization &amp;lt;----&amp;gt; **Middlewares** &amp;lt;----&amp;gt; Endpoint &amp;lt;----&amp;gt; Service
+<pre><code>Client &lt;----&gt; ExceptionHandler &lt;----&gt; HSTS &lt;----&gt; HttpsRedirection &lt;----&gt; Static Files &lt;----&gt; Routing &lt;----&gt; COURS &lt;----&gt; Authentication &lt;----&gt; Authorization &lt;----&gt; **Middlewares** &lt;----&gt; Endpoint &lt;----&gt; Service
 </code></pre>
 
 	
