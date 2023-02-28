@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Routing | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Routing</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-02-28</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-is-Routing"><a href="#What-is-Routing" class="headerlink" title="What is Routing"></a>What is Routing</h2><span id="more"></span>
+
+
+<p> It is a process of matching incoming HTTP requests by checking the HTTP method and url, and then invoking corresponding endpoints(middlewares).</p>
+<h3 id="UseRouting-and-UseEndpoints"><a href="#UseRouting-and-UseEndpoints" class="headerlink" title="UseRouting() and UseEndpoints()"></a>UseRouting() and UseEndpoints()</h3><p> They are middleware components used to configure routing in ASP.NET Core applications.</p>
+<p> <strong>UseRouting()</strong> is a middleware component that adds routing to the request processing pipeline. It examines the incoming HTTP request’s URL and attempts to match it with a registered route. If a match is found, the middleware sets the appropriate route data values and passes the request to the next middleware component in the pipeline.<br> <strong>UseEndpoints()</strong> is a middleware component that adds endpoints to the request processing pipeline. An endpoint is the combinaition of a route and a handler that will be invoked if the incoming request URL matches the registered route. The <strong>UseEndpoints()</strong> mis responsible for mapping the routes to the corresponding endpoint handlers.</p>
+<p> <strong>UseRouting()</strong> is added early in the middleware pipeline, before other middleware components and <strong>UseEndpoints()</strong> is just the opposite. Together they provide a flexible and powerful routing mechanism for ASP.NET Core application. We can use them to define complex URL patterns, handle different HTTP methods and status codes, and customize the behevior of the application at the routing level.</p>
+<p> example:<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/useRoutingAndUseEndpoints.png" alt="useRoutingAndUseEndpoints"><figcaption class="figure__caption">useRoutingAndUseEndpoints</figcaption></figure></p>
+<h3 id="GetEndpoint"><a href="#GetEndpoint" class="headerlink" title="GetEndpoint()"></a>GetEndpoint()</h3><p> We can use this method to fetch the information of the endpoint we want, and it has several properties that provide information about the endpoint:<br>    1. <strong>DisplayName</strong>: a human-readable string that describes the endpoint.<br>    2. <strong>Metadata</strong>: a collection of metadata associated with the endpoint, such as filters or routing information.<br>    3. <strong>RequestDelegate</strong>: the delegate that should be executed to handle the request.<br>    4. <strong>RoutePattern</strong>: the route pattern associated with the endpoint.<br>    5. <strong>RouteValues</strong>: a dictionary of route values extracted from the request URL.<br>    6. <strong>Metadata.GetMetadata&lt;T&gt;()</strong>: a method that can be used to retrieve a specific type of metadata associated with the endpoint, such as an attribute or filter.</p>
+<p> example:<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/getEndpoint.png" alt="getEndpoint"><figcaption class="figure__caption">getEndpoint</figcaption></figure></p>
+<h3 id="“-”-in-C"><a href="#“-”-in-C" class="headerlink" title="“?” in C#"></a>“?” in C#</h3><p> After adding the “?” after a parameter or the type of a variable to make them optional, it means that it can be null.<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/nullableParameter.png" alt="nullable"><figcaption class="figure__caption">nullable</figcaption></figure></p>
+<h3 id="Constraint-for-the-parameter-in-URL"><a href="#Constraint-for-the-parameter-in-URL" class="headerlink" title="Constraint for the parameter in URL"></a>Constraint for the parameter in URL</h3><p> It is recommended to use if statement to valid the parameter, that’s because we can send back more information along the response.</p>
+<ol>
+<li><strong>int</strong>: it matches with any integer {id:int}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/integerConstraint.png" alt="integerConstraint"><figcaption class="figure__caption">integerConstraint</figcaption></figure></li>
+<li><strong>bool</strong>: is matches with true or false {active:bool}</li>
+<li><strong>datetime</strong>: it matches a valid DateTime value with formats “yyyy-MM-dd hh:mm:ss tt” and “MM&#x2F;dd&#x2F;yyyy hh:mm:ss tt”<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/dateConstraint.png" alt="datetimeConstraint"><figcaption class="figure__caption">datetimeConstraint</figcaption></figure></li>
+<li><strong>decimal</strong>: it matches with a valid decimal value {price:decimal}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/decimalConstraint.png" alt="decimalConstraint"><figcaption class="figure__caption">decimalConstraint</figcaption></figure></li>
+<li><strong>long</strong>: it matches a valid long value {id:long}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/longConstraint.png" alt="longConstraint"><figcaption class="figure__caption">longConstraint</figcaption></figure></li>
+<li><strong>guid</strong>: it matches with a valid Guid value(Globally Unique Identifier), it is a 128-bit text string that represents an identification(ID), {id:guid}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/guidConstraint.png" alt="guidConstraint"><figcaption class="figure__caption">guidConstraint</figcaption></figure></li>
+<li><strong>minlength(value)</strong>: it matches with a string that has at least specified number of characters {username:minlength(4)}</li>
+<li><strong>maxlength(value)</strong>: it matches with a string that has less than or equal to the specified number of characters {username:maxlength(7)}</li>
+<li><strong>length(min,max)</strong>: it matches with a string that has number of characters between given minimun and maximum length(both numbers including) {username:length(4,7)}</li>
+<li><strong>length(value)</strong>: it only alows the specified number of characters {tin:length(9)}</li>
+<li><strong>alpha</strong>: it matches with a string that contains only alphabets(A-Z) and (a-z) {username:alpha}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/charactersConstraint.png" alt="charactersConstraint"><figcaption class="figure__caption">charactersConstraint</figcaption></figure></li>
+<li><strong>min(value)</strong>: it requires an integer value greater than or equal to the specified value {age:min(18)}</li>
+<li><strong>max(value)</strong>: it only accepts an integer value less than or equal to the specified value {age:max(100)}</li>
+<li><strong>range(min,max)</strong>: it requires an integer value between the specified minimum and maximum values(both numbers including) {age:range(18,100)}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/numericalConstraint.png" alt="numericalConstraint"><figcaption class="figure__caption">numericalConstraint</figcaption></figure></li>
+<li><strong>regex(expression)</strong>: it matches with a string that matches with the specified regular expression {month:regex(^(apr|jul|oct|jan)$)}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/regexConstraint.png" alt="regexConstraint"><figcaption class="figure__caption">regexConstraint</figcaption></figure></li>
+<li>Default parameter: if the client doesn’t pass any parameter then it will be the default one {id&#x3D;1}<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/defaultParameter.png" alt="defaultParameter"><figcaption class="figure__caption">defaultParameter</figcaption></figure></li>
+</ol>
+<h3 id="Custom-Rout-Constraint-Class"><a href="#Custom-Rout-Constraint-Class" class="headerlink" title="Custom Rout Constraint Class"></a>Custom Rout Constraint Class</h3><p> We also can create a customized constraint class to valid the parameter as the default constraints.</p>
+<ol>
+<li>Create a normal class and implement <strong>IRoutConstraint</strong> to it, so at there we can create the logic for the constraint that we can use it later in the endpoints.<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/customConstraintClass.png" alt="customConstraintClass"><figcaption class="figure__caption">customConstraintClass</figcaption></figure></li>
+<li>Enable the custom constraint class in the main class by using add constraint map, there requires two parameters: the customConstraintName and typeOfCustomConstraint<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/enableCustomConstraintClass.png" alt="enableCustomConstraintClass"><figcaption class="figure__caption">enableCustomConstraintClass</figcaption></figure></li>
+<li>Implement the custom constraint in endpoint<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/customConstraintInEndpoint.png" alt="customCostraintInEndpoint"><figcaption class="figure__caption">customCostraintInEndpoint</figcaption></figure></li>
+</ol>
+<h3 id="WebRoot"><a href="#WebRoot" class="headerlink" title="WebRoot"></a>WebRoot</h3><p> We can use static files to show them on the browser by using wwwwroot file, by writing the file name after the root url<br> <figure class="figure"><img src="/../images/CsharpDotnet/Routing/wwwroot.png" alt="wwwroot"><figcaption class="figure__caption">wwwroot</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/02/28/Routing/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
