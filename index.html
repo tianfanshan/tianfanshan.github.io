@@ -46,46 +46,8 @@
 	
 
 	
-		<h2 id="What-are-controllers"><a href="#What-are-controllers" class="headerlink" title="What are controllers"></a>What are controllers</h2><p> They are classes that are used to group-up a set of actions or action methods, action methods do perform certain operation when a request is received and response the result.<br> So we can use controllers instead of using all endpoints in the main class.</p>
-<p> Responsibilities of Controllers:</p>
-<ol>
-<li>Reading requests: Extracting data values from request such as query string parameters, request body, request cookies, request headers etc.</li>
-<li>Invoking models: Calling business logic methods, generally business operations are available as “services”.</li>
-<li>Validation: To validata incoming request details, such as query parameters, request body, request cookies, request headers etc.</li>
-<li>Preparing Response: to choose what kind of response has to be sent to the client and also preparing the response.</li>
-</ol>
-<h3 id="Things-we-have-to-do-in-the-main-class"><a href="#Things-we-have-to-do-in-the-main-class" class="headerlink" title="Things we have to do in the main class"></a>Things we have to do in the main class</h3><ol>
-<li>Use <strong>builder.Service.AddControllers()</strong> to add all controllers as services in the IServiceConllection, after that they can be accesed when a specific endpoint needs it.</li>
-<li>Use <strong>app.MapControllers()</strong> to all al action methods as endpoints, then there is not necessary of using UseEndPoints() method for adding action methods as end points.</li>
-<li>Also <strong>app.UseRouting()</strong> is necessary here.</li>
-<li>Use <strong>app.UseStaticFiles()</strong>, is allows us to response the local file to the client.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/mainClass.png" alt="mainClass"><figcaption class="figure__caption">mainClass</figcaption></figure></li>
-</ol>
-<h3 id="Create-Controller-class"><a href="#Create-Controller-class" class="headerlink" title="Create Controller class"></a>Create Controller class</h3><ol>
-<li>Create a <strong>Controllers</strong> folder to store the controller classes.</li>
-<li>Create a Controller class into the folder, it is required to suffixed with “Controller”, and it has to be public.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/controllerClass.png" alt="controllerClass"><figcaption class="figure__caption">controllerClass</figcaption></figure></li>
-</ol>
-<h3 id="ContentResult"><a href="#ContentResult" class="headerlink" title="ContentResult"></a>ContentResult</h3><p> It can represent any type of response, based on the specified MIME(Miltipurpose Internet Mail Extensions) type, such as “text&#x2F;plain”, “text&#x2F;html”, “image&#x2F;jpeg”, “application&#x2F;json”, “application&#x2F;pdf” etc.</p>
-<ol>
-<li>It is necessary to extend the <strong>Microsoft.AspNetCore.Mvc.Controller</strong> to make the return types in this class.</li>
-<li>Above the method we have to add the route or the url to use it on the browser.</li>
-<li>The Content() method requires two parameters: content and his MIME type. And it returns a virtual object to show to the client on the browser.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/contentResult.png" alt="contentResult"><figcaption class="figure__caption">contentResult</figcaption></figure></li>
-</ol>
-<h3 id="JSON-result"><a href="#JSON-result" class="headerlink" title="JSON result"></a>JSON result</h3><p> We also can send a JSON format back to the client.</p>
-<ol>
-<li>Create a model class to generate a object of it.</li>
-<li>By using Json() method we can convert a object to JSON format.</li>
-<li>Send that JSON back to the client.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/jsonResult.png" alt="jsonResult"><figcaption class="figure__caption">jsonResult</figcaption></figure></li>
-</ol>
-<h3 id="VirtualFileResult-PhysicalFileResult-and-FileContentResult"><a href="#VirtualFileResult-PhysicalFileResult-and-FileContentResult" class="headerlink" title="VirtualFileResult, PhysicalFileResult and FileContentResult"></a>VirtualFileResult, PhysicalFileResult and FileContentResult</h3><p> We also can send static files back to the client, by using those methods:<br>    1. VirtualFileResult: send back the file from <strong>wwwroot</strong> to the client.<br>    2. PhysicalFileResult: send back the file using the absolute path.<br>    3. FileContentResult: it is used when a part of file or byte[] from other data source has to be sent a response, such as image from database.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/Virtual_Physical_FileResult.png" alt="virtualPhysicalFileContentResult"><figcaption class="figure__caption">virtualPhysicalFileContentResult</figcaption></figure></p>
-<h3 id="IActionResult"><a href="#IActionResult" class="headerlink" title="IActionResult"></a>IActionResult</h3><p> It is the parent interface for all action result classes such as ContentResult, JsonResult, RedirectResult, StatusCodeResult, ViewResult etc. By using IActionResult we can return any type of result. Because most of the time we also want to return another type of result, in one method could have several different types of file.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/iActionResult.png" alt="iActionResult"><figcaption class="figure__caption">iActionResult</figcaption></figure></p>
-<h3 id="StatusCodeResult"><a href="#StatusCodeResult" class="headerlink" title="StatusCodeResult"></a>StatusCodeResult</h3><p> It will send an empty response with specified status code. Eg: 200, 201, 400, 404, 500 etc. And it also can send along with a customized message.<br> <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/statusCodeResult.png" alt="statusCodeResult"><figcaption class="figure__caption">statusCodeResult</figcaption></figure></p>
-<h3 id="RedirectResult"><a href="#RedirectResult" class="headerlink" title="RedirectResult"></a>RedirectResult</h3><p> It will send either HTTP 302 or 301 response to the browser, in order to redirect to a specific action or url.<br> And there are 3 types of redirection:</p>
-<ol>
-<li>RedirectToActionResult: Response for redirecting from the current action method to another action method, based on action name and controller name.</li>
-<li>LocalRedirectResult: Response for redirecting from the current action method to another action method, based on the specified url.</li>
-<li>RedirectResult: Response for redirecting from the current action method to any other url.<br>   <figure class="figure"><img src="/../images/CsharpDotnet/ControllersAndIActionResult/redirectResult.png" alt="redirectResult"><figcaption class="figure__caption">redirectResult</figcaption></figure></li>
-</ol>
-
+		<h2 id="What-are-controllers"><a href="#What-are-controllers" class="headerlink" title="What are controllers"></a>What are controllers</h2>
+		<p><a class="article__read-more-link" href="/2023/03/02/Controllers-and-IActionResult/">...read more</a></p>
 	
 
 	
