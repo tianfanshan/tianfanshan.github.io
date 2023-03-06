@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Model Binding and Validations | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Model Binding and Validations</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-03-06</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-are-Model-Binding-and-Validations"><a href="#What-are-Model-Binding-and-Validations" class="headerlink" title="What are Model Binding and Validations"></a>What are Model Binding and Validations</h2><span id="more"></span>
+
+
+<p> Model Binding is a feature of asp.net core that reads values from http requests and pass them as arguments to the action method. It allows developers to easily handle user input and<br> convert it to objects that can be easily used and validated in their application.<br> Model Validation is the process of checking whenter the data in a model object satisfies a set of predefined rules or constraints. In software development, model validation is typically used to ensure that user input data is accurate and meets certain requirements, such as data type, length, or format.</p>
+<p> They are two important concepts in software development that work together to ensure that user input data is accurate, valid, and meets the requirementsof the application. Model binding involves mapping incoming data from a client request to a model object in the server-side code. Model validation involves checking whether the data in the model object satisfies a set of predefined rules or constraints. Together, model binding and model validation help developers to easily handle user input and convert it to objects that can be easily used and validated in their application. This helps to ensure that the data in the application is accurate, consistent, and meets the necessary requirements.</p>
+<h3 id="Types-of-model-binding"><a href="#Types-of-model-binding" class="headerlink" title="Types of model binding"></a>Types of model binding</h3><p> There are 4 types of model binding, if we don’t declare from where we want to fetch the data so by priority from highest to lowest they are:<br>    1. <strong>From fields</strong>: form-data, x-222-form-urlencoded<br>    2. <strong>Request body</strong>: body -&gt; row -&gt; JSON<br>    3. <strong>Route Data</strong>: from the URL of the request<br>    4. <strong>Query string parameters</strong>: from the parameter query</p>
+<p> And we also can select to use which one by using those attributes to bind the data from client to the parameter:<br>    1. [FromForm]<br>    2. [FromBody]<br>    3. [FromRoute]<br>    4. [FromQuery]<br> <figure class="figure"><img src="/../images/CsharpDotnet/ModelBindingAndValidation/fromAttributes.png" alt="fromWhere"><figcaption class="figure__caption">fromWhere</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/03/06/Model-Binding-and-Validations/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
