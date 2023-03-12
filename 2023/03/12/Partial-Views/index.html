@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Partial Views | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Partial Views</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-03-12</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-is-partial-view"><a href="#What-is-partial-view" class="headerlink" title="What is partial view"></a>What is partial view</h2><span id="more"></span>
+
+
+<p> In ASP.NET Core, a partial view is a reusable component that allows developers to break down the user interface (UI) of a web page into smaller, more manageable pieces. Partial views are similar to user controls in earlier versions of ASP.NET.<br> A partial view is essentially a Razor view file (.cshtml) that can be rendered inside another view. It can contain HTML, Razor syntax, and server-side code. Partial views can be used to display content that is repeated across different pages or to render complex UI elements that require their own logic and styling.<br> To use a partial view in an ASP.NET Core application, you can create a new Razor view file with a prefix “_”. For example, “_MyPartialView.cshtml”. Then, you can use the “Html.Partial” or “Html.RenderPartial” helper methods to render the partial view inside another view. These methods take the name of the partial view file as a parameter.</p>
+<h3 id="How-does-partial-view-work"><a href="#How-does-partial-view-work" class="headerlink" title="How does partial view work"></a>How does partial view work</h3><ol>
+<li>Create a partial view in the Shared folder</li>
+<li>Create a controller to provide datas to the view, binding the data by using ViewDate<br> <figure class="figure"><img src="/../images/CsharpDotnet/PartialView/controller.png" alt="controller"><figcaption class="figure__caption">controller</figcaption></figure></li>
+<li>Once go the the view, it will render the partial view by using that code in the image<br> <figure class="figure"><img src="/../images/CsharpDotnet/PartialView/indexView.png" alt="indexView"><figcaption class="figure__caption">indexView</figcaption></figure></li>
+<li>Then it will turn to the partial view, at there we can manipulate the data that we passed from controller, and print it on the partial view, by the way the partial view will render in the index view where was using this partial view<br> <figure class="figure"><img src="/../images/CsharpDotnet/PartialView/partialView.png" alt="partialView"><figcaption class="figure__caption">partialView</figcaption></figure></li>
+</ol>
+<p> The sequence how it work is that:<br>    controller -&gt; view -&gt; partial view<br>    <figure class="figure"><img src="/../images/CsharpDotnet/PartialView/partialViewWorkingFlow.png" alt="flow"><figcaption class="figure__caption">flow</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/03/12/Partial-Views/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
