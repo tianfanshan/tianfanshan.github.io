@@ -42,7 +42,21 @@
 	
 
 	
-		
+		<h2 id="What-is-the-dependency-injection-in-ASP-NET-Core"><a href="#What-is-the-dependency-injection-in-ASP-NET-Core" class="headerlink" title="What is the dependency injection in ASP.NET Core"></a>What is the dependency injection in ASP.NET Core</h2><span id="more"></span>
+
+
+<p> Dependency Injection (DI) is a design pattern and a technique used in software engineering to decouple components and improve the testability and maintainability of applications. It is a fundamental concept in ASP.NET Core framework.</p>
+<p> In ASP.NET Core, Dependency Injection is built-in and provides a way to manage dependencies between components in a project. With Dependency Injection, you can register services with the application’s built-in container and then use these services in your classes throughout the application.</p>
+<p> When using Dependency Injection, the services can be registered with the application container in various ways. The two most common ways to register services are:<br>    1. Service lifetimes: You can register services with a specific lifetime, such as a Singleton (one instance for the entire application), Scoped (one instance per request), or Transient (one instance per usage).<br>    2. Service registration: You can register services in different ways, such as registering a concrete type, an interface or an implementation of an interface.</p>
+<p> Once the services are registered, they can be injected into other components, such as controllers, middleware, and other services. The Dependency Injection container is responsible for creating and disposing of the services</p>
+<p> Using Dependency Injection in ASP.NET Core can help improve the maintainability, testability, and scalability of your applications. It also allows for loose coupling between components, which makes it easier to change and update the application without affecting other parts of the code.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><ol>
+<li>At first it is necessary to create interface to make the main application and the third dependency loosely coupled, we can use it to connect between them.<br> <figure class="figure"><img src="/../images/CsharpDotnet/DependencyInjection/interface.png" alt="interface"><figcaption class="figure__caption">interface</figcaption></figure></li>
+<li>Create a service to inject to the main application.<br> <figure class="figure"><img src="/../images/CsharpDotnet/DependencyInjection/service.png" alt="service"><figcaption class="figure__caption">service</figcaption></figure></li>
+<li>Right click the <strong>Dependencies</strong> of the main application and add those dependencies we created before in it.</li>
+<li>By the way we have to add those dependencies to the services of the application by using: line 7, line 8, line 9 or line 11-15. Things have to say is that we can make those services to have a lifetime: Singleton (one instance for the entire application), Scoped (one instance per request), or Transient (one instance per usage).<br> <figure class="figure"><img src="/../images/CsharpDotnet/DependencyInjection/program.png" alt="program"><figcaption class="figure__caption">program</figcaption></figure></li>
+</ol>
+
 	
 
 	
