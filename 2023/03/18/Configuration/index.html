@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Configuration | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Configuration</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-03-18</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-is-the-configuration-in-a-ASP-NET-Core-application"><a href="#What-is-the-configuration-in-a-ASP-NET-Core-application" class="headerlink" title="What is the configuration in a ASP.NET Core application"></a>What is the configuration in a ASP.NET Core application</h2><span id="more"></span>
+
+
+<p> Configuration or configuration settings are the constant key value pairs that are set at a common location and can be read from anywhere in the same application. We can fetch or store the information with it, there are 5 common place to do it:<br>    1. appsettings.json<br>    2. Environment Variables<br>    3. File Configuration(JSON,INI or XML files)<br>    4. In-Memory Configuration<br>    5. Secret Manager</p>
+<h3 id="launchSettings-json-and-appsettings-json"><a href="#launchSettings-json-and-appsettings-json" class="headerlink" title="launchSettings.json and appsettings.json"></a>launchSettings.json and appsettings.json</h3><p> We can set the environment to choose the setting file, if we set it for development then when launch the application the <strong>appsettings.Development.json</strong> will be choosed<br> <figure class="figure"><img src="/../images/CsharpDotnet/Configuration/launchSettings.png" alt="launchSettings"><figcaption class="figure__caption">launchSettings</figcaption></figure></p>
+<h3 id="IConfiguration"><a href="#IConfiguration" class="headerlink" title="IConfiguration"></a>IConfiguration</h3><p> We can use the IConfiguration to fetch datas from the configuration file<br> <figure class="figure"><img src="/../images/CsharpDotnet/Configuration/IConfiguration.png" alt="IConfiguration"><figcaption class="figure__caption">IConfiguration</figcaption></figure></p>
+<h3 id="Environment-Specific-Configuration"><a href="#Environment-Specific-Configuration" class="headerlink" title="Environment Specific Configuration"></a>Environment Specific Configuration</h3><p>  The precedence of configuration sources by low to high is that: appsettings.json -&gt; appsettings.EnvironmentName.json -&gt; Secret Manager -&gt; Environment Variables -&gt; Command Line Arguments<br>  It is better to create a model to provide those configurations, because we won’t to write a lot of keys manualy<br>  <figure class="figure"><img src="/../images/CsharpDotnet/Configuration/model.png" alt="model"><figcaption class="figure__caption">model</figcaption></figure></p>
+<h3 id="Secrets-Manager"><a href="#Secrets-Manager" class="headerlink" title="Secrets Manager"></a>Secrets Manager</h3><p> It can store the user secrets, some sensitive configuration data in a separate location on the developer machine. Because we don’t want to show up our sensitive data publicly.<br>    1. Open the terminal on project level<br>    2. Initialize user secrets, it will give you a user secret id: dotnet user-secrets init<br>    3. Set the key value pair, it will be stored in the usersecrets: dotnet user-secrets set “key” “value”<br>    4. We can find out that secrets by right click the project -&gt; manage user secrets<br>    5. The latest configuration will override to the previous one, it means by using secrets manager will override the setting of the appsettings.json if there are some same keys<br> The benifit of the usersecrets is that it will avoid store the information in the source controller, because it is not safe to store the sensitive information in the source code.</p>
+<h3 id="Environment-variable-configuration"><a href="#Environment-variable-configuration" class="headerlink" title="Environment variable configuration"></a>Environment variable configuration</h3><p> We can create configuration in the environment: $Env:key__childkey&#x3D;”value”</p>
+<h3 id="Sample-of-service-to-fetch-the-online-API"><a href="#Sample-of-service-to-fetch-the-online-API" class="headerlink" title="Sample of service to fetch the online API"></a>Sample of service to fetch the online API</h3><p> <figure class="figure"><img src="/../images/CsharpDotnet/Configuration/service.png" alt="service"><figcaption class="figure__caption">service</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/03/18/Configuration/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
