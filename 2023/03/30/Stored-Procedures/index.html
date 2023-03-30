@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Stored Procedures | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Stored Procedures</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-03-30</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-are-stored-procedures-in-ASP-NET-Core"><a href="#What-are-stored-procedures-in-ASP-NET-Core" class="headerlink" title="What are stored procedures in ASP.NET Core"></a>What are stored procedures in ASP.NET Core</h2><span id="more"></span>
+
+
+<p> Stored procedures in ASP.NET Core are pre-compiled database queries or commands that are stored on the database server for later use. They can be thought of as a set of instructions that perform specific actions on the database. Stored procedures can be used to improve the performance of database operations and provide a more secure way to interact with the database.<br>In ASP.NET Core, stored procedures can be created and executed using the Entity Framework Core (EF Core) tool. To create a stored procedure, you can define a SQL query as a string and then use the FromSqlRaw method of the DbSet class to execute the query.<br>Stored procedures can be beneficial in improving the performance of your application and can help in the maintenance of the database. They also provide an additional layer of security by allowing you to control access to the database through stored procedures, instead of allowing direct access to the database tables.</p>
+<p>We can create our own query in the migration, there are 2 methods: Up and Down.<br>The <strong>Up</strong> method is used to define the changes that are made to the database schema when a migration is applied. These changes can include creating or altering database tables, adding or removing columns from existing tables, or creating new indexes or foreign key relationships.<br>The <strong>Down</strong> method is used to define the changes that are made to the database schema when a migration is rolled back. These changes should undo the changes made in the Up method, so that the database schema returns to its previous state.<br>By defining the changes to the database schema in both the <strong>Up</strong> and <strong>Down</strong> methods, migrations allow you to apply and roll back changes to the database schema in a controlled and reversible manner. This makes it easier to manage changes to your application’s data model over time, while ensuring the integrity and consistency of the database schema.</p>
+<p>Up method<br><figure class="figure"><img src="/../images/CsharpDotnet/Migration/storedProcedures.png" alt="Up"><figcaption class="figure__caption">Up</figcaption></figure></p>
+<p>Down method<br><figure class="figure"><img src="/../images/CsharpDotnet/Migration/downMethod.png" alt="Down"><figcaption class="figure__caption">Down</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/03/30/Stored-Procedures/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
