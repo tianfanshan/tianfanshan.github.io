@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Async operation and Task type | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Async operation and Task type</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-03-31</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="Why-do-we-need-async-operations-in-our-project"><a href="#Why-do-we-need-async-operations-in-our-project" class="headerlink" title="Why do we need async operations in our project"></a>Why do we need async operations in our project</h2><span id="more"></span>
+
+
+<p> Asynchronous operations in Entity Framework allow for non-blocking database access, which can improve the performance and scalability of applications. When a database operation is executed synchronously, the application thread that initiated the operation is blocked until the operation completes, which can lead to poor performance and responsiveness, especially when dealing with large datasets or slow database connections.<br> Async operations in Entity Framework allow the application to continue executing while the database operation is in progress, freeing up the application thread to perform other tasks. This can help to improve the overall responsiveness of the application and allow it to handle more concurrent requests.<br> In addition, async operations can also help to reduce resource usage and improve scalability by allowing the application to handle more requests without requiring additional resources, such as threads or database connections.</p>
+<h3 id="How-does-the-type-Task-work-with-it"><a href="#How-does-the-type-Task-work-with-it" class="headerlink" title="How does the type Task work with it"></a>How does the type Task work with it</h3><p> The Task type in .NET is a representation of an asynchronous operation that may or may not produce a result. When working with asynchronous operations in Entity Framework, Task is often used to represent the asynchronous operation that is performing the database access.<br> When a method is marked as async and returns a Task or Task&lt;T&gt;, it allows the method to execute asynchronously and return control to the caller immediately. This means that the method can continue to execute in the background while the calling thread can continue executing other operations.<br> For example, in Entity Framework, when you perform a database operation asynchronously using the async and await keywords, Entity Framework will return a Task&lt;T&gt; where T is the type of the result that will be produced when the database operation is completed. This Task&lt;T&gt; represents the ongoing database operation and allows you to perform other tasks while waiting for the operation to complete.<br> Once the asynchronous operation completes, the result is stored in the Task&lt;T&gt; object and the method that initiated the operation can resume execution. You can then access the result by awaiting the completion of the Task&lt;T&gt; object.</p>
+<h3 id="How-they-works-together"><a href="#How-they-works-together" class="headerlink" title="How they works together"></a>How they works together</h3><p> <figure class="figure"><img src="/../images/CsharpDotnet/AsyncOperationAndTask/sample.png" alt="asyncOperationAndTask"><figcaption class="figure__caption">asyncOperationAndTask</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/03/31/Async-operation-and-Task-type/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
