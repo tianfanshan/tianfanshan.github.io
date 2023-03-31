@@ -42,7 +42,13 @@
 	
 
 	
-		
+		<h2 id="What-are-virtual-and-sealed-keywords-in-Entity-Framework"><a href="#What-are-virtual-and-sealed-keywords-in-Entity-Framework" class="headerlink" title="What are virtual and sealed keywords in Entity Framework"></a>What are virtual and sealed keywords in Entity Framework</h2><span id="more"></span>
+
+
+<p> In Entity Framework, the virtual and sealed keywords are used to modify properties and methods of classes that are mapped to database tables.</p>
+<p> The <strong>virtual</strong> keyword is used to mark properties or methods that can be overridden in derived classes. When a property or method is marked as virtual, it can be accessed by Entity Framework during query execution and can be overridden in a derived class to customize its behavior. For example, you can mark a navigation property as virtual to enable lazy loading, which means that the related entities are loaded only when accessed for the first time.<br> <figure class="figure"><img src="/../images/CsharpDotnet/virtualAndSealedKeywords/virtual.png" alt="virtual"><figcaption class="figure__caption">virtual</figcaption></figure></p>
+<p> The <strong>sealed</strong> keyword is used to prevent a class from being inherited and its methods and properties from being overridden. When a class or a property is marked as sealed, it cannot be modified or extended further. This can be useful when you have a class that is intended to be used as is and should not be modified. In Entity Framework, you can use the sealed keyword to prevent derived classes from overriding the behavior of a property or method, which can be useful when you want to ensure consistency in the behavior of the class.<br> <figure class="figure"><img src="/../images/CsharpDotnet/virtualAndSealedKeywords/sealed.png" alt="sealed"><figcaption class="figure__caption">sealed</figcaption></figure></p>
+
 	
 
 	
