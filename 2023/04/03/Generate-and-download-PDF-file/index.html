@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Generate and download PDF file | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Generate and download PDF file</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-03</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="How-to-generate-a-web-page-to-PDF-file"><a href="#How-to-generate-a-web-page-to-PDF-file" class="headerlink" title="How to generate a web page to PDF file"></a>How to generate a web page to PDF file</h2><span id="more"></span>
+
+
+<p> 1.Install a NuGet Package names Rotativa to the project<br> 2.Download <strong>wkhtmltopdf.exe</strong> from the internet to the wwwroot folder, it helps us to convert the html file into PDF<br> 3.Create a new view for generate it as PDF, the reason is that, we don’t want to convert the entire page with the <strong>_layout view</strong><br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/startUpProject.png" alt="startUpProject"><figcaption class="figure__caption">startUpProject</figcaption></figure><br> 4.Add a link to the index view, when we click on it will active a method of controller to generate the PDF<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/indexView.png" alt="indexView"><figcaption class="figure__caption">indexView</figcaption></figure><br> 5.Add a new method in the controller to receive the request from index view, at there we call the database to fetch a list of PersonResponse, then it will go to the PersonsPDF view along the data<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/controllers.png" alt="controllers"><figcaption class="figure__caption">controllers</figcaption></figure><br> 6.As we only want the list of persons to print on the PDF file, at this file there is no other datas apart from the list of persons<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/personsPDF.png" alt="personsPDF"><figcaption class="figure__caption">personsPDF</figcaption></figure><br> 7.Start the project, we can get to the main page, and there is the button for download the PDF file<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/mainPage.png" alt="mainPage"><figcaption class="figure__caption">mainPage</figcaption></figure><br> 8.As you can see, we only generate the list of those persons nothing else, and it also can be downloaded<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateAndDownloadPDF/PDFFile.png" alt="PDFFile"><figcaption class="figure__caption">PDFFile</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/03/Generate-and-download-PDF-file/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
