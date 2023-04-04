@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Generate Excel file | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Generate Excel file</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-04</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="Generate-Excel-from-web-page-file-step-by-step"><a href="#Generate-Excel-from-web-page-file-step-by-step" class="headerlink" title="Generate Excel from web page file step by step"></a>Generate Excel from web page file step by step</h2><span id="more"></span>
+
+
+<p> 1.Install <strong>EPPlus</strong> Nuget package in the services project<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/EEPlus.png" alt="EPPlus"><figcaption class="figure__caption">EPPlus</figcaption></figure><br> 2.Set EPPlus package for non-commercial usage in the <strong>appsettings.json</strong> file,<br> when LicenseUsageMode is set to nonCommercial, if the application is used for commercial purposes, an exception will be thrown to prevent unauthorized commercial use.<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/appsetting.png" alt="appsettingjson"><figcaption class="figure__caption">appsettingjson</figcaption></figure><br> 3.Create a new method for generating Excel file, in services and the interface. Line 293 create a new MemoryStream object to store the data from database. Line 294-296 create a ExcelPackage and ExcelWorksheet(from EPPlus) object to create, read or edit the excel file. Line 297-304 to generate the header for each column. Line 307-312 to give that Excel file a style. Line 314-330 to fetch the data from database and write those data in the Excel file. Line 331 to automatical adjust the width of all columns in a worksheet to fit their longest cell contents. Line 334 write the excel into the memory stream. Finally we renturn that memory stream back to the client.<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/service.png" alt="service"><figcaption class="figure__caption">service</figcaption></figure><br> 4.Call that method from controller to return that MemoryStream object as the mime type <strong>application&#x2F;vnd.openxmlformats-officedocument.spreadsheetml.sheet</strong>.<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/controller.png" alt="controller"><figcaption class="figure__caption">controller</figcaption></figure><br> 5.At the main page we have a button to generate the page as Excel file.<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/mainPage.png" alt="mainPage"><figcaption class="figure__caption">mainPage</figcaption></figure><br> 6.Downloaded Excel file.<br> <figure class="figure"><img src="/../images/CsharpDotnet/GenerateExcelFile/excelFile.png" alt="excelFile"><figcaption class="figure__caption">excelFile</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/04/Generate-Excel-file/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
