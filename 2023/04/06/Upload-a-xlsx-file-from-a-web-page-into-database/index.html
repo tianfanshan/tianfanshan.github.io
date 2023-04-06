@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Upload a xlsx file from a web page into database | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Upload a xlsx file from a web page into database</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-06</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="Upload-excel-file-into-the-database"><a href="#Upload-excel-file-into-the-database" class="headerlink" title="Upload excel file into the database"></a>Upload excel file into the database</h2><span id="more"></span>
+
+
+<p> 1.In the ServiceContracts we have a ICountriesService interface, at first we have to create a new interfece for upload the file, this method receives files as IFormFile type of parameter. To provice that type we have to install the <strong>Microsoft.AspNetCore.Http</strong> package into the project to use it.<br> <figure class="figure"><img src="/../images/CsharpDotnet/UploadExcelFileIntoDatabase/interface.png" alt="interface"><figcaption class="figure__caption">interface</figcaption></figure><br> 2.Implement that interface in the service. This method returns a Task of int back to the client. Line 76 - 78 create a new object of MemoryStream by using <strong>EPPlus</strong> to convert the excel file into a stream of bytes, as we are returning quantity of countries so at here initialize a integer variable to count it. Line 80 generate <strong>Object of ExcelPackage</strong> to manipulate the stream of bytes of the Excel file. Line 82 find a sheet with name Countries. Line 84 count how many rows has that worksheet. Line 86 - 100 loop that file per each row to insert those coutries and also count how many new countries has. Line 103 finally return the quantity of countries we inserted in the database.<br> <figure class="figure"><img src="/../images/CsharpDotnet/UploadExcelFileIntoDatabase/service.png" alt="service"><figcaption class="figure__caption">service</figcaption></figure><br> 3.Create a controller to implement that method of service.<br> <figure class="figure"><img src="/../images/CsharpDotnet/UploadExcelFileIntoDatabase/controller.png" alt="controller"><figcaption class="figure__caption">controller</figcaption></figure><br> 4.And also generate a view to upload the file, it is necesary to make the type that the client will upload as multipart&#x2F;form-data to upload the Excel file, by the way create a link in the layout view to access the upload view.<br> <figure class="figure"><img src="/../images/CsharpDotnet/UploadExcelFileIntoDatabase/view.png" alt="view"><figcaption class="figure__caption">view</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/06/Upload-a-xlsx-file-from-a-web-page-into-database/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
