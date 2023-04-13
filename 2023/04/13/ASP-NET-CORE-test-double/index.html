@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>ASP.NET CORE test double | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>ASP.NET CORE test double</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-13</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h2 id="What-is-test-double"><a href="#What-is-test-double" class="headerlink" title="What is test double"></a>What is test double</h2><span id="more"></span>
+
+
+<p> In the context of ASP.NET CORE testing, a test double is a test-specific implementation that is used in place of a real implementation to isolate the code being tested from its dependencies. Test doubles are commonly used in unit testing to create a controlled testing environment and to eliminate external factors that could impact the test outcome.</p>
+<p> There are several types of test doubles, including:</p>
+<ol>
+<li>Stub: a test double that returns predefined values or behavior to a method call.</li>
+<li>Mock: a test double that verifies that certain actions or methods are called during a test.</li>
+<li>Fake: a simplified implementation, typically used to improve test perfomance.</li>
+<li>Spy: a test double that records  information about method calls, which can be used to verify that the correct methods were called during a test.</li>
+</ol>
+<p> In ASP.NET Core testing, test doubles can be used to replace dependencies such as a database, network calls, or external services. This allows the code being tested to be executed in isolation and without external dependencies, making it easier to identify and fix bugs. Test doubles can be created manually or by using a testing framework such as xUnit or NUnit.</p>
+<h3 id="In-our-testing-code"><a href="#In-our-testing-code" class="headerlink" title="In our testing code"></a>In our testing code</h3><ol>
+<li>Install the package <strong>Moq</strong> in the testing project, it is a popular mocking library for .NET framework, including .NET Core and ASP.NET Core.Moq allows developers to easily create mock objects or test doubles to simulate dependencies in unit tests.</li>
+</ol>
+<p> Using Moq, developers can create mock objects that mimic the behavior of real objects in the application, but withour  relying on the real object’s implementation. This allows the developer to isolate the code being tested from the implementation of dependencies, such as databases or external services, which can help to improve test stability and reduce the complexity of unit tests.</p>
+<p> Moq provides a fluent interface for setting up the behavior of a mock object, allowing developers to specify return values or exceptions for methods, properties, or indexers. Moq also provides a wide range of features such as verifying that a method was called a certain number of times or with specific arguments, or verifying that no more interactions occurred on a mock object.</p>
+<ol start="2">
+<li>Install the package <strong>EntityFrameworkMock.Moq</strong> in the testing project, it is a NuGet package that provides a set of tools for mocking Entity Framework Core context and DbSets using Moq.</li>
+</ol>
+<p> This package allows developers to create mock instances of Entity Framework Core’s DbContext and DbSet classes, which can be used in unit tests to simulate databases access without actually hitting the database. By doing so, tests can be executed faster and without the need for a live database, which can be particularly usedul for testing scenarios where dataaccess is critical.</p>
+<p> With EntityFrameworkMock.Moq, developers can define the behavior of the DbContext and DbSet mock objects by setting up expectations and return values using Moq’s fluent API. This allows tests to be written in a way that closely simulates the real behavior of the database access layer, making it easier to identify and fix issues that my arise.</p>
+<p> Additionally, EntityFrameworkMock.Moq provides features such as the ability to create a DbContext instance with a pro-populated database, and the ability to create mock DbSet instances for multiple entities  with diffenrent configurations.</p>
+<p> <figure class="figure"><img src="/../images/CsharpDotnet/ASP.NETCoreTestDouble/personsServiceTest.png" alt="personsServiceTest"><figcaption class="figure__caption">personsServiceTest</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/13/ASP-NET-CORE-test-double/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
