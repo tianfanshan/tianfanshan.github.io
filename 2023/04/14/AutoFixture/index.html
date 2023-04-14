@@ -42,7 +42,17 @@
 	
 
 	
-		
+		<h2 id="What-is-AutoFixture-in-NET-Framework"><a href="#What-is-AutoFixture-in-NET-Framework" class="headerlink" title="What is AutoFixture in .NET Framework"></a>What is AutoFixture in .NET Framework</h2><span id="more"></span>
+
+
+<p> AutoFixture is a powerful open-source library for .NET Framework that is used for generating test data automatically. It allows developers to create complex object graphs with random and realistic test data, without having to manually create every object and property.<br> With AutoFixture, developers can simply specify the types of objects they want to create and let the library handle the rest. AutoFixture can generate data for a wide variety of types, including primitive types, strings, collections, and custom types. It also supports customization through the use of behaviors and customization extesions.<br> AutoFixture is commonly used in unit testing scenarios, where developers need to generate test data quickly and efficiently. It can be used with many popular testing frameworks in .NET Framework, including NUnit, xUnit, and MSTest.</p>
+<h3 id="Implement-AutoFixture-in-our-test-project"><a href="#Implement-AutoFixture-in-our-test-project" class="headerlink" title="Implement AutoFixture in our test project"></a>Implement AutoFixture in our test project</h3><p> We often use it in the testing project because in real world project there maybe are a lot of field to fill when testing, that is why we are using the AutoFixture to generate dummy value instead of writing the value manually.</p>
+<ol>
+<li>Install the <strong>AutoFixture</strong> package in our testing project</li>
+<li>Initializing the <strong>IFixture</strong> interface<br> <figure class="figure"><img src="/../images/CsharpDotnet/AutoFixture/initializeTheIFixtureInterface.png" alt="initializeTheInterface"><figcaption class="figure__caption">initializeTheInterface</figcaption></figure></li>
+<li>Use <strong>_fixture</strong> object of Fixture what we generate in the constructor to create dummy values, and we also can write the custom value in it by using <strong>With()</strong> method<br> <figure class="figure"><img src="/../images/CsharpDotnet/AutoFixture/personsServiceTest.png" alt="personsServiceTest"><figcaption class="figure__caption">personsServiceTest</figcaption></figure></li>
+</ol>
+
 	
 
 	
