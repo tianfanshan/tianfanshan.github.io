@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Repository | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Repository</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-18</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h3 id="Why-do-we-use-The-Repository-pattern-in-our-project"><a href="#Why-do-we-use-The-Repository-pattern-in-our-project" class="headerlink" title="Why do we use The Repository pattern in our project"></a>Why do we use The Repository pattern in our project</h3><span id="more"></span>
+
+
+<p> It is commonly used in .NET Framework projects to provide a separation between the business logic of an application and the data access layer.<br> By using the Repository pattern, the application’s data access logic is encapsulated within a separate class or layer, which allows for easy maintenance and testing of the code. This also helps to promote a more modular architecture, where individual components can be swapped in and out without affecting the rest of the system.<br> In addition, the Repository pattern can help to improve the scalability and performance of a .NET Framework project by allowing the data access layer to be oprimized independently of the rest of the application. This can include techniques such as caching, indexing, and partitioning of data.</p>
+<h3 id="Implement-the-Repository-pattern-in-our-project"><a href="#Implement-the-Repository-pattern-in-our-project" class="headerlink" title="Implement the Repository pattern in our project"></a>Implement the Repository pattern in our project</h3><ol>
+<li>Create interface project to connect the services and the repositories<br> <figure class="figure"><img src="/../images/CsharpDotnet/RepositoryPattern/repositoryContracts.png" alt="repositoryContracts"><figcaption class="figure__caption">repositoryContracts</figcaption></figure></li>
+<li>Create the repositories project to access the database<br> <figure class="figure"><img src="/../images/CsharpDotnet/RepositoryPattern/repositories.png" alt="repositories"><figcaption class="figure__caption">repositories</figcaption></figure></li>
+<li>Instead of using <strong>ApplicationDBContext</strong> in the services we use the interface of those repositories to access to the database<br> <figure class="figure"><img src="/../images/CsharpDotnet/RepositoryPattern/service.png" alt="services"><figcaption class="figure__caption">services</figcaption></figure></li>
+<li>And also it is necessary to add those interfaces into the <strong>Service</strong> to make it work<br> <figure class="figure"><img src="/../images/CsharpDotnet/RepositoryPattern/program.png" alt="program.cs"><figcaption class="figure__caption">program.cs</figcaption></figure></li>
+</ol>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/18/Repository/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
