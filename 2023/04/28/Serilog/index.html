@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Serilog | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Serilog</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-04-28</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h3 id="What-is-Serilog"><a href="#What-is-Serilog" class="headerlink" title="What is Serilog"></a>What is Serilog</h3><span id="more"></span>
+
+
+<p> It is one of the most popular third part framework in ASP.NET Core, so why do we use <strong>Serilog</strong> instead of ILogger, there are some reasons:<br>    1. Structured logging: Serilog allows you to log structured data in a way that is easily searchable and filterable. This is particularly useful when working with large, complex applications that generate a lot of log data.<br>    2. Customizable sinks: Serilog provides a wide range of sinks, or destinations, for your log data. These sinks can be customized to meet your specific needs, whether you need to store logs in a database, send them to a third-party service, or output them to a file.<br>    3. Performance: Serilog is designed to be highly performant, which is important when you are dealing with high volumes of log data.<br>    4. Integration: Serilog integrates seamlessly with other .NET Core frameworks and tools, making it easy to incorporate into your existing application.</p>
+<h3 id="To-set-up-Serilog-in-a-application"><a href="#To-set-up-Serilog-in-a-application" class="headerlink" title="To set up Serilog in a application"></a>To set up Serilog in a application</h3><ol>
+<li>Install thoes NuGet packages: <strong>Serilog</strong> and <strong>Serilog.AspNetCore</strong><br> <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/installPackages.png" alt="packages"><figcaption class="figure__caption">packages</figcaption></figure></li>
+<li>Configure Sirilog in the <strong>Program.cs</strong> file, and remove those code of <strong>logging</strong> because we are using sirilog instead. Line 18: Makes Serilog able to read configuration from setting files. Line 19: Makes any Serilog could access the services of our application.<br> <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/enableSerilog.png" alt="enableSerilog"><figcaption class="figure__caption">enableSerilog</figcaption></figure></li>
+<li>Add Serilog configuration to the configuration file to enable it, the logging configuration is nore required anymore here, after that when we running the application Serilog will be used instead of default ApsNetCore logging.<br> <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/appsettings.png" alt="appsettings"><figcaption class="figure__caption">appsettings</figcaption></figure></li>
+</ol>
+<h3 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h3><p> In Serilog, a sink is a component responsible for writing log events to a particular destination or output. In other words, a sink is a target for log events, and it defines how log events are formatted and where they are stored or sent.<br> There are several benefits of using Serilog sinks for logging in .NET Core applications:<br>    1. Flexibility: Serilog sinks offer a great deal of flexibility, allowing you to write log messages to a variety of different destinations. This means you can easily customize your logging configuration to suit the needs of your specific application.<br>    2. Scalability: Beacause Serilog sinks allow you to write log messages to different destinations, you can easily scale your logging solution to handle larger volumens of log dat. For example, you might configure your application to write log messages to both a file and a database, providing redundancy and fault tolerance.<br>    3. Performance: Serilog is designed to be highly performant, and the use of sinks can help to further optimize your logging solution. By writing log messages directly to their intended destinantion, you can avoid unnecessary overhead and improve the overall performance of your application.<br>    4. Integration: Serilog sinks integrate seamlessly with other .NET Core frameworks and tools, making it easy to incorporate into your existing applications. This means you can quickly and easily add advanced logging capabilities to your applications without having to learn a new framework or API.</p>
+<h4 id="File-Sink"><a href="#File-Sink" class="headerlink" title="File Sink"></a>File Sink</h4><p> Serilog File sink allows us to store the log into files, it helps us to track those logs in any data.<br>    1. Add <strong>Serilog.Sinks.File</strong> in <strong>Using</strong> to import it.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/serilogSinksFile.png" alt="serilogSinksFile"><figcaption class="figure__caption">serilogSinksFile</figcaption></figure><br>    2. Add <strong>Name: File</strong> in <strong>WriteTo</strong> to execute the sink.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/serilogSinksName.png" alt="serilogSinksName"><figcaption class="figure__caption">serilogSinksName</figcaption></figure><br>    3. Add <strong>Args.path: “logs&#x2F;log.txt”</strong> to indicate where we want to store the logs.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/serilogSinksPath.png" alt="serilogSinksPath"><figcaption class="figure__caption">serilogSinksPath</figcaption></figure><br>    4. Create a <strong>logs</strong> folder in the project to store logs files, it is not necessary to create the file, it will be created automatically if it does not exist already for the first time.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/logsFolder.png" alt="logsFolder"><figcaption class="figure__caption">logsFolder</figcaption></figure><br>    5. The <strong>rollingInterval</strong> property means how often we want to create a new log file, and the file name will add a timestamp as suffix.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/rollingInterval.png" alt="rollingInterval"><figcaption class="figure__caption">rollingInterval</figcaption></figure><br>    6. The <strong>fileSizeLimitBytes</strong> property means the maximum size of a single file, even though the interval time is not completed, it will create a new file(1048567 Bytes &#x3D; 1MB).<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/fileSizeLimitBytes.png" alt="fileSizeLimitBytes"><figcaption class="figure__caption">fileSizeLimitBytes</figcaption></figure><br>    7. The <strong>rollOnFileSizeLimit: true</strong> property means if the the file limit is reached for the log file, a new log file with the next serial number should be created.<br>    <figure class="figure"><img src="/../images/CsharpDotnet/Serilog/Basic/rollOnFileSizeLimit.png" alt="rollOnFileSizeLimit"><figcaption class="figure__caption">rollOnFileSizeLimit</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/04/28/Serilog/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
