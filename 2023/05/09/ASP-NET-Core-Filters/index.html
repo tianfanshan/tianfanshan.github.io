@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>ASP.NET Core Filters | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>ASP.NET Core Filters</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-05-09</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h3 id="What-are-filters-in-APS-NET-Core"><a href="#What-are-filters-in-APS-NET-Core" class="headerlink" title="What are filters in APS.NET Core"></a>What are filters in APS.NET Core</h3><span id="more"></span>
+
+
+<p> In ASP.NET Core, filters are a way to add behavior to an application’s request and response pipeline. They allow you to modify the behavior of the application at various stages of the request processing pipeline.<br> Filters can be used to perform tasks such as authentication and authorization, logging, error handling, and caching. They can be applied at the global level, to all requests, or at the controller or action level, to specific requests.<br> There are four types of filters in ASP.NET Core:<br>    1. Authorization Filters: These filters are used to perform authentication and authorization tasks.<br>    2. Action Filters: These filters are executed before and after an action method is called. They can be used to modify the arguments passed to the action, to perform validation, and to modify the result returned by the action.<br>    3. Result Filters: These filters are executed before and after the action result is executed. They can be used to modify the result returned by the action.<br>    4. Exception Filters: These filters are executed when an unhandled exception occurs during the execution of an action method.</p>
+<h4 id="IActionFilter-interface"><a href="#IActionFilter-interface" class="headerlink" title="IActionFilter interface"></a>IActionFilter interface</h4><p> The <strong>IActionFilter</strong> interface is one of the four types of filters available in ASP.NET Core. It allows you to add custom behavior to an action method before and after it is executed.<br> The <strong>IActionFilter</strong> interface contains two methods:<br>    1. <strong>OnActionExecuting</strong>: This method is called before the action method is executed. It allows you to inspect and modify the arguments passed to the action method, and to perform any necessary validation.<br>    2. <strong>OnActionExecuted</strong>: This method is called after the action method has been executed. It allows you to inspect and modify the result returned by the action method.<br> To use <strong>IActionFilter</strong>, you can create a class that implements this interface, and then decorate the controller or action method with the <strong>ServiceFilter</strong> attribute.<br> The default class implemented <strong>IActionFilter</strong>:<br> <figure class="figure"><img src="/../images/CsharpDotnet/ASP.NET_Core_Filter/defaultFilterClass.png" alt="filterClass"><figcaption class="figure__caption">filterClass</figcaption></figure><br> To implement the filter to the controller:<br> <figure class="figure"><img src="/../images/CsharpDotnet/ASP.NET_Core_Filter/typeFilterAttribute.png" alt="addAttribute"><figcaption class="figure__caption">addAttribute</figcaption></figure></p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/05/09/ASP-NET-Core-Filters/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
