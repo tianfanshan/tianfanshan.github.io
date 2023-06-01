@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="theme-color" content="#33474d">
-	<title>Hexo</title>
+	<title>Browse the application on mobile locally | Hexo</title>
 	<link rel="stylesheet" href="/css/style.css" />
 	
       <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -29,46 +29,36 @@
 	</header>
 
 	<main>
-		<h1>Archive</h1>
-
-
-
-
-
-<ul class="archive">
+		<article>
 	
+		<h1>Browse the application on mobile locally</h1>
 	
-		<li class="archive__year archive__expendable ">
-			<span>2023</span>
-			<ul>
-				
-					<li class="archive__month archive__expendable">
-						<span>January</span>
-						<ul>
-							
-								<li class="archive__entry"><a href="/2023/01/21/Spring-Boot-RESTFull-API-part-1/">Spring Boot RESTFull API part 1</a></li>
-							
-								<li class="archive__entry"><a href="/2023/01/20/How-to-create-a-hexo-blog/">How to create a hexo blog</a></li>
-							
-						</ul>
-					</li>
-
-				
-			</ul>
-		</li>
+	<div class="article__infos">
+		<span class="article__date">2023-06-01</span><br />
 		
-	
-</ul>
+		
+	</div>
 
-<script>
-	const expandables = document.querySelectorAll('.archive__expendable')
-	for(let i = 0; i < expandables.length; i++) {
-		expandables[i].addEventListener('click', (e) => {
-			e.stopPropagation()
-			expandables[i].classList.toggle('archive__expendable_collapsed')
-		})
-	}
-</script>
+	
+
+	
+		<h3 id="To-test-the-springboot-web-application-locally-on-mobile"><a href="#To-test-the-springboot-web-application-locally-on-mobile" class="headerlink" title="To test the springboot web application locally on mobile"></a>To test the springboot web application locally on mobile</h3><span id="more"></span>
+
+
+<ol>
+<li>Connect the mobile and the computer to the same network(LAN)</li>
+<li>Open the command prompt on the computer, type <strong>ipconfig</strong> on C drive level to know the <strong>Wireless LAN adapter Wi-Fi IPv4 address</strong></li>
+<li>On the browser of the mobile enter http:&#x2F;&#x2F;<strong>IPv4Address</strong>:8080</li>
+</ol>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/06/01/Browse-the-application-on-mobile-locally/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
 
 	</main>
 
