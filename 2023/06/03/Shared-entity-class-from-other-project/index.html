@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Shared entity class from other project | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>Shared entity class from other project</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-06-03</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h3 id="Creating-a-common-project-of-entities-in-a-Spring-Boot-application-can-bring-several-benefits"><a href="#Creating-a-common-project-of-entities-in-a-Spring-Boot-application-can-bring-several-benefits" class="headerlink" title="Creating a common project of entities in a Spring Boot application can bring several benefits."></a>Creating a common project of entities in a Spring Boot application can bring several benefits.</h3><span id="more"></span>
+
+<ol>
+<li><p>Code Reusability: By centralizing your entities in a common project, you can reuse them across multiple modules or microservices within your application. This eliminates the need to duplicate entity classes and ensures consistency throughout your codebase.</p>
+</li>
+<li><p>Easy Maintenance: Having a common project for entities allows for centralized maintenance. Any changes or updates to the entity classes can be made in one place, simplifying the process and reducing the chances of introducing inconsistencies or errors.</p>
+</li>
+<li><p>Separation of Concerns: Separating the entity classes into a common project promotes a cleaner code structure. It helps in distinguishing the domain model (entities) from other application layers like controllers, services, and repositories. This separation adheres to the principles of the Single Responsibility and Domain-Driven Design (DDD).</p>
+</li>
+<li><p>Encapsulation: The common entity project can act as a module that encapsulates the business domain. It can define the core data structures and behaviors related to the domain, enabling other modules to interact with them through well-defined interfaces. This encapsulation enhances modularity and promotes better code organization.</p>
+</li>
+<li><p>Testing and Debugging: A common entity project simplifies unit testing and debugging efforts. With entities isolated in one project, you can focus on writing tests specific to the domain without worrying about dependencies on other application components. Debugging also becomes easier as you can analyze and trace entity-related issues in a dedicated project.</p>
+</li>
+<li><p>Collaboration and Teamwork: When multiple developers are working on different modules or services, having a common project for entities fosters collaboration. It establishes a shared understanding and a standardized approach to defining the domain model. Developers can work independently on their respective modules while referencing the shared entity project.</p>
+</li>
+<li><p>Integration and Interoperability: If you have a modular architecture or multiple microservices, a common entity project facilitates integration and interoperability. The project can be shared and utilized by different services, enabling seamless communication and data exchange between them.</p>
+</li>
+</ol>
+<h3 id="Example-of-creating-and-importing-entities-from-other-project"><a href="#Example-of-creating-and-importing-entities-from-other-project" class="headerlink" title="Example of creating and importing entities from other project."></a>Example of creating and importing entities from other project.</h3><ol>
+<li><p>Create a simple entity class in the common project.<br> <figure class="figure"><img src="/../images/SpringBootProject/sharedEntity/entityClass.png" alt="entityClass"><figcaption class="figure__caption">entityClass</figcaption></figure></p>
+</li>
+<li><p>In other project where we want to use that entity, declare that common project as maven dependency in <strong>pom.xml</strong> file.<br> <figure class="figure"><img src="/../images/SpringBootProject/sharedEntity/declareEntityProjectAsMavenDependency.png" alt="declareTheCommonEntityProjectAsMavenDependency"><figcaption class="figure__caption">declareTheCommonEntityProjectAsMavenDependency</figcaption></figure></p>
+</li>
+<li><p>Then we can import that entity class to the project and use it.<br> <figure class="figure"><img src="/../images/SpringBootProject/sharedEntity/ableToImportTheEntityClass.png" alt="ableToImportTheEntityClass"><figcaption class="figure__caption">ableToImportTheEntityClass</figcaption></figure></p>
+</li>
+</ol>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/06/03/Shared-entity-class-from-other-project/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
