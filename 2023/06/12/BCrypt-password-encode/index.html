@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>BCrypt password encode | Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1>BCrypt password encode</h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2023-06-12</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h4 id="What-is-BCrypt"><a href="#What-is-BCrypt" class="headerlink" title="What is BCrypt"></a>What is BCrypt</h4><span id="more"></span>
+
+
+<p> BCrypt is a password-hashing function based on Blowfish(symmetric-key block cipher) and crypt function in Unix.</p>
+<p> It is high secure because it has a salt used to protect against rainbow table attacks.<br> It is adaptive, strength can be increased when hardware gets faster slow down attackers.</p>
+<p> BCrypt is a widely-used password hashing algorithm designed to securely store passwords. It is specifically designed to be slow and computationally intensive, which makes it resistant to brute-force and dictionary attacks. The BCrypt algorithm incorporates salt and multiple rounds of hashing to enhance password security.</p>
+<h4 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work"></a>How does it work</h4><ol>
+<li>Generate a random salt: A salt is a randomly generated value that is combined with the password before hashing. It adds uniqueness to each password hash, even if two users have the same password. The salt is typically stored alongside the hashed password.</li>
+<li>Hash the password: The password, along with the salt, is hashed using the BCrypt algorithm. The algorithm repeatedly applies a key setup phase, which includes mixing the password and salt, and then performs a specified number of iterations to produce the final hash.<br> 3.Store the hashed password and salt: The resulting hash, along with the randomly generated salt, is typically stored in a database. The salt is stored alongside the hash so that it can be used during password verification.</li>
+</ol>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p> The main advantage of BCrypt is its slowness, which makes it computationally expensive for an attacker to perform large-scale password cracking attempts. Additionally, BCrypt automatically handles the generation and verification of the salt, making it easier for developers to use.</p>
+<p> It’s important to note that BCrypt is just one of many password hashing algorithms available, and it’s always recommended to use a well-vetted and up-to-date algorithm for password storage.</p>
+
+	
+
+	
+		<span class="different-posts"><a href="/2023/06/12/BCrypt-password-encode/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2023 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
